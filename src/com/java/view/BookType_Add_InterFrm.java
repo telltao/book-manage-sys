@@ -46,19 +46,19 @@ public class BookType_Add_InterFrm extends JInternalFrame {
 	public BookType_Add_InterFrm() {
 		setClosable(true);
 		setIconifiable(true);
-		setTitle("\u56FE\u4E66\u7C7B\u522B\u6DFB\u52A0");
+		setTitle("图书类别添加");
 		setBounds(100, 100, 566, 393);
 		
-		JLabel label = new JLabel("\u56FE\u4E66\u7C7B\u522B\u540D\u79F0\uFF1A");
+		JLabel label = new JLabel("图书类别名称：");
 		
 		bookTypeName_Txt = new JTextField();
 		bookTypeName_Txt.setColumns(10);
 		
-		JLabel label_1 = new JLabel("\u56FE\u4E66\u7C7B\u522B\u63CF\u8FF0\uFF1A");
+		JLabel label_1 = new JLabel("图书类别描述：");
 		
 		bookTypeDesc_Txt = new JTextArea();
 		
-		JButton button = new JButton("\u6DFB\u52A0");
+		JButton button = new JButton("添加");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//添加事件引用
@@ -67,7 +67,7 @@ public class BookType_Add_InterFrm extends JInternalFrame {
 		});
 		button.setIcon(new ImageIcon(BookType_Add_InterFrm.class.getResource("/images/add.png")));
 		
-		JButton button_1 = new JButton("\u91CD\u7F6E");
+		JButton button_1 = new JButton("重置");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//重置事件引用

@@ -56,38 +56,38 @@ public class Book_Add_InterFrm extends JInternalFrame {
 	public Book_Add_InterFrm() {
 		setClosable(true);
 		setIconifiable(true);
-		setTitle("\u56FE\u4E66\u6DFB\u52A0");
+		setTitle("图书添加");
 		setBounds(100, 100, 519, 543);
 		
-		JLabel label = new JLabel("\u56FE\u4E66\u540D\u79F0\uFF1A");
+		JLabel label = new JLabel("图书名称：");
 		
 		bookName_Txt = new JTextField();
 		bookName_Txt.setColumns(10);
 		
-		JLabel label_1 = new JLabel("\u56FE\u4E66\u4F5C\u8005\uFF1A");
+		JLabel label_1 = new JLabel("图书作者：");
 		
 		author_Txt = new JTextField();
 		author_Txt.setColumns(10);
 
-		JLabel label_2 = new JLabel("\u4F5C\u8005\u6027\u522B\uFF1A");
+		JLabel label_2 = new JLabel("作者性别：");
 		
-		man_Jrb = new JRadioButton("\u7537");
+		man_Jrb = new JRadioButton("男");
 		buttonGroup.add(man_Jrb);
 		man_Jrb.setSelected(true);
 		
-		woman_Jrb = new JRadioButton("\u5973");
+		woman_Jrb = new JRadioButton("女");
 		buttonGroup.add(woman_Jrb);
 		
-		JLabel label_3 = new JLabel("\u56FE\u4E66\u4EF7\u683C\uFF1A");
+		JLabel label_3 = new JLabel("图书价格：");
 		
 		price_Txt = new JTextField();
 		price_Txt.setColumns(10);
 		
-		JLabel label_4 = new JLabel("\u56FE\u4E66\u7C7B\u522B\uFF1A");
+		JLabel label_4 = new JLabel("图书类别：");
 		
 		bookType_Jcb = new JComboBox();
 		
-		JLabel label_5 = new JLabel("\u56FE\u4E66\u63CF\u8FF0\uFF1A");
+		JLabel label_5 = new JLabel("图书描述：");
 		
 		bookDesc_Txt = new JTextArea();
 		
@@ -100,7 +100,7 @@ public class Book_Add_InterFrm extends JInternalFrame {
 		});
 		button.setIcon(new ImageIcon(Book_Add_InterFrm.class.getResource("/images/add.png")));
 		
-		JButton button_1 = new JButton("\u91CD\u7F6E");
+		JButton button_1 = new JButton("重置");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//??????????
@@ -211,15 +211,15 @@ public class Book_Add_InterFrm extends JInternalFrame {
 		
 		//?ж???????
 		if(StringUtil.isEmpty(bookName)){
-			JOptionPane.showMessageDialog(null, "??????????????");
+			JOptionPane.showMessageDialog(null, "图书名为空");
 			return;
 		}
 		if(StringUtil.isEmpty(author)){
-			JOptionPane.showMessageDialog(null, "???????????????");
+			JOptionPane.showMessageDialog(null, "作者为空");
 			return;
 		}
 		if(StringUtil.isEmpty(price)){
-			JOptionPane.showMessageDialog(null, "?????????");
+			JOptionPane.showMessageDialog(null, "价格为空");
 			return;
 		}
 		
@@ -244,10 +244,10 @@ public class Book_Add_InterFrm extends JInternalFrame {
 			con=dbUtil.getCon();
 			int addNum=bookDao.addBook(con,book);
 			if(addNum==1){
-				JOptionPane.showMessageDialog(null, "??????????");
+				JOptionPane.showMessageDialog(null, "图书添加成功");
 				resetValue();
 			}else{
-				JOptionPane.showMessageDialog(null, "??????????");
+				JOptionPane.showMessageDialog(null, "图书添加失败");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

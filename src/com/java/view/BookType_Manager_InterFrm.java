@@ -133,7 +133,7 @@ public class BookType_Manager_InterFrm extends JInternalFrame {
 		button_1.setIcon(new ImageIcon(BookType_Manager_InterFrm.class.getResource("/images/modify.png")));
 
 		//图书类别删除功能
-		JButton button_2 = new JButton("\u5220\u9664");
+		JButton button_2 = new JButton("删除");
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				bookTypeDeleteActionEvent(e);
@@ -199,7 +199,7 @@ public class BookType_Manager_InterFrm extends JInternalFrame {
 				new Object[][] {
 				},
 				new String[] {
-						"\u7F16\u53F7", "\u56FE\u4E66\u7C7B\u522B\u540D\u79F0", "\u56FE\u4E66\u7C7B\u522B\u63CF\u8FF0"
+						"编号", "图书类别名称", "图书类别描述"
 				}
 				) {
 			boolean[] columnEditables = new boolean[] {
