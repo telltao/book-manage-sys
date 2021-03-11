@@ -8,13 +8,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 /**
- * Í¼ÊéDaoÀà
+ * å›¾ä¹¦Daoç±»
  * @author Huke
  *
  */
 public class BookDao {
 
-	//Í¼ÊéÌí¼Ó·½·¨
+	//å›¾ä¹¦æ·»åŠ æ–¹æ³•
 	public int addBook(Connection con,Book book) throws Exception{
 		String sql="insert into t_book values(null,?,?,?,?,?,?)";
 		PreparedStatement pstmt=con.prepareStatement(sql);
@@ -26,12 +26,12 @@ public class BookDao {
 		pstmt.setString(6, book.getBookDesc());
 		return pstmt.executeUpdate();
 	}
-	
-	//Í¼Êé²éÑ¯·½·¨
+
+	//å›¾ä¹¦æŸ¥è¯¢æ–¹æ³•
 	public ResultSet list(Connection con,Book book) throws Exception{
-		//¶¯Ì¬½áºÏ£¬ÓÃStringBuffer±È½ÏºÃ
+		//åŠ¨æ€ç»“åˆï¼Œç”¨StringBufferæ¯”è¾ƒå¥½
 		StringBuffer sb=new StringBuffer("select * from t_book b,t_bookType bt where b.bookTypeId=bt.id");
-		//sqlÓï¾ä²éÑ¯£¬µ±Ìõ¼şÓĞ¶à¸öÊ±£¬¾ÍÓÃandÔİÊ±Ìæ´úwhere
+		//sqlè¯­å¥æŸ¥è¯¢ï¼Œå½“æ¡ä»¶æœ‰å¤šä¸ªæ—¶ï¼Œå°±ç”¨andæš‚æ—¶æ›¿ä»£where
 		if(StringUtil.isNotEmpty(book.getBookName())){
 			sb.append(" and b.bookName like '%"+book.getBookName()+"%'");
 		}
@@ -41,20 +41,20 @@ public class BookDao {
 		if(book.getBookTypeId()!=null && book.getBookTypeId()!=-1){
 			sb.append(" and b.bookTypeId ="+book.getBookTypeId());
 		}
-		//Ö´ĞĞ
+		//æ‰§è¡Œ
 		PreparedStatement pstmt=con.prepareStatement(sb.toString());
 		return pstmt.executeQuery();
 	}
-	
-	//Í¼ÊéÉ¾³ı·½·¨
+
+	//å›¾ä¹¦åˆ é™¤æ–¹æ³•
 	public int deleteBook(Connection con,String id)throws Exception{
 		String sql="delete from t_book where id=?";
 		PreparedStatement pstmt=con.prepareStatement(sql);
 		pstmt.setString(1, id);
 		return pstmt.executeUpdate();
 	}
-	
-	//Í¼ÊéĞŞ¸Ä·½·¨
+
+	//å›¾ä¹¦ä¿®æ”¹æ–¹æ³•
 	public int updateBook(Connection con,Book book)throws Exception{
 		String sql="update t_book set bookName=?,author=?,sex=?,price=?,bookDesc=?,bookTypeId=? where id=?";
 		PreparedStatement pstmt=con.prepareStatement(sql);
@@ -67,8 +67,8 @@ public class BookDao {
 		pstmt.setInt(7, book.getId());
 		return pstmt.executeUpdate();
 	}
-	
-	//ÅĞ¶ÏÖ¸¶¨Í¼ÊéÀà±ğÏÂÊÇ·ñÓĞÍ¼Êé
+
+	//åˆ¤æ–­æŒ‡å®šå›¾ä¹¦ç±»åˆ«ä¸‹æ˜¯å¦æœ‰å›¾ä¹¦
 	public boolean exitBookByBookTypeId(Connection con,String bookTypeId)throws Exception{
 		String sql="select * from t_book where bookTypeId=?";
 		PreparedStatement pstmt=con.prepareStatement(sql);

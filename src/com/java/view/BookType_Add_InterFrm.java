@@ -16,14 +16,14 @@ import java.sql.Connection;
 
 @SuppressWarnings("serial")
 public class BookType_Add_InterFrm extends JInternalFrame {
-	
-	//JTextFieldºÍJTextAreaµÄÊµÀı»¯
+
+	//JTextFieldå’ŒJTextAreaçš„å®ä¾‹åŒ–
 	private JTextField bookTypeName_Txt;
 	private JTextArea bookTypeDesc_Txt;
 
 	private DbUtil dbUtil=new DbUtil();
 	private BookTypeDao bookTypeDao=new BookTypeDao();
-	
+
 	/**
 	 * Launch the application.
 	 */
@@ -46,127 +46,127 @@ public class BookType_Add_InterFrm extends JInternalFrame {
 	public BookType_Add_InterFrm() {
 		setClosable(true);
 		setIconifiable(true);
-		setTitle("Í¼ÊéÀà±ğÌí¼Ó");
+		setTitle("å›¾ä¹¦ç±»åˆ«æ·»åŠ ");
 		setBounds(100, 100, 566, 393);
-		
-		JLabel label = new JLabel("Í¼ÊéÀà±ğÃû³Æ£º");
-		
+
+		JLabel label = new JLabel("å›¾ä¹¦ç±»åˆ«åç§°ï¼š");
+
 		bookTypeName_Txt = new JTextField();
 		bookTypeName_Txt.setColumns(10);
-		
-		JLabel label_1 = new JLabel("Í¼ÊéÀà±ğÃèÊö£º");
-		
+
+		JLabel label_1 = new JLabel("å›¾ä¹¦ç±»åˆ«æè¿°ï¼š");
+
 		bookTypeDesc_Txt = new JTextArea();
-		
-		JButton button = new JButton("Ìí¼Ó");
+
+		JButton button = new JButton("æ·»åŠ ");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Ìí¼ÓÊÂ¼şÒıÓÃ
+				//æ·»åŠ äº‹ä»¶å¼•ç”¨
 				bookTypeAddActionPerformed(e);
 			}
 		});
 		button.setIcon(new ImageIcon(BookType_Add_InterFrm.class.getResource("/images/add.png")));
-		
-		JButton button_1 = new JButton("ÖØÖÃ");
+
+		JButton button_1 = new JButton("é‡ç½®");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//ÖØÖÃÊÂ¼şÒıÓÃ
+				//é‡ç½®äº‹ä»¶å¼•ç”¨
 				resetValueActionPerformed(e);
 			}
 		});
 		button_1.setIcon(new ImageIcon(BookType_Add_InterFrm.class.getResource("/images/reset.png")));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+				groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(74)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(label)
-								.addComponent(label_1)))
-						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-							.addContainerGap(146, Short.MAX_VALUE)
-							.addComponent(button)
-							.addPreferredGap(ComponentPlacement.RELATED)))
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(bookTypeName_Txt, GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
-								.addComponent(bookTypeDesc_Txt))
-							.addGap(102))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(143)
-							.addComponent(button_1)
-							.addContainerGap())))
+								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+										.addGroup(groupLayout.createSequentialGroup()
+												.addGap(74)
+												.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+														.addComponent(label)
+														.addComponent(label_1)))
+										.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+												.addContainerGap(146, Short.MAX_VALUE)
+												.addComponent(button)
+												.addPreferredGap(ComponentPlacement.RELATED)))
+								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+										.addGroup(groupLayout.createSequentialGroup()
+												.addPreferredGap(ComponentPlacement.RELATED)
+												.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+														.addComponent(bookTypeName_Txt, GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+														.addComponent(bookTypeDesc_Txt))
+												.addGap(102))
+										.addGroup(groupLayout.createSequentialGroup()
+												.addGap(143)
+												.addComponent(button_1)
+												.addContainerGap())))
 		);
 		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(62)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(label)
-						.addComponent(bookTypeName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(50)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(label_1)
-						.addComponent(bookTypeDesc_Txt, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(button)
-						.addComponent(button_1))
-					.addGap(40))
+				groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+								.addGap(62)
+								.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+										.addComponent(label)
+										.addComponent(bookTypeName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addGap(50)
+								.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+										.addComponent(label_1)
+										.addComponent(bookTypeDesc_Txt, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE))
+								.addPreferredGap(ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+								.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+										.addComponent(button)
+										.addComponent(button_1))
+								.addGap(40))
 		);
 		getContentPane().setLayout(groupLayout);
-		
-		//ÉèÖÃJTextArea±ß¿òµÄ´úÂë
+
+		//è®¾ç½®JTextAreaè¾¹æ¡†çš„ä»£ç 
 		bookTypeDesc_Txt.setBorder(new LineBorder(new java.awt.Color(127,157,185),1,false));
 
 	}
-	
-	//Ìí¼ÓÊÂ¼ş´¦Àí
+
+	//æ·»åŠ äº‹ä»¶å¤„ç†
 	private void bookTypeAddActionPerformed(ActionEvent evt) {
-		
-		//´Ó½çÃæ»ñÈ¡ÓÃ»§ÌîµÄÍ¼ÊéÀà±ğÃû³ÆºÍÍ¼ÊéÀà±ğÃèÊöĞÅÏ¢
+
+		//ä»ç•Œé¢è·å–ç”¨æˆ·å¡«çš„å›¾ä¹¦ç±»åˆ«åç§°å’Œå›¾ä¹¦ç±»åˆ«æè¿°ä¿¡æ¯
 		String bookTypeName=this.bookTypeName_Txt.getText();
 		String bookTypeDesc=this.bookTypeDesc_Txt.getText();
-		//ÅĞ¶ÏÍ¼ÊéÀà±ğÃû³ÆÊÇ·ñÎª¿Õ
+		//åˆ¤æ–­å›¾ä¹¦ç±»åˆ«åç§°æ˜¯å¦ä¸ºç©º
 		if(StringUtil.isEmpty(bookTypeName)){
-			JOptionPane.showMessageDialog(null, "Í¼ÊéÀà±ğÃû³Æ²»ÄÜÎª¿Õ£¡");
+			JOptionPane.showMessageDialog(null, "å›¾ä¹¦ç±»åˆ«åç§°ä¸èƒ½ä¸ºç©ºï¼");
 			return;
 		}
-		
-		//½øĞĞÊı¾İ¿âÁ¬½Ó
+
+		//è¿›è¡Œæ•°æ®åº“è¿æ¥
 		BookType bookType=new BookType(bookTypeName,bookTypeDesc);
 		Connection con=null;
 		try {
-			con=dbUtil.getCon();//Ê×ÏÈÁ¬½ÓÊı¾İ¿â
-			int result=bookTypeDao.add_Book(con,bookType);//·µ»ØµÄÊÇIntÀàĞÍ£¬±íÊ¾Ö´ĞĞÁË¼¸ÌõÊı¾İ
+			con=dbUtil.getCon();//é¦–å…ˆè¿æ¥æ•°æ®åº“
+			int result=bookTypeDao.add_Book(con,bookType);//è¿”å›çš„æ˜¯Intç±»å‹ï¼Œè¡¨ç¤ºæ‰§è¡Œäº†å‡ æ¡æ•°æ®
 			if(result==1){
-				JOptionPane.showMessageDialog(null, "Í¼ÊéÀà±ğÌí¼Ó³É¹¦£¡");
-				resetValue();//Ìí¼Ó³É¹¦ºóÒªÁ¢¼´½«¿òÖĞÄÚÈİÖØÖÃ
+				JOptionPane.showMessageDialog(null, "å›¾ä¹¦ç±»åˆ«æ·»åŠ æˆåŠŸï¼");
+				resetValue();//æ·»åŠ æˆåŠŸåè¦ç«‹å³å°†æ¡†ä¸­å†…å®¹é‡ç½®
 			}else{
-				JOptionPane.showMessageDialog(null, "Í¼ÊéÀà±ğÌí¼ÓÊ§°Ü£¡");
+				JOptionPane.showMessageDialog(null, "å›¾ä¹¦ç±»åˆ«æ·»åŠ å¤±è´¥ï¼");
 			}
 		} catch (Exception e1) {
 			e1.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Í¼ÊéÀà±ğÌí¼ÓÊ§°Ü£¡");
+			JOptionPane.showMessageDialog(null, "å›¾ä¹¦ç±»åˆ«æ·»åŠ å¤±è´¥ï¼");
 		}finally{
-				try {
-					dbUtil.close(con);//×îºóÒª¹Ø±ÕÊı¾İ¿âÁ¬½Ó
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+			try {
+				dbUtil.close(con);//æœ€åè¦å…³é—­æ•°æ®åº“è¿æ¥
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
-	//ÖØÖÃÊÂ¼ş´¦Àí
+	//é‡ç½®äº‹ä»¶å¤„ç†
 	private void resetValueActionPerformed(ActionEvent evt) {
 		this.resetValue();
 	}
 
-	//ÖØÖÃ±íµ¥·½·¨
+	//é‡ç½®è¡¨å•æ–¹æ³•
 	private void resetValue(){
 		this.bookTypeName_Txt.setText("");
 		this.bookTypeDesc_Txt.setText("");

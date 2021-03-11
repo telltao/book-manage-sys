@@ -7,30 +7,30 @@ import java.sql.SQLException;
 public class DbUtil {
 
 	/**
-	 * Á¬½ÓÊı¾İ¿â¹¤¾ßÀà
+	 * è¿æ¥æ•°æ®åº“å·¥å…·ç±»
 	 */
-	// mysqlÊı¾İ¿âµØÖ·
+	// mysqlæ•°æ®åº“åœ°å€
 	private String dbUrl = "jdbc:mysql://localhost:3306/db_test";
 
-	// ÓÃ»§Ãû
+	// ç”¨æˆ·å
 	private String dbUserName = "root";
 
-	// ÃÜÂë
+	// å¯†ç 
 	private String dbPassWord = "root";
 
-	// Çı¶¯Ãû³Æ
+	// é©±åŠ¨åç§°
 	private String jdbcname = "com.mysql.jdbc.Driver";
 
-	// Êı¾İ¿âÁ¬½Ó·½·¨
+	// æ•°æ®åº“è¿æ¥æ–¹æ³•
 	public Connection getCon() throws Exception {
-		// ¼ÓÔØÊı¾İ¿âÇı¶¯
+		// åŠ è½½æ•°æ®åº“é©±åŠ¨
 		Class.forName(jdbcname);
-		// Êı¾İ¿âÇı¶¯¹ÜÀíÀà
+		// æ•°æ®åº“é©±åŠ¨ç®¡ç†ç±»
 		Connection con = DriverManager.getConnection(dbUrl, dbUserName, dbPassWord);
 		return con;
 	}
 
-	// Êı¾İ¿â¹Ø±Õ·½·¨
+	// æ•°æ®åº“å…³é—­æ–¹æ³•
 	public void close(Connection con) throws SQLException {
 		if (con != null) {
 			con.close();

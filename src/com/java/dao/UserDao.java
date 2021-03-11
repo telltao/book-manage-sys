@@ -9,8 +9,8 @@ import java.sql.ResultSet;
 public class UserDao {
 
 	/**
-	 * µÇÂ¼ÑéÖ¤
-	 * 
+	 * ç™»å½•éªŒè¯
+	 *
 	 * @param con
 	 * @param user
 	 * @return
@@ -18,26 +18,26 @@ public class UserDao {
 	 */
 
 	public User login(Connection con, User user) throws Exception {
-		// µÇÂ¼ÕıÈ·£¬·µ»ØÓÃ»§µÄËùÓĞÊµÌåĞÅÏ¢
+		// ç™»å½•æ­£ç¡®ï¼Œè¿”å›ç”¨æˆ·çš„æ‰€æœ‰å®ä½“ä¿¡æ¯
 		User resultUser = null;
 		String sql = "select * from t_user where userName=? and passWord=?";
-		// »ñÈ¡PreparedStatement½Ó¿Ú
+		// è·å–PreparedStatementæ¥å£
 		PreparedStatement pstmt = con.prepareStatement(sql);
-		// ÉèÖÃÎ´ÖªÁ¿µÄÖµ
+		// è®¾ç½®æœªçŸ¥é‡çš„å€¼
 		pstmt.setString(1, user.getUserName());
 		pstmt.setString(2, user.getPassWord());
-		// ·µ»ØResultSet½á¹û¼¯
+		// è¿”å›ResultSetç»“æœé›†
 		ResultSet rs = pstmt.executeQuery();
 
-		// rs.next()Ö¸Ïò±íÖĞµÚÒ»ĞĞÊı¾İ ÈôµÚÒ»ĞĞÓĞĞ§£¬Ôò·µ»Øtrue£¬²¢¼ÌĞøÖ¸ÏòµÚ¶şĞĞ
+		// rs.next()æŒ‡å‘è¡¨ä¸­ç¬¬ä¸€è¡Œæ•°æ® è‹¥ç¬¬ä¸€è¡Œæœ‰æ•ˆï¼Œåˆ™è¿”å›trueï¼Œå¹¶ç»§ç»­æŒ‡å‘ç¬¬äºŒè¡Œ
 		if (rs.next()) {
-			// ¶ÔÓÃ»§½øĞĞÊµÀı»¯,È¡ÆäÖĞµÄset·½·¨;
+			// å¯¹ç”¨æˆ·è¿›è¡Œå®ä¾‹åŒ–,å–å…¶ä¸­çš„setæ–¹æ³•;
 			resultUser = new User();
-			// È¡µÚÒ»ĞĞidÕâ¸öÊôĞÔµÄÊı¾İ£¬½«½á¹û·µ»Ø¸øUserÊµÌåµÄĞÅÏ¢
+			// å–ç¬¬ä¸€è¡Œidè¿™ä¸ªå±æ€§çš„æ•°æ®ï¼Œå°†ç»“æœè¿”å›ç»™Userå®ä½“çš„ä¿¡æ¯
 			resultUser.setId(rs.getInt("id"));
-			// È¡µÚÒ»ĞĞUserNameÕâ¸öÊôĞÔµÄÊı¾İ£¬½«½á¹û·µ»Ø¸øUserÊµÌåµÄĞÅÏ¢
+			// å–ç¬¬ä¸€è¡ŒUserNameè¿™ä¸ªå±æ€§çš„æ•°æ®ï¼Œå°†ç»“æœè¿”å›ç»™Userå®ä½“çš„ä¿¡æ¯
 			resultUser.setUserName(rs.getString("userName"));
-			// È¡µÚÒ»ĞĞPassWordÕâ¸öÊôĞÔµÄÊı¾İ£¬½«½á¹û·µ»Ø¸øUserÊµÌåµÄĞÅÏ¢
+			// å–ç¬¬ä¸€è¡ŒPassWordè¿™ä¸ªå±æ€§çš„æ•°æ®ï¼Œå°†ç»“æœè¿”å›ç»™Userå®ä½“çš„ä¿¡æ¯
 			resultUser.setPassWord(rs.getString("passWord"));
 		}
 		return resultUser;

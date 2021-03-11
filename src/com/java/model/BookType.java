@@ -1,30 +1,30 @@
 package com.java.model;
 
 /**
- * 图书类别实体
- * @author 
+ * 鍥句功绫诲埆瀹炰綋
+ * @author
  *
  */
 public class BookType {
-	
-	//编号
+
+	//缂栧彿
 	private int id;
-	//图书类别名称
+	//鍥句功绫诲埆鍚嶇О
 	private String bookTypeName;
-	//图书类别描述
+	//鍥句功绫诲埆鎻忚堪
 	private String bookTypeDesc;
-	
+
 	public BookType() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public BookType(String bookTypeName, String bookTypeDesc) {
 		super();
 		this.bookTypeName = bookTypeName;
 		this.bookTypeDesc = bookTypeDesc;
 	}
-	
+
 	public BookType(int id, String bookTypeName, String bookTypeDesc) {
 		super();
 		this.id = id;
@@ -55,5 +55,5 @@ public class BookType {
 	public String toString() {
 		return bookTypeName;
 	}
-	
+
 }

@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 public class MainFrm extends JFrame {
 
 	private JPanel contentPane;
-	
+
 	private JDesktopPane table=null;
 
 	/**
@@ -33,19 +33,19 @@ public class MainFrm extends JFrame {
 	 * Create the frame.
 	 */
 	public MainFrm() {
-		setTitle("Í¼Êé¹ÜÀíÏµÍ³Ö÷½çÃæ");
+		setTitle("å›¾ä¹¦ç®¡ç†ç³»ç»Ÿä¸»ç•Œé¢");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 962, 796);
-		
+
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-		
-		JMenu menu = new JMenu("Í¼ÊéÀà±ğ¹ÜÀí");
+
+		JMenu menu = new JMenu("å›¾ä¹¦ç±»åˆ«ç®¡ç†");
 		menu.setIcon(new ImageIcon(MainFrm.class.getResource("/images/bookTypeManager.png")));
 		menuBar.add(menu);
-		
+
 		//?????????
-		JMenuItem menuItem_1 = new JMenuItem("Í¼ÊéÀà±ğÌí¼Ó");
+		JMenuItem menuItem_1 = new JMenuItem("å›¾ä¹¦ç±»åˆ«æ·»åŠ ");
 		menuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//??BookType_Add_InterFrm??????????
@@ -56,9 +56,9 @@ public class MainFrm extends JFrame {
 		});
 		menuItem_1.setIcon(new ImageIcon(MainFrm.class.getResource("/images/add.png")));
 		menu.add(menuItem_1);
-		
+
 		//?????????
-		JMenuItem menuItem_2 = new JMenuItem("Í¼ÊéÀà±ğÎ¬»¤");
+		JMenuItem menuItem_2 = new JMenuItem("å›¾ä¹¦ç±»åˆ«ç»´æŠ¤");
 		menuItem_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//??BookType_Manager_InterFrm??????????
@@ -69,13 +69,13 @@ public class MainFrm extends JFrame {
 		});
 		menuItem_2.setIcon(new ImageIcon(MainFrm.class.getResource("/images/edit.png")));
 		menu.add(menuItem_2);
-		
-		JMenu menu_1 = new JMenu("Í¼Êé¹ÜÀí");
+
+		JMenu menu_1 = new JMenu("å›¾ä¹¦ç®¡ç†");
 		menu_1.setIcon(new ImageIcon(MainFrm.class.getResource("/images/bookManager.png")));
 		menuBar.add(menu_1);
-		
+
 		//?????????
-		JMenuItem menuItem_3 = new JMenuItem("Í¼ÊéÌí¼Ó");
+		JMenuItem menuItem_3 = new JMenuItem("å›¾ä¹¦æ·»åŠ ");
 		menuItem_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//??Book_Add_InterFrm??????????
@@ -86,9 +86,9 @@ public class MainFrm extends JFrame {
 		});
 		menuItem_3.setIcon(new ImageIcon(MainFrm.class.getResource("/images/add.png")));
 		menu_1.add(menuItem_3);
-		
+
 		//??????????
-		JMenuItem menuItem_4 = new JMenuItem("Í¼ÊéÎ¬»¤");
+		JMenuItem menuItem_4 = new JMenuItem("å›¾ä¹¦ç»´æŠ¤");
 		menuItem_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//??Book_Manage_InterFrm??????????
@@ -99,12 +99,12 @@ public class MainFrm extends JFrame {
 		});
 		menuItem_4.setIcon(new ImageIcon(MainFrm.class.getResource("/images/edit.png")));
 		menu_1.add(menuItem_4);
-		
+
 		//?????? JMenuItem
-		JMenuItem menuItem = new JMenuItem("°²È«ÍË³ö");
+		JMenuItem menuItem = new JMenuItem("å®‰å…¨é€€å‡º");
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int result=JOptionPane.showConfirmDialog(null, "µ¯³öµÄÊÇ¸öÉ¶");
+				int result=JOptionPane.showConfirmDialog(null, "å¼¹å‡ºçš„æ˜¯ä¸ªå•¥");
 				if(result==0){
 					dispose();
 				}
@@ -112,9 +112,9 @@ public class MainFrm extends JFrame {
 		});
 		menuItem.setIcon(new ImageIcon(MainFrm.class.getResource("/images/exit.png")));
 		menuBar.add(menuItem);
-		
+
 		//???????? JMenuItem
-		JMenuItem mntmNewMenuItem = new JMenuItem("¹ØÓÚÎÒÃÇ");
+		JMenuItem mntmNewMenuItem = new JMenuItem("å…³äºæˆ‘ä»¬");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//??About_us_InterFrm??????????????????
@@ -129,14 +129,14 @@ public class MainFrm extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		
+
 		table=new JDesktopPane();
 		table.setBackground(Color.CYAN);
 		contentPane.add(table, BorderLayout.CENTER);
-		
+
 		//????JFrame???????
 		//this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		
+
 		//????JFrame??????????
 		this.setLocationRelativeTo(null);
 	}

@@ -8,36 +8,36 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 /**
- * Í¼ÊéÀà±ğDao
- * @author 
+ * å›¾ä¹¦ç±»åˆ«Dao
+ * @author
  *
  */
 public class BookTypeDao {
 
-	//Í¼ÊéÀà±ğÌí¼Ó·½·¨
+	//å›¾ä¹¦ç±»åˆ«æ·»åŠ æ–¹æ³•
 	public int add_Book(Connection con,BookType bookType) throws Exception{
 		String sql="insert into t_booktype values(null,?,?)";
 		PreparedStatement pstmt=con.prepareStatement(sql);
 		pstmt.setString(1, bookType.getBookTypeName());
 		pstmt.setString(2, bookType.getBookTypeDesc());
-		//·µ»Ø²Ù×÷µÄ½á¹û
+		//è¿”å›æ“ä½œçš„ç»“æœ
 		return pstmt.executeUpdate();
 	}
-	
-	//Í¼ÊéÀà±ğ²éÑ¯µÄ¼¯ºÏ
+
+	//å›¾ä¹¦ç±»åˆ«æŸ¥è¯¢çš„é›†åˆ
 	public ResultSet list(Connection con,BookType bookType) throws Exception{
-		//¶¯Ì¬½áºÏ£¬ÓÃStringBuffer±È½ÏºÃ
+		//åŠ¨æ€ç»“åˆï¼Œç”¨StringBufferæ¯”è¾ƒå¥½
 		StringBuffer sb=new StringBuffer("select * from t_booktype");
-		//sqlÓï¾ä²éÑ¯£¬µ±Ìõ¼şÓĞ¶à¸öÊ±£¬¾ÍÓÃandÔİÊ±Ìæ´úwhere
+		//sqlè¯­å¥æŸ¥è¯¢ï¼Œå½“æ¡ä»¶æœ‰å¤šä¸ªæ—¶ï¼Œå°±ç”¨andæš‚æ—¶æ›¿ä»£where
 		if(StringUtil.isNotEmpty(bookType.getBookTypeName())){
 			sb.append(" and bookTypeName like '%"+bookType.getBookTypeName()+"%'");
 		}
-		//µ÷ÓÃreplaceFirst·½·¨½«andÌæ»»µô
+		//è°ƒç”¨replaceFirstæ–¹æ³•å°†andæ›¿æ¢æ‰
 		PreparedStatement pstmt=con.prepareStatement(sb.toString().replaceFirst("and", "where"));
 		return pstmt.executeQuery();
 	}
-	
-	//Í¼ÊéÀà±ğĞŞ¸Ä·½·¨
+
+	//å›¾ä¹¦ç±»åˆ«ä¿®æ”¹æ–¹æ³•
 	public int update_Book(Connection con,BookType booktype) throws Exception{
 		String sql="update t_booktype set bookTypeName=?,bookTypeDesc=? where id=?";
 		PreparedStatement pstmt=con.prepareStatement(sql);
@@ -46,8 +46,8 @@ public class BookTypeDao {
 		pstmt.setInt(3, booktype.getId());
 		return pstmt.executeUpdate();
 	}
-	
-	//Í¼ÊéÀà±ğÉ¾³ı·½·¨
+
+	//å›¾ä¹¦ç±»åˆ«åˆ é™¤æ–¹æ³•
 	public int delete_Book(Connection con,String id) throws Exception{
 		String sql="delete from t_booktype where id=?";
 		PreparedStatement pstmt=con.prepareStatement(sql);

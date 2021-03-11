@@ -33,35 +33,26 @@ public class About_us_InterFrm extends JInternalFrame {
 		setClosable(true);
 		setTitle("\u5173\u4E8E\u6211\u4EEC");
 		setBounds(100, 100, 700, 450);
-		
+
 		JTextArea txtrJavaccjavajavaJava = new JTextArea();
 		txtrJavaccjavajavaJava.setBackground(Color.PINK);
 		txtrJavaccjavajavaJava.setForeground(Color.RED);
-		txtrJavaccjavajavaJava.setText("      JavaÊÇÒ»ÃÅÃæÏò¶ÔÏó±à³ÌÓïÑÔ£¬²»½öÎüÊÕÁËC++ÓïÑÔ\n" +
-				"µÄ¸÷ÖÖÓÅµã£¬»¹ŞğÆúÁËC++ÀïÄÑÒÔÀí½âµÄ¶à¼Ì³Ğ¡¢Ö¸ÕëµÈ\n" +
-				"¸ÅÄî£¬Òò´ËJavaÓïÑÔ¾ßÓĞ¹¦ÄÜÇ¿´óºÍ¼òµ¥Ò×ÓÃÁ½¸öÌØÕ÷\t\n" +
-				"JavaÓïÑÔ×÷Îª¾²Ì¬ÃæÏò¶ÔÏó±à³ÌÓïÑÔµÄ´ú±í£¬¼«ºÃ\n" +
-				"µØÊµÏÖÁËÃæÏò¶ÔÏóÀíÂÛ£¬ÔÊĞí³ÌĞòÔ±ÒÔÓÅÑÅµÄË¼Î¬·½Ê½½ø\n" +
-				"ĞĞ¸´ÔÓµÄ±à³Ì ¡£\r\n" +
-				"Java¾ßÓĞ¼òµ¥ĞÔ¡¢ÃæÏò¶ÔÏó¡¢·Ö²¼Ê½¡¢½¡×³ĞÔ¡¢°²\r\n" +
-				"È«ĞÔ¡¢Æ½Ì¨¶ÀÁ¢Óë¿ÉÒÆÖ²ĞÔ¡¢¶àÏß³Ì¡¢¶¯Ì¬ĞÔµÈÌØµã ¡£\r\n" +
-				"Java¿ÉÒÔ±àĞ´×ÀÃæÓ¦ÓÃ³ÌĞò¡¢WebÓ¦ÓÃ³ÌĞò¡¢·Ö²¼Ê½Ïµ\n" +
-				"Í³ºÍÇ¶ÈëÊ½ÏµÍ³Ó¦ÓÃ³ÌĞòµÈ ¡£");
-		txtrJavaccjavajavaJava.setFont(new Font("¿¬Ìå", Font.PLAIN, 20));
+		txtrJavaccjavajavaJava.setText("      Javaæ˜¯ä¸€é—¨é¢å‘å¯¹è±¡ç¼–ç¨‹è¯­è¨€ï¼Œä¸ä»…å¸æ”¶äº†C++è¯­è¨€\r\nçš„å„ç§ä¼˜ç‚¹ï¼Œè¿˜æ‘’å¼ƒäº†C++é‡Œéš¾ä»¥ç†è§£çš„å¤šç»§æ‰¿ã€æŒ‡é’ˆç­‰\r\næ¦‚å¿µï¼Œå› æ­¤Javaè¯­è¨€å…·æœ‰åŠŸèƒ½å¼ºå¤§å’Œç®€å•æ˜“ç”¨ä¸¤ä¸ªç‰¹å¾\r\n      Javaè¯­è¨€ä½œä¸ºé™æ€é¢å‘å¯¹è±¡ç¼–ç¨‹è¯­è¨€çš„ä»£è¡¨ï¼Œæå¥½\r\nåœ°å®ç°äº†é¢å‘å¯¹è±¡ç†è®ºï¼Œå…è®¸ç¨‹åºå‘˜ä»¥ä¼˜é›…çš„æ€ç»´æ–¹å¼è¿›\r\nè¡Œå¤æ‚çš„ç¼–ç¨‹ ã€‚\r\n      Javaå…·æœ‰ç®€å•æ€§ã€é¢å‘å¯¹è±¡ã€åˆ†å¸ƒå¼ã€å¥å£®æ€§ã€å®‰\r\nå…¨æ€§ã€å¹³å°ç‹¬ç«‹ä¸å¯ç§»æ¤æ€§ã€å¤šçº¿ç¨‹ã€åŠ¨æ€æ€§ç­‰ç‰¹ç‚¹ ã€‚\r\nJavaå¯ä»¥ç¼–å†™æ¡Œé¢åº”ç”¨ç¨‹åºã€Webåº”ç”¨ç¨‹åºã€åˆ†å¸ƒå¼ç³»\r\nç»Ÿå’ŒåµŒå…¥å¼ç³»ç»Ÿåº”ç”¨ç¨‹åºç­‰ ã€‚");
+		txtrJavaccjavajavaJava.setFont(new Font("æ¥·ä½“", Font.PLAIN, 20));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(105)
-					.addComponent(txtrJavaccjavajavaJava, GroupLayout.PREFERRED_SIZE, 511, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(68, Short.MAX_VALUE))
+				groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+								.addGap(105)
+								.addComponent(txtrJavaccjavajavaJava, GroupLayout.PREFERRED_SIZE, 511, GroupLayout.PREFERRED_SIZE)
+								.addContainerGap(68, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(69)
-					.addComponent(txtrJavaccjavajavaJava, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(85, Short.MAX_VALUE))
+				groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+								.addGap(69)
+								.addComponent(txtrJavaccjavajavaJava, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+								.addContainerGap(85, Short.MAX_VALUE))
 		);
 		getContentPane().setLayout(groupLayout);
 

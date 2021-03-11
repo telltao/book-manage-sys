@@ -1,17 +1,17 @@
 package com.java.model;
 
 /**
- * ÓÃ»§ÊµÌå
+ * ç”¨æˆ·å®ä½“
  * @author Huke
  *
  */
 public class User {
 
-	// ±àºÅ
+	// ç¼–å·
 	private int id;
-	// ÓÃ»§Ãû
+	// ç”¨æˆ·å
 	private String userName;
-	// ÃÜÂë
+	// å¯†ç 
 	private String passWord;
 
 	public User() {

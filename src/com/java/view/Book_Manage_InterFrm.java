@@ -35,7 +35,7 @@ public class Book_Manage_InterFrm extends JInternalFrame {
 	private JTextArea bookDesc_Txt;
 	@SuppressWarnings("rawtypes")
 	private JComboBox bookType_Jcb;
-	
+
 	private DbUtil dbUtil=new DbUtil();
 	private BookTypeDao bookTypeDao=new BookTypeDao();
 	private BookDao bookDao=new BookDao();
@@ -68,88 +68,88 @@ public class Book_Manage_InterFrm extends JInternalFrame {
 	public Book_Manage_InterFrm() {
 		setIconifiable(true);
 		setClosable(true);
-		setTitle("Í¼Êé¹ÜÀí");
+		setTitle("\u56FE\u4E66\u7BA1\u7406");
 		setBounds(100, 100, 723, 660);
-		
+
 		JScrollPane scrollPane = new JScrollPane();
-		
+
 		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(null, "ËÑË÷Ìõ¼ş", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		
+		panel.setBorder(new TitledBorder(null, "\u641C\u7D22\u6761\u4EF6", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+
 		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new TitledBorder(null, "±íµ¥²Ù×÷", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_1.setBorder(new TitledBorder(null, "\u8868\u5355\u64CD\u4F5C", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(37)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(panel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
-						.addComponent(scrollPane, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE))
-					.addGap(28))
+				groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addGroup(groupLayout.createSequentialGroup()
+								.addGap(37)
+								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+										.addComponent(panel_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(panel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
+										.addComponent(scrollPane, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE))
+								.addGap(28))
 		);
 		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(31)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 321, GroupLayout.PREFERRED_SIZE)
-					.addGap(27))
+				groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+								.addGap(31)
+								.addComponent(panel, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE)
+								.addGap(18)
+								.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 321, GroupLayout.PREFERRED_SIZE)
+								.addGap(27))
 		);
-		
-		JLabel label_3 = new JLabel("±àºÅ:");
-		
+
+		JLabel label_3 = new JLabel("\u7F16\u53F7:");
+
 		id_Txt = new JTextField();
 		id_Txt.setEditable(false);
 		id_Txt.setColumns(10);
-		
-		JLabel label_4 = new JLabel("Í¼ÊéÃû³Æ:");
-		
+
+		JLabel label_4 = new JLabel("\u56FE\u4E66\u540D\u79F0:");
+
 		bookName_Txt = new JTextField();
 		bookName_Txt.setColumns(10);
-		
-		JLabel label_5 = new JLabel("×÷ÕßĞÔ±ğ:");
-		
-		man_Jrb = new JRadioButton("ÄĞ");
+
+		JLabel label_5 = new JLabel("\u4F5C\u8005\u6027\u522B:");
+
+		man_Jrb = new JRadioButton("\u7537");
 		buttonGroup.add(man_Jrb);
 		man_Jrb.setSelected(true);
-		
-		woman_Jrb = new JRadioButton("Å®");
+
+		woman_Jrb = new JRadioButton("\u5973");
 		buttonGroup.add(woman_Jrb);
-		
-		JLabel label_6 = new JLabel("¼Û¸ñ:");
-		
+
+		JLabel label_6 = new JLabel("\u4EF7\u683C:");
+
 		price_Txt = new JTextField();
 		price_Txt.setColumns(10);
-		
-		JLabel label_7 = new JLabel("Í¼Êé×÷Õß:");
-		
+
+		JLabel label_7 = new JLabel("\u56FE\u4E66\u4F5C\u8005:");
+
 		author_Txt = new JTextField();
 		author_Txt.setColumns(10);
-		
-		JLabel label_8 = new JLabel("Í¼ÊéÀà±ğ:");
-		
+
+		JLabel label_8 = new JLabel("\u56FE\u4E66\u7C7B\u522B:");
+
 		bookType_Jcb = new JComboBox();
-		
-		JLabel label_9 = new JLabel("Í¼ÊéÃèÊö:");
-		
+
+		JLabel label_9 = new JLabel("\u56FE\u4E66\u63CF\u8FF0:");
+
 		bookDesc_Txt = new JTextArea();
-		
-		//Í¼ÊéĞŞ¸ÄÊÂ¼ş
-		JButton button_1 = new JButton("ĞŞ¸Ä");
+
+		//å›¾ä¹¦ä¿®æ”¹äº‹ä»¶
+		JButton button_1 = new JButton("\u4FEE\u6539");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				bookUpdateActionPerformed(evt);
 			}
 		});
 		button_1.setIcon(new ImageIcon(Book_Manage_InterFrm.class.getResource("/images/modify.png")));
-		
-		//Í¼ÊéÉ¾³ıÊÂ¼ş
-		JButton button_2 = new JButton("É¾³ı");
+
+		//å›¾ä¹¦åˆ é™¤äº‹ä»¶
+		JButton button_2 = new JButton("\u5220\u9664");
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				bookDeleteActionPerformed(evt);
@@ -158,102 +158,102 @@ public class Book_Manage_InterFrm extends JInternalFrame {
 		button_2.setIcon(new ImageIcon(Book_Manage_InterFrm.class.getResource("/images/delete.png")));
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
-			gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_1.createSequentialGroup()
-					.addGap(29)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+				gl_panel_1.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel_1.createSequentialGroup()
-							.addComponent(label_9)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(bookDesc_Txt, GroupLayout.PREFERRED_SIZE, 466, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panel_1.createSequentialGroup()
-									.addComponent(label_3)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(id_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_panel_1.createSequentialGroup()
-									.addComponent(label_6)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(price_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-							.addGap(29)
-							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panel_1.createSequentialGroup()
-									.addComponent(label_4)
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(bookName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_panel_1.createSequentialGroup()
-									.addComponent(label_7)
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(author_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-							.addGap(32)
-							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING, false)
-								.addGroup(gl_panel_1.createSequentialGroup()
-									.addComponent(label_5)
-									.addGap(14)
-									.addComponent(man_Jrb)
-									.addGap(18)
-									.addComponent(woman_Jrb))
-								.addGroup(gl_panel_1.createSequentialGroup()
-									.addComponent(label_8)
-									.addGap(18)
-									.addComponent(bookType_Jcb, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-					.addContainerGap(53, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, gl_panel_1.createSequentialGroup()
-					.addContainerGap(244, Short.MAX_VALUE)
-					.addComponent(button_1)
-					.addGap(105)
-					.addComponent(button_2)
-					.addGap(155))
+								.addGap(29)
+								.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+										.addGroup(gl_panel_1.createSequentialGroup()
+												.addComponent(label_9)
+												.addPreferredGap(ComponentPlacement.UNRELATED)
+												.addComponent(bookDesc_Txt, GroupLayout.PREFERRED_SIZE, 466, GroupLayout.PREFERRED_SIZE))
+										.addGroup(gl_panel_1.createSequentialGroup()
+												.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+														.addGroup(gl_panel_1.createSequentialGroup()
+																.addComponent(label_3)
+																.addPreferredGap(ComponentPlacement.RELATED)
+																.addComponent(id_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+														.addGroup(gl_panel_1.createSequentialGroup()
+																.addComponent(label_6)
+																.addPreferredGap(ComponentPlacement.RELATED)
+																.addComponent(price_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+												.addGap(29)
+												.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+														.addGroup(gl_panel_1.createSequentialGroup()
+																.addComponent(label_4)
+																.addPreferredGap(ComponentPlacement.UNRELATED)
+																.addComponent(bookName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+														.addGroup(gl_panel_1.createSequentialGroup()
+																.addComponent(label_7)
+																.addPreferredGap(ComponentPlacement.UNRELATED)
+																.addComponent(author_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+												.addGap(32)
+												.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING, false)
+														.addGroup(gl_panel_1.createSequentialGroup()
+																.addComponent(label_5)
+																.addGap(14)
+																.addComponent(man_Jrb)
+																.addGap(18)
+																.addComponent(woman_Jrb))
+														.addGroup(gl_panel_1.createSequentialGroup()
+																.addComponent(label_8)
+																.addGap(18)
+																.addComponent(bookType_Jcb, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+								.addContainerGap(53, Short.MAX_VALUE))
+						.addGroup(Alignment.TRAILING, gl_panel_1.createSequentialGroup()
+								.addContainerGap(244, Short.MAX_VALUE)
+								.addComponent(button_1)
+								.addGap(105)
+								.addComponent(button_2)
+								.addGap(155))
 		);
 		gl_panel_1.setVerticalGroup(
-			gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_1.createSequentialGroup()
-					.addGap(27)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(label_3)
-						.addComponent(id_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_4)
-						.addComponent(bookName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_5)
-						.addComponent(man_Jrb)
-						.addComponent(woman_Jrb))
-					.addGap(18)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(label_6)
-						.addComponent(price_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_7)
-						.addComponent(author_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_8)
-						.addComponent(bookType_Jcb, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(36)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(label_9)
-						.addComponent(bookDesc_Txt, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(button_2)
-						.addComponent(button_1))
-					.addContainerGap(29, Short.MAX_VALUE))
+				gl_panel_1.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel_1.createSequentialGroup()
+								.addGap(27)
+								.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+										.addComponent(label_3)
+										.addComponent(id_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addComponent(label_4)
+										.addComponent(bookName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addComponent(label_5)
+										.addComponent(man_Jrb)
+										.addComponent(woman_Jrb))
+								.addGap(18)
+								.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+										.addComponent(label_6)
+										.addComponent(price_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addComponent(label_7)
+										.addComponent(author_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addComponent(label_8)
+										.addComponent(bookType_Jcb, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addGap(36)
+								.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+										.addComponent(label_9)
+										.addComponent(bookDesc_Txt, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE))
+								.addGap(18)
+								.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+										.addComponent(button_2)
+										.addComponent(button_1))
+								.addContainerGap(29, Short.MAX_VALUE))
 		);
 		panel_1.setLayout(gl_panel_1);
-		
-		JLabel label = new JLabel("Í¼ÊéÃû³Æ:");
-		
+
+		JLabel label = new JLabel("\u56FE\u4E66\u540D\u79F0:");
+
 		s_bookName_Txt = new JTextField();
 		s_bookName_Txt.setColumns(10);
-		
-		JLabel label_1 = new JLabel("Í¼Êé×÷Õß:");
-		
+
+		JLabel label_1 = new JLabel("\u56FE\u4E66\u4F5C\u8005:");
+
 		s_author_Txt = new JTextField();
 		s_author_Txt.setColumns(10);
-		
-		JLabel label_2 = new JLabel("Í¼ÊéÀà±ğ:");
-		
+
+		JLabel label_2 = new JLabel("\u56FE\u4E66\u7C7B\u522B:");
+
 		s_bookType_Jcb = new JComboBox();
-		
-		//Í¼Êé²éÑ¯ÊÂ¼ş
-		JButton button = new JButton("²éÑ¯");
+
+		//å›¾ä¹¦æŸ¥è¯¢äº‹ä»¶
+		JButton button = new JButton("\u67E5\u8BE2");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				bookSearchActionPerformed(e);
@@ -261,41 +261,41 @@ public class Book_Manage_InterFrm extends JInternalFrame {
 		});
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(label)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(s_bookName_Txt, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(label_1)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(s_author_Txt, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(label_2)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(s_bookType_Jcb, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(button, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(15, Short.MAX_VALUE))
+				gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+								.addContainerGap()
+								.addComponent(label)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(s_bookName_Txt, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(label_1)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(s_author_Txt, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(label_2)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(s_bookType_Jcb, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+								.addGap(18)
+								.addComponent(button, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+								.addContainerGap(15, Short.MAX_VALUE))
 		);
 		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(label)
-						.addComponent(button)
-						.addComponent(s_bookName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_1)
-						.addComponent(s_author_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_2)
-						.addComponent(s_bookType_Jcb, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(21, Short.MAX_VALUE))
+				gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+								.addContainerGap()
+								.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+										.addComponent(label)
+										.addComponent(button)
+										.addComponent(s_bookName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addComponent(label_1)
+										.addComponent(s_author_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addComponent(label_2)
+										.addComponent(s_bookType_Jcb, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addContainerGap(21, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
-		
-		//bookTableµÄĞĞµã»÷ÊÂ¼ş
+
+		//bookTableçš„è¡Œç‚¹å‡»äº‹ä»¶
 		bookTable = new JTable();
 		bookTable.addMouseListener(new MouseAdapter() {
 			@Override
@@ -304,14 +304,14 @@ public class Book_Manage_InterFrm extends JInternalFrame {
 			}
 		});
 		bookTable.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"±àºÅ", "Í¼ÊéÃû³Æ", "Í¼Êé×÷Õß", "×÷ÕßĞÔ±ğ", "Í¼Êé¼Û¸ñ", "Í¼ÊéÃèÊö", "Í¼ÊéÀà±ğ"
-			}
+				new Object[][] {
+				},
+				new String[] {
+						"\u7F16\u53F7", "\u56FE\u4E66\u540D\u79F0", "\u56FE\u4E66\u4F5C\u8005", "\u4F5C\u8005\u6027\u522B", "\u56FE\u4E66\u4EF7\u683C", "\u56FE\u4E66\u63CF\u8FF0", "\u56FE\u4E66\u7C7B\u522B"
+				}
 		) {
 			boolean[] columnEditables = new boolean[] {
-				false, false, false, false, false, true, false
+					false, false, false, false, false, true, false
 			};
 			public boolean isCellEditable(int row, int column) {
 				return columnEditables[column];
@@ -325,46 +325,46 @@ public class Book_Manage_InterFrm extends JInternalFrame {
 		bookTable.getColumnModel().getColumn(6).setPreferredWidth(91);
 		scrollPane.setViewportView(bookTable);
 		getContentPane().setLayout(groupLayout);
-		
-		//ÉèÖÃJTextArea±ß¿òµÄ´úÂë
+
+		//è®¾ç½®JTextAreaè¾¹æ¡†çš„ä»£ç 
 		bookDesc_Txt.setBorder(new LineBorder(new java.awt.Color(127,157,185),1,false));
 
-		//²éÑ¯ÏÂÀ­¿ò·½·¨ÒıÓÃ
+		//æŸ¥è¯¢ä¸‹æ‹‰æ¡†æ–¹æ³•å¼•ç”¨
 		this.fillBookType("search");
-		//ĞŞ¸ÄÏÂÀ­¿ò·½·¨ÒıÓÃ
+		//ä¿®æ”¹ä¸‹æ‹‰æ¡†æ–¹æ³•å¼•ç”¨
 		this.fillBookType("modify");
-		//±íµ¥µÄ·½·¨
+		//è¡¨å•çš„æ–¹æ³•
 		this.fillTable(new Book());
 	}
-	
+
 	/**
-	 * Í¼ÊéÉ¾³ıÊÂ¼ş·½·¨
+	 * å›¾ä¹¦åˆ é™¤äº‹ä»¶æ–¹æ³•
 	 * @param evt
 	 */
 	private void bookDeleteActionPerformed(ActionEvent evt) {
-		//»ñÈ¡½çÃæĞÅÏ¢
+		//è·å–ç•Œé¢ä¿¡æ¯
 		String id=id_Txt.getText();
-		//ÅĞ¶ÏidÊÇ·ñÎª¿Õ£¬ÈôÎª¿Õ£¬Ôò²»ÄÜÉ¾³ı
+		//åˆ¤æ–­idæ˜¯å¦ä¸ºç©ºï¼Œè‹¥ä¸ºç©ºï¼Œåˆ™ä¸èƒ½åˆ é™¤
 		if(StringUtil.isEmpty(id)){
-			JOptionPane.showMessageDialog(null, "ÇëÑ¡ÔñÒªÉ¾³ıµÄ¼ÇÂ¼!");
+			JOptionPane.showMessageDialog(null, "è¯·é€‰æ‹©è¦åˆ é™¤çš„è®°å½•!");
 			return;
 		}
-		int n=JOptionPane.showConfirmDialog(null, "È·¶¨ÒªÉ¾³ı¸Ã¼ÇÂ¼Âğ?");
+		int n=JOptionPane.showConfirmDialog(null, "ç¡®å®šè¦åˆ é™¤è¯¥è®°å½•å—?");
 		if(n==0){
 			Connection con=null;
 			try {
 				con=dbUtil.getCon();
 				int deleteNum=bookDao.deleteBook(con, id);
 				if(deleteNum==1){
-					JOptionPane.showMessageDialog(null, "É¾³ı³É¹¦!");
+					JOptionPane.showMessageDialog(null, "åˆ é™¤æˆåŠŸ!");
 					this.resetValue();
 					this.fillTable(new Book());
 				}else{
-					JOptionPane.showMessageDialog(null, "É¾³ıÊ§°Ü!");
+					JOptionPane.showMessageDialog(null, "åˆ é™¤å¤±è´¥!");
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-				JOptionPane.showMessageDialog(null, "É¾³ıÊ§°Ü!");
+				JOptionPane.showMessageDialog(null, "åˆ é™¤å¤±è´¥!");
 			}finally{
 				try {
 					dbUtil.close(con);
@@ -376,68 +376,68 @@ public class Book_Manage_InterFrm extends JInternalFrame {
 	}
 
 	/**
-	 * Í¼ÊéĞŞ¸ÄÊÂ¼ş·½·¨
+	 * å›¾ä¹¦ä¿®æ”¹äº‹ä»¶æ–¹æ³•
 	 * @param evt
 	 */
 	private void bookUpdateActionPerformed(ActionEvent evt) {
-		//»ñÈ¡½çÃæĞÅÏ¢
+		//è·å–ç•Œé¢ä¿¡æ¯
 		String id=this.id_Txt.getText();
 		String bookName=this.bookName_Txt.getText();
 		String author=this.author_Txt.getText();
 		String price=this.price_Txt.getText();
 		String bookDesc=this.bookDesc_Txt.getText();
-		
-		//ÅĞ¶ÏidÊÇ·ñÎª¿Õ£¬ÈôÎª¿Õ£¬Ôò²»ÄÜĞŞ¸Ä
+
+		//åˆ¤æ–­idæ˜¯å¦ä¸ºç©ºï¼Œè‹¥ä¸ºç©ºï¼Œåˆ™ä¸èƒ½ä¿®æ”¹
 		if(StringUtil.isEmpty(id)){
-			JOptionPane.showMessageDialog(null, "ÇëÑ¡ÔñÒªĞŞ¸ÄµÄ¼ÇÂ¼!");
+			JOptionPane.showMessageDialog(null, "è¯·é€‰æ‹©è¦ä¿®æ”¹çš„è®°å½•!");
 			return;
 		}
-		//ÅĞ¶ÏÆäËûĞÅÏ¢ÊÇ·ñÎª¿Õ
+		//åˆ¤æ–­å…¶ä»–ä¿¡æ¯æ˜¯å¦ä¸ºç©º
 		if(StringUtil.isEmpty(bookName)){
-			JOptionPane.showMessageDialog(null, "Í¼ÊéÃû³Æ²»ÄÜÎª¿Õ£¡");
+			JOptionPane.showMessageDialog(null, "å›¾ä¹¦åç§°ä¸èƒ½ä¸ºç©ºï¼");
 			return;
 		}
 		if(StringUtil.isEmpty(author)){
-			JOptionPane.showMessageDialog(null, "×÷ÕßÃû³Æ²»ÄÜÎª¿Õ£¡");
+			JOptionPane.showMessageDialog(null, "ä½œè€…åç§°ä¸èƒ½ä¸ºç©ºï¼");
 			return;
 		}
 		if(StringUtil.isEmpty(price)){
-			JOptionPane.showMessageDialog(null, "¼Û¸ñ²»ÄÜÎª¿Õ£¡");
+			JOptionPane.showMessageDialog(null, "ä»·æ ¼ä¸èƒ½ä¸ºç©ºï¼");
 			return;
 		}
-		
-		//»ñÈ¡ĞÔ±ğĞÅÏ¢
+
+		//è·å–æ€§åˆ«ä¿¡æ¯
 		String sex="";
 		if(man_Jrb.isSelected()){
-			sex="ÄĞ";
+			sex="ç”·";
 		}else if(woman_Jrb.isSelected()){
-			sex="Å®";
+			sex="å¥³";
 		}
-		
-		//»ñÈ¡Í¼ÊéÀà±ğid
+
+		//è·å–å›¾ä¹¦ç±»åˆ«id
 		BookType bookType=(BookType) bookType_Jcb.getSelectedItem();
 		int bookTypeId=bookType.getId();
-		
-		//½øĞĞ·â×°
+
+		//è¿›è¡Œå°è£…
 		Book book=new Book(Integer.parseInt(id), bookName, author, sex, Float.parseFloat(price), bookTypeId, bookDesc);
-		
-		//½øĞĞÌí¼Ó²Ù×÷£¬Êı¾İ¿âÁ¬½Ó
+
+		//è¿›è¡Œæ·»åŠ æ“ä½œï¼Œæ•°æ®åº“è¿æ¥
 		Connection con=null;
 		try {
 			con=dbUtil.getCon();
 			int addNum=bookDao.updateBook(con,book);
 			if(addNum==1){
-				JOptionPane.showMessageDialog(null, "Í¼ÊéĞŞ¸Ä³É¹¦£¡");
-				//Çå¿Õ±íµ¥
+				JOptionPane.showMessageDialog(null, "å›¾ä¹¦ä¿®æ”¹æˆåŠŸï¼");
+				//æ¸…ç©ºè¡¨å•
 				resetValue();
-				//Ìî³ä±íµ¥
+				//å¡«å……è¡¨å•
 				this.fillTable(new Book());
 			}else{
-				JOptionPane.showMessageDialog(null, "Í¼ÊéĞŞ¸ÄÊ§°Ü£¡");
+				JOptionPane.showMessageDialog(null, "å›¾ä¹¦ä¿®æ”¹å¤±è´¥ï¼");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Í¼ÊéĞŞ¸ÄÊ§°Ü£¡");
+			JOptionPane.showMessageDialog(null, "å›¾ä¹¦ä¿®æ”¹å¤±è´¥ï¼");
 		} finally{
 			try {
 				dbUtil.close(con);
@@ -446,9 +446,9 @@ public class Book_Manage_InterFrm extends JInternalFrame {
 			}
 		}
 	}
-	
+
 	/**
-	 * ÖØÖÃ±íµ¥
+	 * é‡ç½®è¡¨å•
 	 */
 	private void resetValue(){
 		this.id_Txt.setText("");
@@ -458,40 +458,40 @@ public class Book_Manage_InterFrm extends JInternalFrame {
 		this.man_Jrb.setSelected(true);
 		this.bookDesc_Txt.setText("");
 		if(this.bookType_Jcb.getItemCount()>0){
-			//Ä¬ÈÏÉèÖÃÑ¡ÖĞµÚÒ»Ïî
+			//é»˜è®¤è®¾ç½®é€‰ä¸­ç¬¬ä¸€é¡¹
 			this.bookType_Jcb.setSelectedIndex(0);
 		}
 	}
 
-	//±í¸ñĞĞµã»÷ÊÂ¼ş·½·¨
+	//è¡¨æ ¼è¡Œç‚¹å‡»äº‹ä»¶æ–¹æ³•
 	private void bookTableMousePressed(MouseEvent met) {
-		//»ñÈ¡Ñ¡ÖĞµÄĞĞ£¬·µ»ØĞĞºÅ
+		//è·å–é€‰ä¸­çš„è¡Œï¼Œè¿”å›è¡Œå·
 		int row=this.bookTable.getSelectedRow();
-		//»ñÈ¡µÚrowĞĞ£¬µÚ1ÁĞµÄÖµ
+		//è·å–ç¬¬rowè¡Œï¼Œç¬¬1åˆ—çš„å€¼
 		this.id_Txt.setText((String)bookTable.getValueAt(row, 0));
-		//»ñÈ¡µÚrowĞĞ£¬µÚ2ÁĞµÄÖµ
+		//è·å–ç¬¬rowè¡Œï¼Œç¬¬2åˆ—çš„å€¼
 		this.bookName_Txt.setText((String)bookTable.getValueAt(row, 1));
-		//»ñÈ¡µÚrowĞĞ£¬µÚ3ÁĞµÄÖµ
+		//è·å–ç¬¬rowè¡Œï¼Œç¬¬3åˆ—çš„å€¼
 		this.author_Txt.setText((String)bookTable.getValueAt(row, 2));
-		//»ñÈ¡ĞÔ±ğ
+		//è·å–æ€§åˆ«
 		String sex=(String)bookTable.getValueAt(row, 3);
-		//ÈË¹¤ÅĞ¶Ï
-		if("ÄĞ".equals(sex)){
+		//äººå·¥åˆ¤æ–­
+		if("ç”·".equals(sex)){
 			this.man_Jrb.setSelected(true);
-		}else if("Å®".equals(sex)){
+		}else if("å¥³".equals(sex)){
 			this.woman_Jrb.setSelected(true);
 		}
-		//»ñÈ¡µÚrowĞĞ£¬µÚ5ÁĞµÄÖµ
+		//è·å–ç¬¬rowè¡Œï¼Œç¬¬5åˆ—çš„å€¼
 		this.price_Txt.setText((Float)bookTable.getValueAt(row, 4)+"");
-		//»ñÈ¡µÚrowĞĞ£¬µÚ6ÁĞµÄÖµ
+		//è·å–ç¬¬rowè¡Œï¼Œç¬¬6åˆ—çš„å€¼
 		this.bookDesc_Txt.setText((String)bookTable.getValueAt(row, 5));
-		//»ñÈ¡µÚrowĞĞ£¬µÚ7ÁĞµÄÖµ
+		//è·å–ç¬¬rowè¡Œï¼Œç¬¬7åˆ—çš„å€¼
 		String bookTypeName=(String)this.bookTable.getValueAt(row, 6);
-		//»ñÈ¡ÏÂÀ­¿òµÄĞĞÊı
+		//è·å–ä¸‹æ‹‰æ¡†çš„è¡Œæ•°
 		int n=this.bookType_Jcb.getItemCount();
-		//¿ªÊ¼±éÀúÏÂÀ­¿òµÄËùÓĞÄÚÈİ
+		//å¼€å§‹éå†ä¸‹æ‹‰æ¡†çš„æ‰€æœ‰å†…å®¹
 		for(int i=0;i<n;i++){
-			//°ÑÃ¿¸öÏÂÀ­¿òµÄÄÚÈİÄÃ³öÀ´ÓëbookTypeName½øĞĞ±È½Ï£¬ÈôÏàÍ¬£¬ÔòÉèÖÃÎªÑ¡ÖĞ
+			//æŠŠæ¯ä¸ªä¸‹æ‹‰æ¡†çš„å†…å®¹æ‹¿å‡ºæ¥ä¸bookTypeNameè¿›è¡Œæ¯”è¾ƒï¼Œè‹¥ç›¸åŒï¼Œåˆ™è®¾ç½®ä¸ºé€‰ä¸­
 			BookType item=(BookType)this.bookType_Jcb.getItemAt(i);
 			if(item.getBookTypeName().equals(bookTypeName)){
 				this.bookType_Jcb.setSelectedIndex(i);
@@ -500,23 +500,23 @@ public class Book_Manage_InterFrm extends JInternalFrame {
 	}
 
 	/**
-	 * Í¼Êé²éÑ¯¹¦ÄÜ
+	 * å›¾ä¹¦æŸ¥è¯¢åŠŸèƒ½
 	 * @param e
 	 */
 	private void bookSearchActionPerformed(ActionEvent e) {
-		//´Ó½çÃæ»ñÈ¡ĞÅÏ¢
+		//ä»ç•Œé¢è·å–ä¿¡æ¯
 		String bookName=this.s_bookName_Txt.getText();
 		String author=this.s_author_Txt.getText();
 		BookType bookType=(BookType) this.s_bookType_Jcb.getSelectedItem();
 		int bookTypeId=bookType.getId();
-		
+
 		Book book=new Book(bookName,author,bookTypeId);
 		this.fillTable(book);
 	}
 
 	/**
-	 * ³õÊ¼»¯ÏÂÀ­¿ò
-	 * @param type ÏÂÀ­¿òÀàĞÍ
+	 * åˆå§‹åŒ–ä¸‹æ‹‰æ¡†
+	 * @param type ä¸‹æ‹‰æ¡†ç±»å‹
 	 */
 	@SuppressWarnings("unchecked")
 	private void fillBookType(String type){
@@ -526,7 +526,7 @@ public class Book_Manage_InterFrm extends JInternalFrame {
 			ResultSet rs=bookTypeDao.list(con, new BookType());
 			if("search".equals(type)){
 				BookType bookType=new BookType();
-				bookType.setBookTypeName("ÇëÑ¡Ôñ...");
+				bookType.setBookTypeName("è¯·é€‰æ‹©...");
 				bookType.setId(-1);
 				this.s_bookType_Jcb.addItem(bookType);
 			}
@@ -550,17 +550,17 @@ public class Book_Manage_InterFrm extends JInternalFrame {
 			}
 		}
 	}
-	
+
 	/**
-	 * ³õÊ¼»¯±í¸ñÊı¾İ
+	 * åˆå§‹åŒ–è¡¨æ ¼æ•°æ®
 	 * @param book
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void fillTable(Book book){
 		DefaultTableModel dtm=(DefaultTableModel) bookTable.getModel();
-		//Çå¿Õ±í¸ñ
+		//æ¸…ç©ºè¡¨æ ¼
 		dtm.setRowCount(0);
-		//Á¬½ÓÊı¾İ¿â
+		//è¿æ¥æ•°æ®åº“
 		Connection con=null;
 		try {
 			con=dbUtil.getCon();

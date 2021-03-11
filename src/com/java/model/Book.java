@@ -2,22 +2,22 @@ package com.java.model;
 
 public class Book {
 
-	private int id;//±àºÅ
-	private String bookName;//Í¼ÊéÃû³Æ
-	private String author;//×÷Õß
-	private String sex;//ĞÔ±ğ
-	private Float price;//Í¼Êé¼Û¸ñ
-	private Integer bookTypeId;//Í¼ÊéÀà±ğId
-	private String bookTypeName;//Í¼ÊéÀà±ğÃû³Æ
-	private String bookDesc;//±¸×¢
-	
-	//Ä¬ÈÏµÄ¹¹Ôì·½·¨
+	private int id;//ç¼–å·
+	private String bookName;//å›¾ä¹¦åç§°
+	private String author;//ä½œè€…
+	private String sex;//æ€§åˆ«
+	private Float price;//å›¾ä¹¦ä»·æ ¼
+	private Integer bookTypeId;//å›¾ä¹¦ç±»åˆ«Id
+	private String bookTypeName;//å›¾ä¹¦ç±»åˆ«åç§°
+	private String bookDesc;//å¤‡æ³¨
+
+	//é»˜è®¤çš„æ„é€ æ–¹æ³•
 	public Book() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	//Í¼ÊéÌí¼ÓµÄ¹¹Ôì·½·¨
+
+	//å›¾ä¹¦æ·»åŠ çš„æ„é€ æ–¹æ³•
 	public Book(String bookName, String author, String sex, Float price, Integer bookTypeId, String bookDesc) {
 		super();
 		this.bookName = bookName;
@@ -27,8 +27,8 @@ public class Book {
 		this.bookTypeId = bookTypeId;
 		this.bookDesc = bookDesc;
 	}
-	
-	//Í¼ÊéĞŞ¸ÄµÄ¹¹Ôì·½·¨
+
+	//å›¾ä¹¦ä¿®æ”¹çš„æ„é€ æ–¹æ³•
 	public Book(int id, String bookName, String author, String sex, Float price, Integer bookTypeId, String bookDesc) {
 		super();
 		this.id = id;
@@ -97,6 +97,6 @@ public class Book {
 	public void setBookDesc(String bookDesc) {
 		this.bookDesc = bookDesc;
 	}
-	
-	
+
+
 }

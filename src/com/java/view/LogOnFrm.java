@@ -46,7 +46,7 @@ public class LogOnFrm extends JFrame {
 	 */
 	public LogOnFrm() {
 
-		// ¸Ä±äÏµÍ³Ä¬ÈÏ×ÖÌå
+		// æ”¹å˜ç³»ç»Ÿé»˜è®¤å­—ä½“
 		Font font = new Font("Dialog", Font.PLAIN, 12);
 		@SuppressWarnings("rawtypes")
 		java.util.Enumeration keys = UIManager.getDefaults().keys();
@@ -59,21 +59,21 @@ public class LogOnFrm extends JFrame {
 		}
 
 		setResizable(false);
-		setTitle("¹ÜÀíÔ±µÇÂ¼");
+		setTitle("ç®¡ç†å‘˜ç™»å½•");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 419);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
-		JLabel label = new JLabel("Í¼Êé¹ÜÀíÏµÍ³");
+		JLabel label = new JLabel("å›¾ä¹¦ç®¡ç†ç³»ç»Ÿ");
 		label.setIcon(new ImageIcon(LogOnFrm.class.getResource("/images/logo.png")));
-		label.setFont(new Font("ËÎÌå", Font.PLAIN, 24));
+		label.setFont(new Font("å®‹ä½“", Font.PLAIN, 24));
 
-		JLabel lblNewLabel = new JLabel("ÓÃ»§Ãû£º");
+		JLabel lblNewLabel = new JLabel("ç”¨æˆ·åï¼š");
 		lblNewLabel.setIcon(new ImageIcon(LogOnFrm.class.getResource("/images/userName.png")));
 
-		JLabel label_1 = new JLabel("ÃÜ  Âë£º");
+		JLabel label_1 = new JLabel("å¯†  ç ï¼š");
 		label_1.setIcon(new ImageIcon(LogOnFrm.class.getResource("/images/password.png")));
 
 		userName_txt = new JTextField();
@@ -81,19 +81,19 @@ public class LogOnFrm extends JFrame {
 
 		passWord_txt = new JPasswordField();
 
-		JButton button = new JButton("µÇÂ¼");
+		JButton button = new JButton("ç™»å½•");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// µÇÂ¼·½·¨ÒıÓÃ
+				// ç™»å½•æ–¹æ³•å¼•ç”¨
 				loginActionPerformed(e);
 			}
 		});
 		button.setIcon(new ImageIcon(LogOnFrm.class.getResource("/images/login.png")));
 
-		JButton button_1 = new JButton("ÖØÖÃ");
+		JButton button_1 = new JButton("é‡ç½®");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// ÖØÖÃ·½·¨ÒıÓÃ
+				// é‡ç½®æ–¹æ³•å¼•ç”¨
 				resetValueActionPerformed(e);
 			}
 		});
@@ -125,48 +125,48 @@ public class LogOnFrm extends JFrame {
 						.addGap(58).addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(button)
 								.addComponent(button_1))));
 		contentPane.setLayout(gl_contentPane);
-		
-		//ÉèÖÃJFrame¾ÓÖĞÏÔÊ¾
+
+		//è®¾ç½®JFrameå±…ä¸­æ˜¾ç¤º
 		this.setLocationRelativeTo(null);
 	}
 
 	/**
-	 * µÇÂ¼ÊÂ¼ş´¦Àí
-	 * 
+	 * ç™»å½•äº‹ä»¶å¤„ç†
+	 *
 	 */
-	private void loginActionPerformed(ActionEvent evt) { 
-		// ´Ó½çÃæ»ñÈ¡ÓÃ»§ÃûºÍÃÜÂë
+	private void loginActionPerformed(ActionEvent evt) {
+		// ä»ç•Œé¢è·å–ç”¨æˆ·åå’Œå¯†ç 
 		String userName = this.userName_txt.getText();
 		String passWord = new String(this.passWord_txt.getPassword());
-		// ÅĞ¶ÏÓÃ»§ÃûºÍÃÜÂëÊÇ·ñÎª¿Õ
+		// åˆ¤æ–­ç”¨æˆ·åå’Œå¯†ç æ˜¯å¦ä¸ºç©º
 		if (StringUtil.isEmpty(userName)) {
-			JOptionPane.showMessageDialog(null, "ÓÃ»§Ãû²»ÄÜÎª¿Õ£¡");
-			return;// ½áÊø·½·¨£¬²»ÔÙ¼ÌĞøÖ´ĞĞ
+			JOptionPane.showMessageDialog(null, "ç”¨æˆ·åä¸èƒ½ä¸ºç©ºï¼");
+			return;// ç»“æŸæ–¹æ³•ï¼Œä¸å†ç»§ç»­æ‰§è¡Œ
 		}
 		if (StringUtil.isEmpty(passWord)) {
-			JOptionPane.showMessageDialog(null, "ÃÜÂë²»ÄÜÎª¿Õ£¡");
+			JOptionPane.showMessageDialog(null, "å¯†ç ä¸èƒ½ä¸ºç©ºï¼");
 			return;
 		}
-		
-		// ½øĞĞÊı¾İ¿âÁ¬½Ó
+
+		// è¿›è¡Œæ•°æ®åº“è¿æ¥
 		User user=new User(userName,passWord);
 		Connection con = null;
 		try {
 			con=dbUtil.getCon();
 			/**
-			 * ½«´ÓÊı¾İ¿âÖĞ»ñÈ¡µÄÓÃ»§ĞÅÏ¢±£´æÔÚcurrentUserÀïÃæ£¬
-			 * ÈôÎªnull£¬Ôò±íÊ¾´ÓÊı¾İ¿âÀï»ñÈ¡µÄĞÅÏ¢ºÍ´ÓÓÃ»§µÇÂ½½çÃæ»ñÈ¡µÄĞÅÏ¢²»Ò»ÖÂ£¬
-			 * ¼´µÇÂ¼Ê§°Ü
+			 * å°†ä»æ•°æ®åº“ä¸­è·å–çš„ç”¨æˆ·ä¿¡æ¯ä¿å­˜åœ¨currentUseré‡Œé¢ï¼Œ
+			 * è‹¥ä¸ºnullï¼Œåˆ™è¡¨ç¤ºä»æ•°æ®åº“é‡Œè·å–çš„ä¿¡æ¯å’Œä»ç”¨æˆ·ç™»é™†ç•Œé¢è·å–çš„ä¿¡æ¯ä¸ä¸€è‡´ï¼Œ
+			 * å³ç™»å½•å¤±è´¥
 			 */
 			User currentUser=userDao.login(con, user);
 			if(currentUser!=null){
-				//JOptionPane.showMessageDialog(null, "µÇÂ¼³É¹¦£¡");
-				//Ïú»Ù"µÇÂ¼³É¹¦£¡"µÄ´°¿Ú
+				//JOptionPane.showMessageDialog(null, "ç™»å½•æˆåŠŸï¼");
+				//é”€æ¯"ç™»å½•æˆåŠŸï¼"çš„çª—å£
 				dispose();
-				//½«ÏµÍ³Ö÷½çÃæÏÔÊ¾³öÀ´
+				//å°†ç³»ç»Ÿä¸»ç•Œé¢æ˜¾ç¤ºå‡ºæ¥
 				new MainFrm().setVisible(true);;
 			}else{
-				JOptionPane.showMessageDialog(null, "ÓÃ»§Ãû»òÃÜÂë´íÎó£¡");
+				JOptionPane.showMessageDialog(null, "ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯ï¼");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -177,15 +177,15 @@ public class LogOnFrm extends JFrame {
 				e.printStackTrace();
 			}
 		}
-		
+
 	}
 
 	/**
-	 * ÖØÖÃÊÂ¼ş´¦Àí
-	 * 
+	 * é‡ç½®äº‹ä»¶å¤„ç†
+	 *
 	 */
 	private void resetValueActionPerformed(ActionEvent evt) {
-		// ½«ÓÃ»§ÃûºÍÃÜÂë¶¼ÉèÖÃÎª¿Õ
+		// å°†ç”¨æˆ·åå’Œå¯†ç éƒ½è®¾ç½®ä¸ºç©º
 		this.userName_txt.setText("");
 		this.passWord_txt.setText("");
 	}

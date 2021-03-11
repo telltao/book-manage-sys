@@ -3,8 +3,8 @@ package com.java.util;
 public class StringUtil {
 
 	/**
-	 * ÅĞ¶ÏÊÇ·ñÎª¿Õ
-	 * 
+	 * åˆ¤æ–­æ˜¯å¦ä¸ºç©º
+	 *
 	 * @param str
 	 * @return
 	 */
@@ -17,10 +17,10 @@ public class StringUtil {
 	}
 
 	/**
-	 * ÅĞ¶ÏÊÇ·ñ²»ÊÇ¿Õ
+	 * åˆ¤æ–­æ˜¯å¦ä¸æ˜¯ç©º
 	 */
 	public static boolean isNotEmpty(String str) {
-		//×¢ÒâÕâÀïµÄÂß¼­ÅĞ¶ÏÌõ¼ş
+		//æ³¨æ„è¿™é‡Œçš„é€»è¾‘åˆ¤æ–­æ¡ä»¶
 		if (str != null && !"".equals(str.trim())) {
 			return true;
 		} else {
