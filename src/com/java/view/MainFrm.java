@@ -100,7 +100,7 @@ public class MainFrm extends JFrame {
 		JMenuItem menuItem = new JMenuItem("安全退出");
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int result=JOptionPane.showConfirmDialog(null, "弹出的是个啥");
+				int result=JOptionPane.showConfirmDialog(null, "确定要退出当前系统吗?");
 				if(result==0){
 					dispose();
 				}
