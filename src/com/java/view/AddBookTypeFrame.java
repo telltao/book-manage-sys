@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 
 @SuppressWarnings("serial")
-public class BookType_Add_InterFrm extends JInternalFrame {
+public class AddBookTypeFrame extends JInternalFrame {
 
 	//JTextField和JTextArea的实例化
 	private JTextField bookTypeName_Txt;
@@ -31,7 +31,7 @@ public class BookType_Add_InterFrm extends JInternalFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					BookType_Add_InterFrm frame = new BookType_Add_InterFrm();
+					AddBookTypeFrame frame = new AddBookTypeFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +43,7 @@ public class BookType_Add_InterFrm extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
-	public BookType_Add_InterFrm() {
+	public AddBookTypeFrame() {
 		setClosable(true);
 		setIconifiable(true);
 		setTitle("图书类别添加");
@@ -65,7 +65,7 @@ public class BookType_Add_InterFrm extends JInternalFrame {
 				bookTypeAddActionPerformed(e);
 			}
 		});
-		button.setIcon(new ImageIcon(BookType_Add_InterFrm.class.getResource("/images/add.png")));
+		button.setIcon(new ImageIcon(AddBookTypeFrame.class.getResource("/images/add.png")));
 
 		JButton button_1 = new JButton("重置");
 		button_1.addActionListener(new ActionListener() {
@@ -74,7 +74,7 @@ public class BookType_Add_InterFrm extends JInternalFrame {
 				resetValueActionPerformed(e);
 			}
 		});
-		button_1.setIcon(new ImageIcon(BookType_Add_InterFrm.class.getResource("/images/reset.png")));
+		button_1.setIcon(new ImageIcon(AddBookTypeFrame.class.getResource("/images/reset.png")));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 				groupLayout.createParallelGroup(Alignment.LEADING)

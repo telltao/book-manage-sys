@@ -24,7 +24,7 @@ import java.util.Vector;
 
 
 @SuppressWarnings("serial")
-public class BookType_Manager_InterFrm extends JInternalFrame {
+public class BookTypeManagerFrame extends JInternalFrame {
 	private JTable bookTypeTable;
 	private JTextArea bookTypeDesc_Txt;
 
@@ -42,7 +42,7 @@ public class BookType_Manager_InterFrm extends JInternalFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					BookType_Manager_InterFrm frame = new BookType_Manager_InterFrm();
+					BookTypeManagerFrame frame = new BookTypeManagerFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -54,7 +54,7 @@ public class BookType_Manager_InterFrm extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
-	public BookType_Manager_InterFrm() {
+	public BookTypeManagerFrame() {
 		setIconifiable(true);
 		setClosable(true);
 		setTitle("图书类别管理");
@@ -73,7 +73,7 @@ public class BookType_Manager_InterFrm extends JInternalFrame {
 				bookTypeSearchActionPerformed(e);
 			}
 		});
-		button.setIcon(new ImageIcon(BookType_Manager_InterFrm.class.getResource("/images/search.png")));
+		button.setIcon(new ImageIcon(BookTypeManagerFrame.class.getResource("/images/search.png")));
 
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(null, "表单操作", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -130,7 +130,7 @@ public class BookType_Manager_InterFrm extends JInternalFrame {
 				bookTypeUpdateActionEvent(e);
 			}
 		});
-		button_1.setIcon(new ImageIcon(BookType_Manager_InterFrm.class.getResource("/images/modify.png")));
+		button_1.setIcon(new ImageIcon(BookTypeManagerFrame.class.getResource("/images/modify.png")));
 
 		//图书类别删除功能
 		JButton button_2 = new JButton("删除");
@@ -139,7 +139,7 @@ public class BookType_Manager_InterFrm extends JInternalFrame {
 				bookTypeDeleteActionEvent(e);
 			}
 		});
-		button_2.setIcon(new ImageIcon(BookType_Manager_InterFrm.class.getResource("/images/delete.png")));
+		button_2.setIcon(new ImageIcon(BookTypeManagerFrame.class.getResource("/images/delete.png")));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 				gl_panel.createParallelGroup(Alignment.LEADING)

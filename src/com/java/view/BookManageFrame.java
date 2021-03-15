@@ -24,7 +24,7 @@ import java.sql.SQLException;
 import java.util.Vector;
 
 @SuppressWarnings("serial")
-public class Book_Manage_InterFrm extends JInternalFrame {
+public class BookManageFrame extends JInternalFrame {
 	private JTable bookTable;
 	private JTextField s_bookName_Txt;
 	private JTextField s_author_Txt;
@@ -52,7 +52,7 @@ public class Book_Manage_InterFrm extends JInternalFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Book_Manage_InterFrm frame = new Book_Manage_InterFrm();
+					BookManageFrame frame = new BookManageFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -65,7 +65,7 @@ public class Book_Manage_InterFrm extends JInternalFrame {
 	 * Create the frame.
 	 */
 	@SuppressWarnings("rawtypes")
-	public Book_Manage_InterFrm() {
+	public BookManageFrame() {
 		setIconifiable(true);
 		setClosable(true);
 		setTitle("\u56FE\u4E66\u7BA1\u7406");
@@ -146,7 +146,7 @@ public class Book_Manage_InterFrm extends JInternalFrame {
 				bookUpdateActionPerformed(evt);
 			}
 		});
-		button_1.setIcon(new ImageIcon(Book_Manage_InterFrm.class.getResource("/images/modify.png")));
+		button_1.setIcon(new ImageIcon(BookManageFrame.class.getResource("/images/modify.png")));
 
 		//图书删除事件
 		JButton button_2 = new JButton("\u5220\u9664");
@@ -155,7 +155,7 @@ public class Book_Manage_InterFrm extends JInternalFrame {
 				bookDeleteActionPerformed(evt);
 			}
 		});
-		button_2.setIcon(new ImageIcon(Book_Manage_InterFrm.class.getResource("/images/delete.png")));
+		button_2.setIcon(new ImageIcon(BookManageFrame.class.getResource("/images/delete.png")));
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
 				gl_panel_1.createParallelGroup(Alignment.LEADING)

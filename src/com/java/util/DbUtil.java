@@ -10,7 +10,7 @@ public class DbUtil {
 	 * 连接数据库工具类
 	 */
 	// mysql数据库地址
-	private String dbUrl = "jdbc:mysql://localhost:3306/db_test";
+	private String dbUrl = "jdbc:mysql://localhost:3306/db_test?useSSL=false";
 
 	// 用户名
 	private String dbUserName = "root";
@@ -19,7 +19,7 @@ public class DbUtil {
 	private String dbPassWord = "root";
 
 	// 驱动名称
-	private String jdbcname = "com.mysql.jdbc.Driver";
+	private String jdbcname = "com.mysql.cj.jdbc.Driver";
 
 	// 数据库连接方法
 	public Connection getCon() throws Exception {

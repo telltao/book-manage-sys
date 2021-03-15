@@ -5,7 +5,7 @@ import javax.swing.GroupLayout.Alignment;
 import java.awt.*;
 
 @SuppressWarnings("serial")
-public class About_us_InterFrm extends JInternalFrame {
+public class AboutFrame extends JInternalFrame {
 
 	/**
 	 * Launch the application.
@@ -14,7 +14,7 @@ public class About_us_InterFrm extends JInternalFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					About_us_InterFrm frame = new About_us_InterFrm();
+					AboutFrame frame = new AboutFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -26,7 +26,7 @@ public class About_us_InterFrm extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
-	public About_us_InterFrm() {
+	public AboutFrame() {
 		getContentPane().setBackground(Color.PINK);
 		setBackground(Color.CYAN);
 		setIconifiable(true);

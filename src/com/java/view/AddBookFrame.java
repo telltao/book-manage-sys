@@ -18,7 +18,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 
 @SuppressWarnings("serial")
-public class Book_Add_InterFrm extends JInternalFrame {
+public class AddBookFrame extends JInternalFrame {
 	private JTextField bookName_Txt;
 	private JTextField author_Txt;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
@@ -40,7 +40,7 @@ public class Book_Add_InterFrm extends JInternalFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Book_Add_InterFrm frame = new Book_Add_InterFrm();
+					AddBookFrame frame = new AddBookFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -53,7 +53,7 @@ public class Book_Add_InterFrm extends JInternalFrame {
 	 * Create the frame.
 	 */
 	@SuppressWarnings("rawtypes")
-	public Book_Add_InterFrm() {
+	public AddBookFrame() {
 		setClosable(true);
 		setIconifiable(true);
 		setTitle("图书添加");
@@ -98,7 +98,7 @@ public class Book_Add_InterFrm extends JInternalFrame {
 				bookAddActionPerformed(e);
 			}
 		});
-		button.setIcon(new ImageIcon(Book_Add_InterFrm.class.getResource("/images/add.png")));
+		button.setIcon(new ImageIcon(AddBookFrame.class.getResource("/images/add.png")));
 		
 		JButton button_1 = new JButton("重置");
 		button_1.addActionListener(new ActionListener() {
@@ -107,7 +107,7 @@ public class Book_Add_InterFrm extends JInternalFrame {
 				resetValueActionPerformed(e);
 			}
 		});
-		button_1.setIcon(new ImageIcon(Book_Add_InterFrm.class.getResource("/images/reset.png")));
+		button_1.setIcon(new ImageIcon(AddBookFrame.class.getResource("/images/reset.png")));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)

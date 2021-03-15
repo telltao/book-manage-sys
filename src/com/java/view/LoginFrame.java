@@ -16,7 +16,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 @SuppressWarnings("serial")
-public class LogOnFrm extends JFrame {
+public class LoginFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField userName_txt;
@@ -32,7 +32,7 @@ public class LogOnFrm extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LogOnFrm frame = new LogOnFrm();
+					LoginFrame frame = new LoginFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,7 +44,7 @@ public class LogOnFrm extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public LogOnFrm() {
+	public LoginFrame() {
 
 		// 改变系统默认字体
 		Font font = new Font("Dialog", Font.PLAIN, 12);
@@ -67,14 +67,14 @@ public class LogOnFrm extends JFrame {
 		setContentPane(contentPane);
 
 		JLabel label = new JLabel("图书管理系统");
-		label.setIcon(new ImageIcon(LogOnFrm.class.getResource("/images/logo.png")));
+		label.setIcon(new ImageIcon(LoginFrame.class.getResource("/images/logo.png")));
 		label.setFont(new Font("宋体", Font.PLAIN, 24));
 
 		JLabel lblNewLabel = new JLabel("用户名：");
-		lblNewLabel.setIcon(new ImageIcon(LogOnFrm.class.getResource("/images/userName.png")));
+		lblNewLabel.setIcon(new ImageIcon(LoginFrame.class.getResource("/images/userName.png")));
 
 		JLabel label_1 = new JLabel("密  码：");
-		label_1.setIcon(new ImageIcon(LogOnFrm.class.getResource("/images/password.png")));
+		label_1.setIcon(new ImageIcon(LoginFrame.class.getResource("/images/password.png")));
 
 		userName_txt = new JTextField();
 		userName_txt.setColumns(10);
@@ -88,7 +88,7 @@ public class LogOnFrm extends JFrame {
 				loginActionPerformed(e);
 			}
 		});
-		button.setIcon(new ImageIcon(LogOnFrm.class.getResource("/images/login.png")));
+		button.setIcon(new ImageIcon(LoginFrame.class.getResource("/images/login.png")));
 
 		JButton button_1 = new JButton("重置");
 		button_1.addActionListener(new ActionListener() {
@@ -97,7 +97,7 @@ public class LogOnFrm extends JFrame {
 				resetValueActionPerformed(e);
 			}
 		});
-		button_1.setIcon(new ImageIcon(LogOnFrm.class.getResource("/images/reset.png")));
+		button_1.setIcon(new ImageIcon(LoginFrame.class.getResource("/images/reset.png")));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup().addGap(152)
