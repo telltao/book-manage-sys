@@ -87,6 +87,7 @@ COMMIT;
 
 -- ----------------------------
 -- Table structure for t_user
+
 -- ----------------------------
 DROP TABLE IF EXISTS `t_user`;
 CREATE TABLE `t_user` (
@@ -105,16 +106,16 @@ INSERT INTO `t_user` VALUES (2, 'test', '123');
 INSERT INTO `t_user` VALUES (3, 'demo', '123');
 COMMIT;
 
--- ----------------------------
--- Procedure structure for sp_update_sex
--- ----------------------------
-DROP PROCEDURE IF EXISTS `sp_update_sex`;
-delimiter ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_update_sex`(in cid int,in csex char(1))
-begin
-	 update content set sex=csex  where content_id=cid;
-	end;
-;;
-delimiter ;
 
-SET FOREIGN_KEY_CHECKS = 1;
+-- 创建关于系统表
+CREATE TABLE `t_about_sys` (
+  `id` int NOT NULL AUTO_INCREMENT COMMENT 'id 主键',
+  `content` varchar(500) NOT NULL COMMENT '关于系统',
+  `version` varchar(50)  COMMENT '版本',
+	`email` varchar(20) COMMENT'联系方式',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+
+insert into t_about_sys(`content`,`version`,`email`) values('图书管理系统是一套以学校借阅室为基础而打造的一套图书管理借阅系统','1.0','admin@qq.com');
