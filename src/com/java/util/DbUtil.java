@@ -3,13 +3,13 @@ package com.java.util;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+/**
+ * 连接数据库工具类
+ */
 public class DbUtil {
 
-	/**
-	 * 连接数据库工具类
-	 */
-	// mysql数据库地址
+	
+	// mysql数据库地址 并开启ssl认证
 	private String dbUrl = "jdbc:mysql://localhost:3306/db_test?useSSL=false";
 
 	// 用户名
@@ -20,6 +20,9 @@ public class DbUtil {
 
 	// 驱动名称
 	private String jdbcname = "com.mysql.cj.jdbc.Driver";
+
+	//数据库低于5.7版本的驱动名称
+	//private String jdbcname = "com.mysql.jdbc.Driver";
 
 	// 数据库连接方法
 	public Connection getCon() throws Exception {
