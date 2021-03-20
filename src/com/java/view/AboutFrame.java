@@ -31,7 +31,7 @@ public class AboutFrame extends JInternalFrame {
 		setBackground(Color.CYAN);
 		setIconifiable(true);
 		setClosable(true);
-		setTitle("\u5173\u4E8E\u6211\u4EEC");
+		setTitle("关于我们");
 		setBounds(100, 100, 700, 450);
 
 		JTextArea txtrJavaccjavajavaJava = new JTextArea();

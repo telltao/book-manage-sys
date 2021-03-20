@@ -68,16 +68,16 @@ public class BookManageFrame extends JInternalFrame {
 	public BookManageFrame() {
 		setIconifiable(true);
 		setClosable(true);
-		setTitle("\u56FE\u4E66\u7BA1\u7406");
+		setTitle("图书管理");
 		setBounds(100, 100, 723, 660);
 
 		JScrollPane scrollPane = new JScrollPane();
 
 		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(null, "\u641C\u7D22\u6761\u4EF6", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel.setBorder(new TitledBorder(null, "搜索条件", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 
 		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new TitledBorder(null, "\u8868\u5355\u64CD\u4F5C", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_1.setBorder(new TitledBorder(null, "表单操作", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 				groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -101,46 +101,46 @@ public class BookManageFrame extends JInternalFrame {
 								.addGap(27))
 		);
 
-		JLabel label_3 = new JLabel("\u7F16\u53F7:");
+		JLabel label_3 = new JLabel("编号:");
 
 		id_Txt = new JTextField();
 		id_Txt.setEditable(false);
 		id_Txt.setColumns(10);
 
-		JLabel label_4 = new JLabel("\u56FE\u4E66\u540D\u79F0:");
+		JLabel label_4 = new JLabel("图书名称:");
 
 		bookName_Txt = new JTextField();
 		bookName_Txt.setColumns(10);
 
-		JLabel label_5 = new JLabel("\u4F5C\u8005\u6027\u522B:");
+		JLabel label_5 = new JLabel("作者性别:");
 
-		man_Jrb = new JRadioButton("\u7537");
+		man_Jrb = new JRadioButton("男");
 		buttonGroup.add(man_Jrb);
 		man_Jrb.setSelected(true);
 
-		woman_Jrb = new JRadioButton("\u5973");
+		woman_Jrb = new JRadioButton("女");
 		buttonGroup.add(woman_Jrb);
 
-		JLabel label_6 = new JLabel("\u4EF7\u683C:");
+		JLabel label_6 = new JLabel("价格:");
 
 		price_Txt = new JTextField();
 		price_Txt.setColumns(10);
 
-		JLabel label_7 = new JLabel("\u56FE\u4E66\u4F5C\u8005:");
+		JLabel label_7 = new JLabel("图书作者:");
 
 		author_Txt = new JTextField();
 		author_Txt.setColumns(10);
 
-		JLabel label_8 = new JLabel("\u56FE\u4E66\u7C7B\u522B:");
+		JLabel label_8 = new JLabel("图书类别:");
 
 		bookType_Jcb = new JComboBox();
 
-		JLabel label_9 = new JLabel("\u56FE\u4E66\u63CF\u8FF0:");
+		JLabel label_9 = new JLabel("图书描述:");
 
 		bookDesc_Txt = new JTextArea();
 
 		//图书修改事件
-		JButton button_1 = new JButton("\u4FEE\u6539");
+		JButton button_1 = new JButton("修改");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				bookUpdateActionPerformed(evt);
@@ -149,7 +149,7 @@ public class BookManageFrame extends JInternalFrame {
 		button_1.setIcon(new ImageIcon(BookManageFrame.class.getResource("/images/modify.png")));
 
 		//图书删除事件
-		JButton button_2 = new JButton("\u5220\u9664");
+		JButton button_2 = new JButton("删除");
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				bookDeleteActionPerformed(evt);
@@ -238,22 +238,22 @@ public class BookManageFrame extends JInternalFrame {
 		);
 		panel_1.setLayout(gl_panel_1);
 
-		JLabel label = new JLabel("\u56FE\u4E66\u540D\u79F0:");
+		JLabel label = new JLabel("图书名称:");
 
 		s_bookName_Txt = new JTextField();
 		s_bookName_Txt.setColumns(10);
 
-		JLabel label_1 = new JLabel("\u56FE\u4E66\u4F5C\u8005:");
+		JLabel label_1 = new JLabel("图书作者:");
 
 		s_author_Txt = new JTextField();
 		s_author_Txt.setColumns(10);
 
-		JLabel label_2 = new JLabel("\u56FE\u4E66\u7C7B\u522B:");
+		JLabel label_2 = new JLabel("图书类别:");
 
 		s_bookType_Jcb = new JComboBox();
 
 		//图书查询事件
-		JButton button = new JButton("\u67E5\u8BE2");
+		JButton button = new JButton("查询");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				bookSearchActionPerformed(e);
@@ -307,7 +307,7 @@ public class BookManageFrame extends JInternalFrame {
 				new Object[][] {
 				},
 				new String[] {
-						"\u7F16\u53F7", "\u56FE\u4E66\u540D\u79F0", "\u56FE\u4E66\u4F5C\u8005", "\u4F5C\u8005\u6027\u522B", "\u56FE\u4E66\u4EF7\u683C", "\u56FE\u4E66\u63CF\u8FF0", "\u56FE\u4E66\u7C7B\u522B"
+						"编号", "图书名称", "图书作者", "作者性别", "图书价格", "图书描述", "图书类别"
 				}
 		) {
 			boolean[] columnEditables = new boolean[] {
