@@ -10,7 +10,7 @@ public class DbUtil {
 
 	
 	// mysql数据库地址 并开启ssl认证
-	private String dbUrl = "jdbc:mysql://localhost:3306/db_test?useSSL=false";
+	private String dbUrl = "jdbc:mysql://localhost:3306/db_test?useSSL=false&serverTimezone=CTT";
 
 	// 用户名
 	private String dbUserName = "root";
