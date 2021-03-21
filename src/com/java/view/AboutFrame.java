@@ -37,7 +37,10 @@ public class AboutFrame extends JInternalFrame {
 		JTextArea txtrJavaccjavajavaJava = new JTextArea();
 		txtrJavaccjavajavaJava.setBackground(Color.PINK);
 		txtrJavaccjavajavaJava.setForeground(Color.RED);
-		txtrJavaccjavajavaJava.setText("关于我们");
+		//TODO 在此处将数据从数据库中查询出来
+		txtrJavaccjavajavaJava.setText("关于我们" +
+				"版本：" +
+				"联系方式：");
 		txtrJavaccjavajavaJava.setFont(new Font("楷体", Font.PLAIN, 20));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
