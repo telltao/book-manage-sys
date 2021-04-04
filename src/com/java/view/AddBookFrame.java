@@ -236,29 +236,30 @@ public class AddBookFrame extends JInternalFrame {
 		}
 
 		//?????????
-		String sex="";
-		if(man_Jrb.isSelected()){
-			sex="男";
-		}else if(woman_Jrb.isSelected()){
-			sex="女";
+		String sex = "";
+		if (man_Jrb.isSelected()) {
+			sex = "男";
+		} else if (woman_Jrb.isSelected()) {
+			sex = "女";
 		}
 
 		//?????????id
-		BookType bookType=(BookType) bookType_Jcb.getSelectedItem();
-		int bookTypeId=bookType.getId();
+		BookType bookType = (BookType) bookType_Jcb.getSelectedItem();
+		int bookTypeId = bookType.getId();
+		String bookTypeName = bookType.getBookTypeName();
 
 		//???з??
-		Book book=new Book(bookName, author, sex, Float.parseFloat(price), bookTypeId, bookDesc);
+		Book book = new Book(bookName, author, sex, Float.parseFloat(price), bookTypeId, bookTypeName, bookDesc);
 
 		//?????????????????????
-		Connection con=null;
+		Connection con = null;
 		try {
-			con=dbUtil.getCon();
-			int addNum=bookDao.addBook(con,book);
-			if(addNum==1){
+			con = dbUtil.getCon();
+			int addNum = bookDao.addBook(con, book);
+			if (addNum == 1) {
 				JOptionPane.showMessageDialog(null, "图书添加成功");
 				resetValue();
-			}else{
+			} else {
 				JOptionPane.showMessageDialog(null, "图书添加失败");
 			}
 		} catch (Exception e) {

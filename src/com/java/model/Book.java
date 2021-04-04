@@ -18,13 +18,14 @@ public class Book {
 	}
 
 	//图书添加的构造方法
-	public Book(String bookName, String author, String sex, Float price, Integer bookTypeId, String bookDesc) {
+	public Book(String bookName, String author, String sex, Float price, Integer bookTypeId, String bookTypeName, String bookDesc) {
 		super();
 		this.bookName = bookName;
 		this.author = author;
 		this.sex = sex;
 		this.price = price;
 		this.bookTypeId = bookTypeId;
+		this.bookTypeName = bookTypeName;
 		this.bookDesc = bookDesc;
 	}
 

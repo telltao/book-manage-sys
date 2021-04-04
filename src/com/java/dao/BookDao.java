@@ -16,14 +16,15 @@ public class BookDao {
 
 	//图书添加方法
 	public int addBook(Connection con,Book book) throws Exception{
-		String sql="insert into t_book values(null,?,?,?,?,?,?)";
-		PreparedStatement pstmt=con.prepareStatement(sql);
+		String sql = "INSERT INTO t_book(id, bookName, author, sex, price, bookTypeId, bookTypeName, bookDesc, status, createTime)  values(null,?,?,?,?,?,?,?,'0',sysdate())";
+		PreparedStatement pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, book.getBookName());
 		pstmt.setString(2, book.getAuthor());
 		pstmt.setString(3, book.getSex());
 		pstmt.setFloat(4, book.getPrice());
 		pstmt.setInt(5, book.getBookTypeId());
-		pstmt.setString(6, book.getBookDesc());
+		pstmt.setString(6, book.getBookTypeName());
+		pstmt.setString(7, book.getBookDesc());
 		return pstmt.executeUpdate();
 	}
 
@@ -47,9 +48,10 @@ public class BookDao {
 	}
 
 	//图书删除方法
-	public int deleteBook(Connection con,String id)throws Exception{
-		String sql="delete from t_book where id=?";
-		PreparedStatement pstmt=con.prepareStatement(sql);
+	//V2 改为逻辑删除
+	public int deleteBook(Connection con, String id) throws Exception {
+		String sql = "update  t_book  set status = '1' where id=?";
+		PreparedStatement pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, id);
 		return pstmt.executeUpdate();
 	}
@@ -69,11 +71,11 @@ public class BookDao {
 	}
 
 	//判断指定图书类别下是否有图书
-	public boolean exitBookByBookTypeId(Connection con,String bookTypeId)throws Exception{
-		String sql="select * from t_book where bookTypeId=?";
-		PreparedStatement pstmt=con.prepareStatement(sql);
+	public boolean exitBookByBookTypeId(Connection con,String bookTypeId)throws Exception {
+		String sql = "select * from t_book where bookTypeId=? and status = '0'";
+		PreparedStatement pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, bookTypeId);
-		ResultSet rs=pstmt.executeQuery();
+		ResultSet rs = pstmt.executeQuery();
 		return rs.next();
 	}
 }

@@ -20,7 +20,7 @@ public class UserDao {
 	public User login(Connection con, User user) throws Exception {
 		// 登录正确，返回用户的所有实体信息
 		User resultUser = null;
-		String sql = "select * from t_user where userName=? and passWord=?";
+		String sql = "select * from t_user where userName=? and passWord=? and status = '0'";
 		// 获取PreparedStatement接口
 		PreparedStatement pstmt = con.prepareStatement(sql);
 		// 设置未知量的值
