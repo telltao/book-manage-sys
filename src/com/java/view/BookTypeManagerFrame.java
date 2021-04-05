@@ -59,7 +59,7 @@ public class BookTypeManagerFrame extends JInternalFrame {
 		setClosable(true);
 		setTitle("图书类别管理");
 		setBounds(100, 100, 698, 539);
-
+//		this.setBounds((900 - 698) / 2,(900 - 539) / 2,698,539);
 		JScrollPane scrollPane = new JScrollPane();
 
 		JLabel label = new JLabel("图书类别名称：");

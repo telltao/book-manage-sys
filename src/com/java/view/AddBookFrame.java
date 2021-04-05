@@ -58,6 +58,8 @@ public class AddBookFrame extends JInternalFrame {
 		setIconifiable(true);
 		setTitle("图书添加");
 		setBounds(100, 100, 519, 543);
+//		this.setBounds((900 - 519) / 2,(900 - 543) / 2,519,543);
+
 
 		JLabel label = new JLabel("图书名称：");
 

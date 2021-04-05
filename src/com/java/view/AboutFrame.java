@@ -49,7 +49,7 @@ public class AboutFrame extends JInternalFrame {
 		setClosable(true);
 		setTitle("关于系统");
 		setBounds(100, 100, 700, 450);
-
+//		this.setBounds((900 - 700) / 2,(900 - 450) / 2,700,450);
 		JTextArea txtrJavaccjavajavaJava = new JTextArea();
 		txtrJavaccjavajavaJava.setRows(5);
 		txtrJavaccjavajavaJava.setBackground(Color.PINK);

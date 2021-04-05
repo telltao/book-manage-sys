@@ -70,7 +70,7 @@ public class BookManageFrame extends JInternalFrame {
 		setClosable(true);
 		setTitle("图书管理");
 		setBounds(100, 100, 833, 660);
-
+//		this.setBounds((900 - 840) / 2,(850 - 660) / 2,840,660);
 		JScrollPane scrollPane = new JScrollPane();
 
 		JPanel panel = new JPanel();

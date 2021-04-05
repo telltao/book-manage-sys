@@ -48,7 +48,7 @@ public class AddBookTypeFrame extends JInternalFrame {
 		setIconifiable(true);
 		setTitle("图书类别添加");
 		setBounds(100, 100, 566, 393);
-
+//		this.setBounds((900 - 566) / 2,(900 - 393) / 2,566,393);
 		JLabel label = new JLabel("图书类别名称：");
 
 		bookTypeName_Txt = new JTextField();

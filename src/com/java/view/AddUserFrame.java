@@ -47,7 +47,7 @@ public class AddUserFrame extends JInternalFrame {
 		setIconifiable(true);
 		setTitle("用户注册");
 		setBounds(100, 100, 519, 543);
-
+//		this.setBounds((900 - 519) / 2,(900 - 543) / 2,519,543);
 		JLabel label = new JLabel("姓名：");
 
 		userName_Txt = new JTextField();

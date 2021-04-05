@@ -61,7 +61,7 @@ public class UserManageFrame extends JInternalFrame {
 		setClosable(true);
 		setTitle("用户管理");
 		setBounds(100, 100, 723, 660);
-
+//		this.setBounds((900 - 723) / 2,(900 - 660) / 2,723,660);
 		JScrollPane scrollPane = new JScrollPane();
 
 		JPanel panel = new JPanel();
