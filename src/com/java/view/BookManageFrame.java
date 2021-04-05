@@ -69,7 +69,7 @@ public class BookManageFrame extends JInternalFrame {
 		setIconifiable(true);
 		setClosable(true);
 		setTitle("图书管理");
-		setBounds(100, 100, 723, 660);
+		setBounds(100, 100, 833, 660);
 
 		JScrollPane scrollPane = new JScrollPane();
 
@@ -158,14 +158,14 @@ public class BookManageFrame extends JInternalFrame {
 		button_2.setIcon(new ImageIcon(BookManageFrame.class.getResource("/images/delete.png")));
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
-				gl_panel_1.createParallelGroup(Alignment.LEADING)
+				gl_panel_1.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_panel_1.createSequentialGroup()
 								.addGap(29)
-								.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING, false)
 										.addGroup(gl_panel_1.createSequentialGroup()
 												.addComponent(label_9)
 												.addPreferredGap(ComponentPlacement.UNRELATED)
-												.addComponent(bookDesc_Txt, GroupLayout.PREFERRED_SIZE, 466, GroupLayout.PREFERRED_SIZE))
+												.addComponent(bookDesc_Txt))
 										.addGroup(gl_panel_1.createSequentialGroup()
 												.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 														.addGroup(gl_panel_1.createSequentialGroup()
@@ -198,13 +198,13 @@ public class BookManageFrame extends JInternalFrame {
 																.addComponent(label_8)
 																.addGap(18)
 																.addComponent(bookType_Jcb, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-								.addContainerGap(53, Short.MAX_VALUE))
-						.addGroup(Alignment.TRAILING, gl_panel_1.createSequentialGroup()
-								.addContainerGap(244, Short.MAX_VALUE)
+								.addContainerGap(100, Short.MAX_VALUE))
+						.addGroup(gl_panel_1.createSequentialGroup()
+								.addContainerGap(273, Short.MAX_VALUE)
 								.addComponent(button_1)
 								.addGap(105)
 								.addComponent(button_2)
-								.addGap(155))
+								.addGap(238))
 		);
 		gl_panel_1.setVerticalGroup(
 				gl_panel_1.createParallelGroup(Alignment.LEADING)
@@ -234,7 +234,7 @@ public class BookManageFrame extends JInternalFrame {
 								.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
 										.addComponent(button_2)
 										.addComponent(button_1))
-								.addContainerGap(29, Short.MAX_VALUE))
+								.addContainerGap(28, Short.MAX_VALUE))
 		);
 		panel_1.setLayout(gl_panel_1);
 
@@ -259,6 +259,16 @@ public class BookManageFrame extends JInternalFrame {
 				bookSearchActionPerformed(e);
 			}
 		});
+		button.setIcon(new ImageIcon(BookTypeManagerFrame.class.getResource("/images/search.png")));
+
+
+		JButton button_3 = new JButton("重置");
+		button_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				resetValue();
+			}
+		});
+
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 				gl_panel.createParallelGroup(Alignment.LEADING)
@@ -274,10 +284,12 @@ public class BookManageFrame extends JInternalFrame {
 								.addPreferredGap(ComponentPlacement.UNRELATED)
 								.addComponent(label_2)
 								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addComponent(s_bookType_Jcb, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+								.addComponent(s_bookType_Jcb, GroupLayout.PREFERRED_SIZE, 118, GroupLayout.PREFERRED_SIZE)
 								.addGap(18)
 								.addComponent(button, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-								.addContainerGap(15, Short.MAX_VALUE))
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(button_3, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+								.addContainerGap(46, Short.MAX_VALUE))
 		);
 		gl_panel.setVerticalGroup(
 				gl_panel.createParallelGroup(Alignment.LEADING)
@@ -285,13 +297,14 @@ public class BookManageFrame extends JInternalFrame {
 								.addContainerGap()
 								.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 										.addComponent(label)
-										.addComponent(button)
 										.addComponent(s_bookName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 										.addComponent(label_1)
 										.addComponent(s_author_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 										.addComponent(label_2)
-										.addComponent(s_bookType_Jcb, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addContainerGap(21, Short.MAX_VALUE))
+										.addComponent(s_bookType_Jcb, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addComponent(button)
+										.addComponent(button_3))
+								.addContainerGap(20, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
 
@@ -355,9 +368,9 @@ public class BookManageFrame extends JInternalFrame {
 			try {
 				con=dbUtil.getCon();
 				int deleteNum=bookDao.deleteBook(con, id);
-				if(deleteNum==1){
+				if(deleteNum==1) {
 					JOptionPane.showMessageDialog(null, "删除成功!");
-					this.resetValue();
+					this.resetUpdateValue();
 					this.fillTable(new Book());
 				}else{
 					JOptionPane.showMessageDialog(null, "删除失败!");
@@ -426,10 +439,10 @@ public class BookManageFrame extends JInternalFrame {
 		try {
 			con=dbUtil.getCon();
 			int addNum=bookDao.updateBook(con,book);
-			if(addNum==1){
+			if(addNum==1) {
 				JOptionPane.showMessageDialog(null, "图书修改成功！");
 				//清空表单
-				resetValue();
+				resetUpdateValue();
 				//填充表单
 				this.fillTable(new Book());
 			}else{
@@ -450,27 +463,41 @@ public class BookManageFrame extends JInternalFrame {
 	/**
 	 * 重置表单
 	 */
-	private void resetValue(){
+	private void resetUpdateValue() {
 		this.id_Txt.setText("");
 		this.bookName_Txt.setText("");
 		this.author_Txt.setText("");
 		this.price_Txt.setText("");
 		this.man_Jrb.setSelected(true);
 		this.bookDesc_Txt.setText("");
-		if(this.bookType_Jcb.getItemCount()>0){
+		if (this.bookType_Jcb.getItemCount() > 0) {
 			//默认设置选中第一项
 			this.bookType_Jcb.setSelectedIndex(0);
 		}
+		//重置时，重新查询
+		this.fillTable(new Book());
+	}
+
+	/**
+	 * 重置查询表单
+	 */
+	private void resetValue() {
+		this.s_bookName_Txt.setText("");
+		this.s_author_Txt.setText("");
+		//默认设置选中第一项
+		this.bookType_Jcb.setSelectedIndex(-1);
+		//重置时，重新查询
+		this.fillTable(new Book());
 	}
 
 	//表格行点击事件方法
 	private void bookTableMousePressed(MouseEvent met) {
 		//获取选中的行，返回行号
-		int row=this.bookTable.getSelectedRow();
+		int row = this.bookTable.getSelectedRow();
 		//获取第row行，第1列的值
-		this.id_Txt.setText((String)bookTable.getValueAt(row, 0));
+		this.id_Txt.setText((String) bookTable.getValueAt(row, 0));
 		//获取第row行，第2列的值
-		this.bookName_Txt.setText((String)bookTable.getValueAt(row, 1));
+		this.bookName_Txt.setText((String) bookTable.getValueAt(row, 1));
 		//获取第row行，第3列的值
 		this.author_Txt.setText((String)bookTable.getValueAt(row, 2));
 		//获取性别

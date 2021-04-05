@@ -66,7 +66,7 @@ public class LoginFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
-		JLabel label = new JLabel("图书管理系统");
+		JLabel label = new JLabel("欢迎访问图书管理系统");
 		label.setIcon(new ImageIcon(LoginFrame.class.getResource("/images/logo.png")));
 		label.setFont(new Font("宋体", Font.PLAIN, 24));
 
@@ -99,31 +99,54 @@ public class LoginFrame extends JFrame {
 		});
 		button_1.setIcon(new ImageIcon(LoginFrame.class.getResource("/images/reset.png")));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup().addGap(152)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addComponent(label)
-								.addGroup(gl_contentPane.createSequentialGroup().addComponent(lblNewLabel)
-										.addGap(6).addComponent(userName_txt, GroupLayout.PREFERRED_SIZE, 107,
-												GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_contentPane.createSequentialGroup().addComponent(button).addGap(85)
+		gl_contentPane.setHorizontalGroup(
+				gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+								.addContainerGap(129, Short.MAX_VALUE)
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addGroup(gl_contentPane.createSequentialGroup()
+												.addGap(47)
+												.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+														.addGroup(gl_contentPane.createSequentialGroup()
+																.addComponent(lblNewLabel)
+																.addGap(6)
+																.addComponent(userName_txt, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE))
+														.addGroup(gl_contentPane.createSequentialGroup()
+																.addComponent(label_1)
+																.addPreferredGap(ComponentPlacement.RELATED)
+																.addComponent(passWord_txt, GroupLayout.PREFERRED_SIZE, 106, GroupLayout.PREFERRED_SIZE))
+														.addGroup(gl_contentPane.createSequentialGroup()
+																.addComponent(button)
+																.addGap(85)
+																.addComponent(button_1)))
+												.addPreferredGap(ComponentPlacement.RELATED, 60, GroupLayout.PREFERRED_SIZE))
+										.addComponent(label, Alignment.TRAILING))
+								.addGap(103))
+		);
+		gl_contentPane.setVerticalGroup(
+				gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+								.addGap(43)
+								.addComponent(label)
+								.addGap(44)
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addGroup(gl_contentPane.createSequentialGroup()
+												.addGap(6)
+												.addComponent(lblNewLabel))
+										.addComponent(userName_txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addGroup(gl_contentPane.createSequentialGroup()
+												.addGap(41)
+												.addComponent(label_1))
+										.addGroup(gl_contentPane.createSequentialGroup()
+												.addGap(38)
+												.addComponent(passWord_txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+								.addGap(56)
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+										.addComponent(button)
 										.addComponent(button_1))
-								.addGroup(gl_contentPane.createSequentialGroup().addComponent(label_1)
-										.addPreferredGap(ComponentPlacement.RELATED).addComponent(passWord_txt,
-												GroupLayout.PREFERRED_SIZE, 106, GroupLayout.PREFERRED_SIZE)))
-						.addGap(127)));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup().addGap(47).addComponent(label).addGap(27)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup().addGap(6).addComponent(lblNewLabel))
-								.addComponent(userName_txt,
-										GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup().addGap(41).addComponent(label_1))
-								.addGroup(gl_contentPane.createSequentialGroup().addGap(38).addComponent(passWord_txt,
-										GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-						.addGap(58).addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(button)
-								.addComponent(button_1))));
+								.addContainerGap(62, Short.MAX_VALUE))
+		);
 		contentPane.setLayout(gl_contentPane);
 
 		//设置JFrame居中显示
@@ -149,17 +172,17 @@ public class LoginFrame extends JFrame {
 		}
 
 		// 进行数据库连接
-		User user=new User(userName,passWord);
+		User user = new User(userName, passWord, null);
 		Connection con = null;
 		try {
-			con=dbUtil.getCon();
+			con = dbUtil.getCon();
 			/**
 			 * 将从数据库中获取的用户信息保存在currentUser里面，
 			 * 若为null，则表示从数据库里获取的信息和从用户登陆界面获取的信息不一致，
 			 * 即登录失败
 			 */
-			User currentUser=userDao.login(con, user);
-			if(currentUser!=null){
+			User currentUser = userDao.login(con, user);
+			if (currentUser != null) {
 				//JOptionPane.showMessageDialog(null, "登录成功！");
 				//销毁"登录成功！"的窗口
 				dispose();

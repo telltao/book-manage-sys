@@ -28,7 +28,7 @@ public class BookTypeDao {
 	public ResultSet list(Connection con,BookType bookType) throws Exception {
 		//动态结合，用StringBuffer比较好
 		StringBuffer sb = new StringBuffer("select * from t_booktype where status = '0'");
-		//sql语句查询，当条件有多个时，就用and暂时替代where
+		//sql语句查询
 		if (StringUtil.isNotEmpty(bookType.getBookTypeName())) {
 			sb.append(" and bookTypeName like '%" + bookType.getBookTypeName() + "%'");
 		}

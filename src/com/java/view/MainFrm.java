@@ -35,7 +35,7 @@ public class MainFrm extends JFrame {
 	public MainFrm() {
 		setTitle("图书管理系统主界面");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 962, 796);
+		setBounds(100, 100, 1000, 910);
 
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -88,7 +88,7 @@ public class MainFrm extends JFrame {
 		menuItem_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				BookManageFrame book_Manage_InterFrm=new BookManageFrame();
+				BookManageFrame book_Manage_InterFrm = new BookManageFrame();
 				book_Manage_InterFrm.setVisible(true);
 				table.add(book_Manage_InterFrm);
 			}
@@ -96,18 +96,47 @@ public class MainFrm extends JFrame {
 		menuItem_4.setIcon(new ImageIcon(MainFrm.class.getResource("/images/edit.png")));
 		menu_1.add(menuItem_4);
 
+		JMenu menu2 = new JMenu("用户管理");
+		menu2.setIcon(new ImageIcon(MainFrm.class.getResource("/images/bookTypeManager.png")));
+		menuBar.add(menu2);
+
+		JMenuItem menuItem_5 = new JMenuItem("添加用户");
+		menuItem_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddUserFrame addUserFrame = new AddUserFrame();
+				addUserFrame.setVisible(true);
+				table.add(addUserFrame);
+			}
+		});
+		menuItem_5.setIcon(new ImageIcon(MainFrm.class.getResource("/images/add.png")));
+		menu2.add(menuItem_5);
+
+		JMenuItem menuItem_6 = new JMenuItem("用户列表");
+		menuItem_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				UserManageFrame userManageFrame = new UserManageFrame();
+				userManageFrame.setVisible(true);
+				table.add(userManageFrame);
+
+			}
+		});
+		menuItem_6.setIcon(new ImageIcon(MainFrm.class.getResource("/images/edit.png")));
+		menu2.add(menuItem_6);
+
 		//JMenuItem
 		JMenuItem menuItem = new JMenuItem("安全退出");
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int result=JOptionPane.showConfirmDialog(null, "确定要退出当前系统吗?");
-				if(result==0){
+				int result = JOptionPane.showConfirmDialog(null, "确定要退出当前系统吗?");
+				if (result == 0) {
 					dispose();
 				}
 			}
 		});
 		menuItem.setIcon(new ImageIcon(MainFrm.class.getResource("/images/exit.png")));
 		menuBar.add(menuItem);
+
 
 		//JMenuItem
 		JMenuItem mntmNewMenuItem = new JMenuItem("关于我们");

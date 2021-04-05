@@ -31,16 +31,16 @@ public class BookDao {
 	//图书查询方法
 	public ResultSet list(Connection con,Book book) throws Exception{
 		//动态结合，用StringBuffer比较好
-		StringBuffer sb=new StringBuffer("select * from t_book b,t_bookType bt where b.bookTypeId=bt.id");
-		//sql语句查询，当条件有多个时，就用and暂时替代where
-		if(StringUtil.isNotEmpty(book.getBookName())){
-			sb.append(" and b.bookName like '%"+book.getBookName()+"%'");
+		StringBuffer sb = new StringBuffer("select * from t_book b,t_bookType bt where b.bookTypeId=bt.id and b.status = '0'");
+		//sql语句查询
+		if (StringUtil.isNotEmpty(book.getBookName())) {
+			sb.append(" and b.bookName like '%" + book.getBookName() + "%'");
 		}
-		if(StringUtil.isNotEmpty(book.getAuthor())){
-			sb.append(" and b.author like '%"+book.getAuthor()+"%'");
+		if (StringUtil.isNotEmpty(book.getAuthor())) {
+			sb.append(" and b.author like '%" + book.getAuthor() + "%'");
 		}
-		if(book.getBookTypeId()!=null && book.getBookTypeId()!=-1){
-			sb.append(" and b.bookTypeId ="+book.getBookTypeId());
+		if (book.getBookTypeId() != null && book.getBookTypeId() != -1) {
+			sb.append(" and b.bookTypeId =" + book.getBookTypeId());
 		}
 		//执行
 		PreparedStatement pstmt=con.prepareStatement(sb.toString());

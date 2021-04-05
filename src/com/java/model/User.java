@@ -14,16 +14,28 @@ public class User {
 	// 密码
 	private String passWord;
 
+	private String status;
+
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(String userName, String passWord) {
+	public User(String userName, String passWord, String status) {
 		super();
 		this.userName = userName;
 		this.passWord = passWord;
+		this.status = status;
 	}
+
+	public User(int id, String userName, String passWord, String status) {
+		super();
+		this.id = id;
+		this.userName = userName;
+		this.passWord = passWord;
+		this.status = status;
+	}
+
 
 	public int getId() {
 		return id;
@@ -49,4 +61,11 @@ public class User {
 		this.passWord = passWord;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 }
