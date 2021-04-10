@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 10/03/2021 21:04:06
+ Date: 10/04/2021 23:15:32
 */
 
 SET NAMES utf8mb4;
@@ -41,6 +41,27 @@ INSERT INTO `content` VALUES (1, 'mysql 问题请教', 'mysql 中对表数据的
 COMMIT;
 
 -- ----------------------------
+-- Table structure for t_about_sys
+-- ----------------------------
+DROP TABLE IF EXISTS `t_about_sys`;
+CREATE TABLE `t_about_sys` (
+  `id` int NOT NULL AUTO_INCREMENT COMMENT 'id 主键',
+  `content` varchar(500) NOT NULL COMMENT '关于系统',
+  `author` varchar(50) DEFAULT NULL COMMENT '管理员名称',
+  `version` varchar(50) DEFAULT NULL COMMENT '版本',
+  `email` varchar(20) DEFAULT NULL COMMENT '联系方式',
+  `status` varchar(2) DEFAULT NULL COMMENT '状态：0正常，1已删除',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_about_sys
+-- ----------------------------
+BEGIN;
+INSERT INTO `t_about_sys` VALUES (1, '一套清晰的透明的图书管理系统', '武大虎', '1.0', 'admin@qq.com', '0');
+COMMIT;
+
+-- ----------------------------
 -- Table structure for t_book
 -- ----------------------------
 DROP TABLE IF EXISTS `t_book`;
@@ -53,16 +74,19 @@ CREATE TABLE `t_book` (
   `bookTypeId` int NOT NULL COMMENT '图书类别Id',
   `bookTypeName` varchar(50) NOT NULL COMMENT '图书类别名称',
   `bookDesc` varchar(500) DEFAULT NULL COMMENT '备注',
+  `status` varchar(2) DEFAULT NULL COMMENT '状态：0正常，1已删除',
+  `createTime` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_book
 -- ----------------------------
 BEGIN;
-INSERT INTO `t_book` VALUES (1, '唐诗三百首', '刘小涛', '男', 29, 1, '古代的诗', '赶紧买');
-INSERT INTO `t_book` VALUES (2, '数据结构', '武小娟', '女', 59, 2, '计算机相关的图书', '买定离手');
-INSERT INTO `t_book` VALUES (3, '漫威世界', '刘小涛', '男', 39, 3, '小孩子看的漫画', '赶紧买');
+INSERT INTO `t_book` VALUES (1, '唐诗三百首', '刘小涛', '男', 29, 1, '古代的诗', '赶紧买', '0', '2021-04-04 19:12:17');
+INSERT INTO `t_book` VALUES (2, '数据结构', '武小娟', '女', 59, 2, '计算机相关的图书', '买定离手111', '0', '2021-04-04 19:12:17');
+INSERT INTO `t_book` VALUES (3, '漫威世界', '刘小涛', '男', 39, 1, '小孩子看的漫画', '赶紧买qweqwewq', '0', '2021-04-04 19:12:17');
+INSERT INTO `t_book` VALUES (4, 'qwe', 'qwe', '男', 11, 3, '漫画', 'qwe', '1', '2021-04-04 20:25:14');
 COMMIT;
 
 -- ----------------------------
@@ -73,49 +97,83 @@ CREATE TABLE `t_booktype` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id 主键',
   `bookTypeName` varchar(50) DEFAULT NULL COMMENT '图书类型名称',
   `bookTypeDesc` varchar(100) DEFAULT NULL COMMENT '图示类型描述',
+  `status` varchar(2) DEFAULT NULL COMMENT '状态：0正常，1已删除',
+  `createTime` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_booktype
 -- ----------------------------
 BEGIN;
-INSERT INTO `t_booktype` VALUES (1, '古诗', '古代的诗');
-INSERT INTO `t_booktype` VALUES (2, '计算机', '计算机相关的图书');
-INSERT INTO `t_booktype` VALUES (3, '漫画', '小孩子看的漫画');
+INSERT INTO `t_booktype` VALUES (1, '古诗', '古代的诗', '0', '2021-04-04 19:12:17');
+INSERT INTO `t_booktype` VALUES (2, '计算机', '计算机相关的图书', '0', '2021-04-04 19:12:17');
+INSERT INTO `t_booktype` VALUES (3, '漫画', '小孩子看的漫画', '0', '2021-04-04 19:12:17');
+INSERT INTO `t_booktype` VALUES (4, '教科书', '这个是教科书 武娟写的', '0', '2021-04-04 19:12:17');
+INSERT INTO `t_booktype` VALUES (5, 'q\'we', 'qweqwe', '0', '2021-04-04 19:12:17');
+INSERT INTO `t_booktype` VALUES (6, '12312q\'we', '3我23', '1', '2021-04-04 19:12:17');
+INSERT INTO `t_booktype` VALUES (7, 'qwe11q\'we', 'qweqwe', NULL, '2021-04-04 19:12:17');
+INSERT INTO `t_booktype` VALUES (8, '测试类别', '测试类别测试类别测试类别', '1', '2021-04-04 20:02:19');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for t_borrow_book
+-- ----------------------------
+DROP TABLE IF EXISTS `t_borrow_book`;
+CREATE TABLE `t_borrow_book` (
+  `id` int NOT NULL AUTO_INCREMENT COMMENT 'id 主键',
+  `userId` varchar(500) NOT NULL COMMENT '借阅用户id',
+  `userName` varchar(50) NOT NULL COMMENT '借阅用户名称',
+  `borrowDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '借阅日期',
+  `dueDate` datetime DEFAULT NULL COMMENT '还书日期',
+  `status` varchar(2) DEFAULT '0' COMMENT '状态：0借阅中，1已丢失 2已还书',
+  `borrowStatus` varchar(20) DEFAULT '0' COMMENT '还书状态： 0正常，1污损 2缺页',
+  `penalty` decimal(10,2) DEFAULT '0.00' COMMENT '罚金',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_borrow_book
+-- ----------------------------
+BEGIN;
+INSERT INTO `t_borrow_book` VALUES (10, '1', 'zhangsan', '2021-04-10 23:05:36', '2021-04-17 23:05:25', '0', '0', 0.00);
 COMMIT;
 
 -- ----------------------------
 -- Table structure for t_user
-
 -- ----------------------------
 DROP TABLE IF EXISTS `t_user`;
 CREATE TABLE `t_user` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id 主键',
   `userName` varchar(50) NOT NULL COMMENT '用户名',
   `passWord` varchar(50) NOT NULL COMMENT '密码',
+  `status` varchar(2) DEFAULT NULL COMMENT '状态：0正常，1已删除',
+  `cashPledge` decimal(10,0) NOT NULL COMMENT '押金，默认每人押金为50元',
+  `createTime` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_user
 -- ----------------------------
 BEGIN;
-INSERT INTO `t_user` VALUES (1, 'admin', '111');
-INSERT INTO `t_user` VALUES (2, 'test', '123');
-INSERT INTO `t_user` VALUES (3, 'demo', '123');
+INSERT INTO `t_user` VALUES (1, 'zhangsan', '111', '0', 50, '2021-04-04 19:11:52');
+INSERT INTO `t_user` VALUES (2, 'test', '123', '0', 50, '2021-04-04 19:11:52');
+INSERT INTO `t_user` VALUES (3, 'demo', '123', '0', 50, '2021-04-04 19:11:52');
+INSERT INTO `t_user` VALUES (4, 'zhangsan1', '111', '2', 50, '2021-04-05 17:56:13');
+INSERT INTO `t_user` VALUES (5, 'qwe1', '2qwe', '2', 50, '2021-04-05 18:17:20');
 COMMIT;
 
+-- ----------------------------
+-- Procedure structure for sp_update_sex
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `sp_update_sex`;
+delimiter ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_update_sex`(in cid int,in csex char(1))
+begin
+	 update content set sex=csex  where content_id=cid;
+	end;
+;;
+delimiter ;
 
--- 创建关于系统表
-CREATE TABLE `t_about_sys` (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT 'id 主键',
-  `content` varchar(500) NOT NULL COMMENT '关于系统',
-  `version` varchar(50)  COMMENT '版本',
-	`email` varchar(20) COMMENT'联系方式',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
-
-
-insert into t_about_sys(`content`,`version`,`email`) values('图书管理系统是一套以学校借阅室为基础而打造的一套图书管理借阅系统','1.0','admin@qq.com');
+SET FOREIGN_KEY_CHECKS = 1;
