@@ -1,5 +1,7 @@
 package com.java.util;
 
+import java.util.regex.Pattern;
+
 public class StringUtil {
 
 	/**
@@ -27,4 +29,16 @@ public class StringUtil {
 			return false;
 		}
 	}
+
+	/**
+	 * 校验字符是否为正整数
+	 *
+	 * @param string
+	 * @return
+	 */
+	public static boolean isNumbers(String string) {
+		Pattern pattern = Pattern.compile("[0-9]*");
+		return pattern.matcher(string).matches();
+	}
+
 }

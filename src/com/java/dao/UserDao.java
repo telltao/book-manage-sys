@@ -47,10 +47,13 @@ public class UserDao {
 	//用户添加方法
 	public int addBook(Connection con, User user) throws Exception {
 
-		String sql = "INSERT INTO t_user(userName, passWord, status, createTime) VALUES (?,?,'0',sysdate())";
+		String sql = "INSERT INTO t_user(loginName,userName, passWord, status, createTime,cashPledgeStauts,cashPledge,penalty) VALUES (?,?,?,'0',sysdate(),?,?,'0')";
 		PreparedStatement pstmt = con.prepareStatement(sql);
-		pstmt.setString(1, user.getUserName());
-		pstmt.setString(2, user.getPassWord());
+		pstmt.setString(1, user.getLoginName());
+		pstmt.setString(2, user.getUserName());
+		pstmt.setString(3, user.getPassWord());
+		pstmt.setString(4, user.getCashPledgeStauts());
+		pstmt.setInt(5, user.getCashPledge());
 		return pstmt.executeUpdate();
 	}
 
@@ -58,6 +61,10 @@ public class UserDao {
 	public ResultSet list(Connection con, User user) throws Exception {
 		//动态结合，用StringBuffer比较好
 		StringBuffer sb = new StringBuffer("select * from t_user  where 1=1  and status != '2'");
+		//sql语句查询
+		if (StringUtil.isNotEmpty(user.getLoginName())) {
+			sb.append(" and loginName like '%" + user.getLoginName() + "%'");
+		}
 		//sql语句查询
 		if (StringUtil.isNotEmpty(user.getUserName())) {
 			sb.append(" and userName like '%" + user.getUserName() + "%'");
@@ -82,12 +89,16 @@ public class UserDao {
 
 	//图书修改方法
 	public int updateUser(Connection con, User user) throws Exception {
-		String sql = "update t_user set userName=?,passWord=?,status=? where id=?";
+		String sql = "update t_user set loginName=?,userName=?,passWord=?,status=?,cashPledge=?,cashPledgeStauts=?,penalty =? where id=?";
 		PreparedStatement pstmt = con.prepareStatement(sql);
-		pstmt.setString(1, user.getUserName());
-		pstmt.setString(2, user.getPassWord());
-		pstmt.setString(3, user.getStatus());
-		pstmt.setInt(4, user.getId());
+		pstmt.setString(1, user.getLoginName());
+		pstmt.setString(2, user.getUserName());
+		pstmt.setString(3, user.getPassWord());
+		pstmt.setString(4, user.getStatus());
+		pstmt.setInt(5, user.getCashPledge());
+		pstmt.setString(6, user.getCashPledgeStauts());
+		pstmt.setInt(7, user.getPenalty());
+		pstmt.setInt(8, user.getId());
 		return pstmt.executeUpdate();
 	}
 }

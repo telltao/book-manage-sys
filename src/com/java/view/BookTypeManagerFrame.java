@@ -288,21 +288,21 @@ public class BookTypeManagerFrame extends JInternalFrame {
 		String bookTypeName=bookTypeName_Txt.getText();
 		String bookTypeDesc=bookTypeDesc_Txt.getText();
 		//判断id是否为空，若为空，则不能修改
-		if(StringUtil.isEmpty(id)){
+		if (StringUtil.isEmpty(id)) {
 			JOptionPane.showMessageDialog(null, "请选择要修改的记录!");
 			return;
 		}
-		if(StringUtil.isEmpty(bookTypeName)){
+		if (StringUtil.isEmpty(bookTypeName)) {
 			JOptionPane.showMessageDialog(null, "图书类别名称不能为空!");
 			return;
 		}
 		//获取到信息，进行实例化
-		BookType bookType=new BookType(Integer.parseInt(id),bookTypeName,bookTypeDesc);
-		Connection con=null;
+		BookType bookType = new BookType(Integer.parseInt(id), bookTypeName, bookTypeDesc, null);
+		Connection con = null;
 		try {
-			con=dbUtil.getCon();
-			int modifyNum=bookTypeDao.update_Book(con, bookType);
-			if(modifyNum==1) {
+			con = dbUtil.getCon();
+			int modifyNum = bookTypeDao.update_Book(con, bookType);
+			if (modifyNum == 1) {
 				JOptionPane.showMessageDialog(null, "修改成功!");
 				//重置表单
 				this.resetUpdateValue();

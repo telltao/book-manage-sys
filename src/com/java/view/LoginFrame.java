@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Date;
 
 @SuppressWarnings("serial")
 public class LoginFrame extends JFrame {
@@ -173,6 +174,7 @@ public class LoginFrame extends JFrame {
 
 		// 进行数据库连接
 		User user = new User(userName, passWord, null);
+
 		Connection con = null;
 		try {
 			con = dbUtil.getCon();
