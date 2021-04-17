@@ -47,13 +47,14 @@ public class UserDao {
 	//用户添加方法
 	public int addBook(Connection con, User user) throws Exception {
 
-		String sql = "INSERT INTO t_user(loginName,userName, passWord, status, createTime,cashPledgeStauts,cashPledge,penalty) VALUES (?,?,?,'0',sysdate(),?,?,'0')";
+		String sql = "INSERT INTO t_user(loginName,userName,phone, passWord, status, createTime,cashPledgeStauts,cashPledge,penalty) VALUES (?,?,?,?,'0',sysdate(),?,?,'0')";
 		PreparedStatement pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, user.getLoginName());
 		pstmt.setString(2, user.getUserName());
-		pstmt.setString(3, user.getPassWord());
-		pstmt.setString(4, user.getCashPledgeStauts());
-		pstmt.setInt(5, user.getCashPledge());
+		pstmt.setString(3, user.getPhone());
+		pstmt.setString(4, user.getPassWord());
+		pstmt.setString(5, user.getCashPledgeStauts());
+		pstmt.setInt(6, user.getCashPledge());
 		return pstmt.executeUpdate();
 	}
 
@@ -87,13 +88,13 @@ public class UserDao {
 		return pstmt.executeUpdate();
 	}
 
-	//图书修改方法
+	//用户修改方法
 	public int updateUser(Connection con, User user) throws Exception {
-		String sql = "update t_user set loginName=?,userName=?,passWord=?,status=?,cashPledge=?,cashPledgeStauts=?,penalty =? where id=?";
+		String sql = "update t_user set loginName=?,userName=?,phone=?,status=?,cashPledge=?,cashPledgeStauts=?,penalty =? where id=?";
 		PreparedStatement pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, user.getLoginName());
 		pstmt.setString(2, user.getUserName());
-		pstmt.setString(3, user.getPassWord());
+		pstmt.setString(3, user.getPhone());
 		pstmt.setString(4, user.getStatus());
 		pstmt.setInt(5, user.getCashPledge());
 		pstmt.setString(6, user.getCashPledgeStauts());
@@ -101,4 +102,13 @@ public class UserDao {
 		pstmt.setInt(8, user.getId());
 		return pstmt.executeUpdate();
 	}
+
+	//根据Id重置密码方法 将密码重置为 111111
+	public int updateUserPassword(Connection con, Integer id) throws Exception {
+		String sql = "update t_user set passWord = '111111'  where id=?";
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, id);
+		return pstmt.executeUpdate();
+	}
+
 }

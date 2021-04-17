@@ -35,12 +35,12 @@ public class UserManageFrame extends JInternalFrame {
 
 	private DbUtil dbUtil = new DbUtil();
 	private UserDao userDao = new UserDao();
-	private JTextField loginName_Txt;
 	private JTextField userName_Txt;
-	private JTextField passWord_Txt;
+	private JTextField phone_Txt;
 	private JTextField penalty;
 	private JTextField s_userName_Txt;
 	private JTextField id_Txt;
+	private JTextField loginName_Txt;
 
 	/**
 	 * Launch the application.
@@ -73,8 +73,8 @@ public class UserManageFrame extends JInternalFrame {
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(null, "搜索条件", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new TitledBorder(null, "表单操作", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		JPanel restartPhone = new JPanel();
+		restartPhone.setBorder(new TitledBorder(null, "表单操作", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 				groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -82,7 +82,7 @@ public class UserManageFrame extends JInternalFrame {
 								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 										.addGroup(groupLayout.createSequentialGroup()
 												.addContainerGap()
-												.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 652, GroupLayout.PREFERRED_SIZE))
+												.addComponent(restartPhone, GroupLayout.PREFERRED_SIZE, 652, GroupLayout.PREFERRED_SIZE))
 										.addGroup(groupLayout.createSequentialGroup()
 												.addGap(37)
 												.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -98,25 +98,22 @@ public class UserManageFrame extends JInternalFrame {
 								.addGap(18)
 								.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 262, GroupLayout.PREFERRED_SIZE)
 								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 285, GroupLayout.PREFERRED_SIZE)
+								.addComponent(restartPhone, GroupLayout.PREFERRED_SIZE, 285, GroupLayout.PREFERRED_SIZE)
 								.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 
-		JLabel label_3 = new JLabel("登录名:");
-
-		loginName_Txt = new JTextField();
-		loginName_Txt.setEditable(false);
-		loginName_Txt.setColumns(10);
-
-		JLabel label_4 = new JLabel("用户名:");
+		JLabel label_3 = new JLabel("用户名:");
 
 		userName_Txt = new JTextField();
+		userName_Txt.setEditable(false);
 		userName_Txt.setColumns(10);
 
-		JLabel label_6 = new JLabel("用户密码:");
+		JLabel label_4 = new JLabel("手机号:");
 
-		passWord_Txt = new JTextField();
-		passWord_Txt.setColumns(10);
+		phone_Txt = new JTextField();
+		phone_Txt.setColumns(10);
+
+		JLabel label_6 = new JLabel("用户密码:");
 
 		JLabel label_8 = new JLabel("用户状态:");
 
@@ -161,92 +158,109 @@ public class UserManageFrame extends JInternalFrame {
 		id_Txt = new JTextField();
 		id_Txt.setEditable(false);
 		id_Txt.setColumns(10);
-		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
-		gl_panel_1.setHorizontalGroup(
-				gl_panel_1.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel_1.createSequentialGroup()
+
+		JButton button_1_1 = new JButton("重置密码");
+
+		JLabel label_4_1 = new JLabel("登录名:");
+
+		loginName_Txt = new JTextField();
+		loginName_Txt.setColumns(10);
+		GroupLayout gl_restartPhone = new GroupLayout(restartPhone);
+		gl_restartPhone.setHorizontalGroup(
+				gl_restartPhone.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_restartPhone.createSequentialGroup()
 								.addGap(78)
-								.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
-										.addGroup(gl_panel_1.createSequentialGroup()
+								.addGroup(gl_restartPhone.createParallelGroup(Alignment.TRAILING)
+										.addGroup(gl_restartPhone.createSequentialGroup()
 												.addPreferredGap(ComponentPlacement.RELATED, 26, GroupLayout.PREFERRED_SIZE)
 												.addComponent(label_3_2, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
 												.addGap(18)
 												.addComponent(id_Txt, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
-										.addGroup(gl_panel_1.createSequentialGroup()
-												.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+										.addGroup(gl_restartPhone.createSequentialGroup()
+												.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
 														.addComponent(label_6_1)
-														.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
+														.addGroup(gl_restartPhone.createParallelGroup(Alignment.TRAILING)
 																.addComponent(label_3)
 																.addComponent(label_6))
 														.addComponent(label_3_1, GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE))
 												.addPreferredGap(ComponentPlacement.RELATED)
-												.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING, false)
-														.addComponent(s_cashPledgeStatus_Jcb, Alignment.LEADING, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-														.addComponent(loginName_Txt, Alignment.LEADING)
-														.addComponent(passWord_Txt, Alignment.LEADING)
-														.addComponent(penalty, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
-								.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-										.addGroup(gl_panel_1.createSequentialGroup()
-												.addGap(39)
-												.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-														.addComponent(label_4)
-														.addComponent(label_8)
-														.addComponent(label_8_1, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE))
+												.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
+														.addComponent(button_1_1, GroupLayout.PREFERRED_SIZE, 87, GroupLayout.PREFERRED_SIZE)
+														.addGroup(gl_restartPhone.createParallelGroup(Alignment.TRAILING, false)
+																.addComponent(s_cashPledgeStatus_Jcb, Alignment.LEADING, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+																.addComponent(userName_Txt, Alignment.LEADING)
+																.addComponent(penalty, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))))
+								.addGroup(gl_restartPhone.createParallelGroup(Alignment.TRAILING)
+										.addGroup(gl_restartPhone.createSequentialGroup()
 												.addPreferredGap(ComponentPlacement.RELATED)
-												.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-														.addComponent(s_cashPledge_Jcb, 0, 158, Short.MAX_VALUE)
-														.addComponent(s_status_Txt_Update, 0, 158, Short.MAX_VALUE)
-														.addComponent(userName_Txt, GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)))
-										.addGroup(gl_panel_1.createSequentialGroup()
-												.addPreferredGap(ComponentPlacement.RELATED)
-												.addComponent(label_3_1_1, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
-												.addPreferredGap(ComponentPlacement.RELATED, 140, GroupLayout.PREFERRED_SIZE)))
+												.addComponent(label_4_1, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+												.addGap(31)
+												.addComponent(loginName_Txt, GroupLayout.PREFERRED_SIZE, 158, GroupLayout.PREFERRED_SIZE))
+										.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
+												.addGroup(gl_restartPhone.createSequentialGroup()
+														.addGap(39)
+														.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
+																.addComponent(label_4)
+																.addComponent(label_8)
+																.addComponent(label_8_1, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE))
+														.addPreferredGap(ComponentPlacement.RELATED)
+														.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
+																.addComponent(s_cashPledge_Jcb, 0, 158, Short.MAX_VALUE)
+																.addComponent(s_status_Txt_Update, 0, 158, Short.MAX_VALUE)
+																.addComponent(phone_Txt, GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)))
+												.addGroup(gl_restartPhone.createSequentialGroup()
+														.addPreferredGap(ComponentPlacement.RELATED)
+														.addComponent(label_3_1_1, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
+														.addPreferredGap(ComponentPlacement.RELATED, 140, GroupLayout.PREFERRED_SIZE))))
 								.addGap(87))
-						.addGroup(gl_panel_1.createSequentialGroup()
+						.addGroup(gl_restartPhone.createSequentialGroup()
 								.addGap(201)
 								.addComponent(button_1)
 								.addGap(122)
 								.addComponent(button_2)
 								.addContainerGap(201, Short.MAX_VALUE))
 		);
-		gl_panel_1.setVerticalGroup(
-				gl_panel_1.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_panel_1.createSequentialGroup()
-								.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-										.addGroup(gl_panel_1.createSequentialGroup()
+		gl_restartPhone.setVerticalGroup(
+				gl_restartPhone.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_restartPhone.createSequentialGroup()
+								.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
+										.addGroup(gl_restartPhone.createSequentialGroup()
 												.addGap(5)
 												.addComponent(label_3_2))
-										.addComponent(id_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGap(15)
-								.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-										.addComponent(loginName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(label_4)
+										.addComponent(id_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addGroup(gl_restartPhone.createSequentialGroup()
+												.addGap(5)
+												.addComponent(label_4_1))
+										.addComponent(loginName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
 										.addComponent(userName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addComponent(label_4)
+										.addComponent(phone_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 										.addComponent(label_3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 								.addGap(18)
-								.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+								.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
 										.addComponent(label_8)
 										.addComponent(label_6)
-										.addComponent(passWord_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(s_status_Txt_Update, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+										.addComponent(s_status_Txt_Update, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addComponent(button_1_1, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE))
 								.addGap(18)
-								.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+								.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
 										.addComponent(label_8_1)
 										.addComponent(s_cashPledge_Jcb, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 										.addComponent(s_cashPledgeStatus_Jcb, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 										.addComponent(label_6_1))
 								.addGap(18)
-								.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+								.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
 										.addComponent(label_3_1)
 										.addComponent(penalty, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 										.addComponent(label_3_1_1))
 								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+								.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
 										.addComponent(button_1)
 										.addComponent(button_2))
 								.addGap(55))
 		);
-		panel_1.setLayout(gl_panel_1);
+		restartPhone.setLayout(gl_restartPhone);
 
 		JLabel label = new JLabel("登录名:");
 
@@ -332,14 +346,11 @@ public class UserManageFrame extends JInternalFrame {
 				new Object[][]{
 				},
 				new String[]{
-						"编号", "登录名", "用户名", "状态", "创建时间", "押金状态", "押金金额(元)", "罚款金额"
+						"编号", "登录名", "用户名", "手机号", "状态", "创建时间", "押金状态", "押金金额(元)", "罚款金额"
 				}
-				/*new String[]{
-						"编号","登录名", "用户名", "状态","押金(元)","创建时间","押金状态","罚款金额"
-				}*/
 		) {
 			boolean[] columnEditables = new boolean[]{
-					false, false, false, false, false, false, false, false, false
+					false, false, false, false, false, false, false, false, false, false
 			};
 
 			public boolean isCellEditable(int row, int column) {
@@ -348,13 +359,14 @@ public class UserManageFrame extends JInternalFrame {
 
 		});
 		userTable.getColumnModel().getColumn(0).setPreferredWidth(30);
-		userTable.getColumnModel().getColumn(1).setPreferredWidth(97);
-		userTable.getColumnModel().getColumn(2).setPreferredWidth(93);
-		userTable.getColumnModel().getColumn(3).setPreferredWidth(60);
-		userTable.getColumnModel().getColumn(4).setPreferredWidth(120);
-		userTable.getColumnModel().getColumn(5).setPreferredWidth(60);
-		userTable.getColumnModel().getColumn(6).setPreferredWidth(50);
+		userTable.getColumnModel().getColumn(1).setPreferredWidth(60);
+		userTable.getColumnModel().getColumn(2).setPreferredWidth(120);
+		userTable.getColumnModel().getColumn(3).setPreferredWidth(93);
+		userTable.getColumnModel().getColumn(4).setPreferredWidth(60);
+		userTable.getColumnModel().getColumn(5).setPreferredWidth(120);
+		userTable.getColumnModel().getColumn(6).setPreferredWidth(60);
 		userTable.getColumnModel().getColumn(7).setPreferredWidth(50);
+		userTable.getColumnModel().getColumn(8).setPreferredWidth(50);
 		scrollPane.setViewportView(userTable);
 		getContentPane().setLayout(groupLayout);
 
@@ -375,7 +387,7 @@ public class UserManageFrame extends JInternalFrame {
 	 */
 	private void userDeleteActionPerformed(ActionEvent evt) {
 		//获取界面信息
-		String id = loginName_Txt.getText();
+		String id = userName_Txt.getText();
 		//判断id是否为空，若为空，则不能删除
 		if (StringUtil.isEmpty(id)) {
 			JOptionPane.showMessageDialog(null, "请选择要删除的记录!");
@@ -417,7 +429,8 @@ public class UserManageFrame extends JInternalFrame {
 		String id = this.id_Txt.getText();
 		String loginName = this.loginName_Txt.getText();
 		String userName = this.userName_Txt.getText();
-		String passWord = this.passWord_Txt.getText();
+//		String passWord = this.passWord_Txt.getText();
+		String phone = this.phone_Txt.getText();
 		//状态
 		String status = this.s_status_Txt_Update.getSelectedItem().toString();
 		//是否缴纳押金    获取选中的索引下标 -1 为未选中 0为 请选择 1为已缴纳 2为未缴纳
@@ -448,8 +461,12 @@ public class UserManageFrame extends JInternalFrame {
 			JOptionPane.showMessageDialog(null, "用户名不能为空！");
 			return;
 		}
-		if (StringUtil.isEmpty(passWord)) {
+		/*if (StringUtil.isEmpty(passWord)) {
 			JOptionPane.showMessageDialog(null, "用户密码不能为空！");
+			return;
+		}*/
+		if (StringUtil.isEmpty(phone)) {
+			JOptionPane.showMessageDialog(null, "手机号码不能为空！");
 			return;
 		}
 		if (StringUtil.isEmpty(status)) {
@@ -491,7 +508,7 @@ public class UserManageFrame extends JInternalFrame {
 			}
 		}
 
-		User user = new User(Integer.valueOf(id), loginName, userName, passWord, status, newCashPledge,
+		User user = new User(Integer.valueOf(id), loginName, userName, phone, null, status, newCashPledge,
 				null, cashPledgeStatus.toString(), Integer.valueOf(penalty));
 
 		//进行添加操作，数据库连接
@@ -547,9 +564,9 @@ public class UserManageFrame extends JInternalFrame {
 	 * 重置修改的表单
 	 */
 	private void resetUpdateValue() {
-		this.loginName_Txt.setText("");
 		this.userName_Txt.setText("");
-		this.passWord_Txt.setText("");
+		this.phone_Txt.setText("");
+//		this.passWord_Txt.setText("");
 		this.s_status_Txt_Update.removeAllItems();
 		if (this.s_status_Txt.getItemCount() > 0) {
 			//默认设置选中第一项
@@ -566,11 +583,14 @@ public class UserManageFrame extends JInternalFrame {
 		int row = this.userTable.getSelectedRow();
 		//获取第row行，第1列的值
 		this.id_Txt.setText((String) userTable.getValueAt(row, 0));
+		//获取第row行，第2列的值
 		this.loginName_Txt.setText((String) userTable.getValueAt(row, 1));
 		//获取第row行，第3列的值
 		this.userName_Txt.setText((String) userTable.getValueAt(row, 2));
+		//获取第row行，第4列的值
+		this.phone_Txt.setText((String) userTable.getValueAt(row, 3));
 		//在此处给修改处的下拉框赋值
-		String select_status = (String) userTable.getValueAt(row, 3);
+		String select_status = (String) userTable.getValueAt(row, 4);
 		//先删除再重置
 		this.s_status_Txt_Update.removeAllItems();
 		if ("启用".equals(select_status)) {
@@ -582,7 +602,7 @@ public class UserManageFrame extends JInternalFrame {
 		}
 
 		//押金状态  0未交押金 1已交押金 2已退押金
-		String cashPledgeStatus = userTable.getValueAt(row, 5).toString();
+		String cashPledgeStatus = userTable.getValueAt(row, 6).toString();
 		if ("已交押金".equals(cashPledgeStatus)) {
 			this.s_cashPledgeStatus_Jcb.setSelectedIndex(1);
 		} else if ("已退押金".equals(cashPledgeStatus)) {
@@ -591,7 +611,7 @@ public class UserManageFrame extends JInternalFrame {
 			this.s_cashPledgeStatus_Jcb.setSelectedIndex(0);
 		}
 		//押金金额
-		String cashPledge = userTable.getValueAt(row, 6).toString();
+		String cashPledge = userTable.getValueAt(row, 7).toString();
 		if ("20".equals(cashPledge)) {
 			this.s_cashPledge_Jcb.setSelectedIndex(1);
 		} else if ("30".equals(cashPledge)) {
@@ -602,7 +622,7 @@ public class UserManageFrame extends JInternalFrame {
 			this.s_cashPledge_Jcb.setSelectedIndex(0);
 		}
 		//罚款金额
-		this.penalty.setText(userTable.getValueAt(row, 7).toString());
+		this.penalty.setText(userTable.getValueAt(row, 8).toString());
 	}
 
 	/**
@@ -622,7 +642,7 @@ public class UserManageFrame extends JInternalFrame {
 		} else {
 			status = "";
 		}
-		User user = new User(0, loginName, userName, null, status, 0, null, null, 0);
+		User user = new User(0, loginName, userName, null, null, status, 0, null, null, 0);
 
 		this.fillTable(user);
 	}
@@ -651,6 +671,8 @@ public class UserManageFrame extends JInternalFrame {
 				v.add(rs.getString("loginName"));
 				//用户名
 				v.add(rs.getString("userName"));
+				//手机号码
+				v.add(rs.getString("phone"));
 				//状态
 				if (rs.getString("status").equals("0")) {
 					v.add("启用");

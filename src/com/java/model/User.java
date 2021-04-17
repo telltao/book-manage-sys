@@ -17,6 +17,8 @@ public class User {
 	private String loginName;
 	// 用户名
 	private String userName;
+	// 手机号码
+	private String phone;
 	// 密码
 	private String passWord;
 	//状态：0正常，1已删除
@@ -42,10 +44,11 @@ public class User {
 		this.status = status;
 	}
 
-	public User(Integer id, String loginName, String userName, String passWord, String status, Integer cashPledge, Date createTime, String cashPledgeStauts, Integer penalty) {
+	public User(Integer id, String loginName, String userName, String phone, String passWord, String status, Integer cashPledge, Date createTime, String cashPledgeStauts, Integer penalty) {
 		this.id = id;
 		this.loginName = loginName;
 		this.userName = userName;
+		this.phone = phone;
 		this.passWord = passWord;
 		this.status = status;
 		this.cashPledge = cashPledge;
@@ -124,5 +127,13 @@ public class User {
 
 	public void setLoginName(String loginName) {
 		this.loginName = loginName;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 }

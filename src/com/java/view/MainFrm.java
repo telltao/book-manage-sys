@@ -124,6 +124,35 @@ public class MainFrm extends JFrame {
 		menuItem_6.setIcon(new ImageIcon(MainFrm.class.getResource("/images/edit.png")));
 		menu2.add(menuItem_6);
 
+		JMenu menu4 = new JMenu("借阅管理");
+		menu4.setIcon(new ImageIcon(MainFrm.class.getResource("/images/bookTypeManager.png")));
+		menuBar.add(menu4);
+
+		JMenuItem menuItem_7 = new JMenuItem("借阅图书");
+		menuItem_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddBorrowBookFrame addUserFrame = new AddBorrowBookFrame();
+				addUserFrame.setVisible(true);
+				table.add(addUserFrame);
+			}
+		});
+		menuItem_7.setIcon(new ImageIcon(MainFrm.class.getResource("/images/add.png")));
+		menu4.add(menuItem_7);
+
+		JMenuItem menuItem_8 = new JMenuItem("借阅列表");
+		menuItem_8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				UserManageFrame userManageFrame = new UserManageFrame();
+				userManageFrame.setVisible(true);
+				table.add(userManageFrame);
+
+			}
+		});
+		menuItem_8.setIcon(new ImageIcon(MainFrm.class.getResource("/images/edit.png")));
+		menu4.add(menuItem_8);
+
+
 		//JMenuItem
 		JMenuItem menuItem = new JMenuItem("安全退出");
 		menuItem.addActionListener(new ActionListener() {
