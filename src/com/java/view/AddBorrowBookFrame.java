@@ -18,7 +18,7 @@ import java.util.Date;
 public class AddBorrowBookFrame extends JInternalFrame {
 	private JTextField loginName_Txt;
 	private JTextField passWord_Txt;
-	JComboBox s_cashPledge_Jcb = new JComboBox();
+	JComboBox s_bookDate_Jcb = new JComboBox();
 
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 
@@ -87,7 +87,7 @@ public class AddBorrowBookFrame extends JInternalFrame {
 
 		JLabel label_1_1_1 = new JLabel("借阅天数：");
 
-		s_cashPledge_Jcb.setModel(new DefaultComboBoxModel(new String[]{"请选择...", "3天", "5天", "10天"}));
+		s_bookDate_Jcb.setModel(new DefaultComboBoxModel(new String[]{"请选择...", "3天", "5天", "10天"}));
 
 		JLabel label_2 = new JLabel("姓名：");
 
@@ -123,7 +123,7 @@ public class AddBorrowBookFrame extends JInternalFrame {
 												.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 														.addComponent(textField, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
 														.addComponent(passWord_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-														.addComponent(s_cashPledge_Jcb, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)))
+														.addComponent(s_bookDate_Jcb, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)))
 										.addGroup(groupLayout.createSequentialGroup()
 												.addComponent(label)
 												.addPreferredGap(ComponentPlacement.RELATED)
@@ -153,7 +153,7 @@ public class AddBorrowBookFrame extends JInternalFrame {
 										.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 								.addGap(18)
 								.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-										.addComponent(s_cashPledge_Jcb, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addComponent(s_bookDate_Jcb, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 										.addComponent(label_1_1_1))
 								.addGap(78)
 								.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
@@ -182,10 +182,8 @@ public class AddBorrowBookFrame extends JInternalFrame {
 		String passWord = this.passWord_Txt.getText();
 		//用户名
 		String userName = this.userName_Txt.getText();
-		//是否缴纳押金    获取选中的索引下标 -1 为未选中 0为 请选择 1为已缴纳 2为未缴纳
-		Integer cashPledgeStatus = this.s_cashPledgeStatus_Jcb.getSelectedIndex();
-		//获取缴纳押金的钱选中的下标 -1 0为未选择或者未缴纳押金  1为 20元 2为 30元 3为 50元
-		Integer cashPledge = this.s_cashPledge_Jcb.getSelectedIndex();
+		//获取选择的借阅天数 -1 0为未选择借阅天数  1为 3天 2为 5天 3为 10天
+		Integer bookDate = this.s_bookDate_Jcb.getSelectedIndex();
 
 
 		//验证条件
@@ -201,22 +199,17 @@ public class AddBorrowBookFrame extends JInternalFrame {
 			JOptionPane.showMessageDialog(null, "密码为空");
 			return;
 		}
-		/*if (cashPledgeStatus == 0 || cashPledgeStatus == -1) {
-			JOptionPane.showMessageDialog(null, "请确认是否缴纳押金");
-			return;
-		} else {*/
-		//cashPledgeStatus：为1表示选择的是 1为已缴纳 则需要去验证是否选择押金下拉框 <=0 表示未选择押金
-		if (cashPledgeStatus == 1 && cashPledge <= 0) {
-			JOptionPane.showMessageDialog(null, "缴纳押金需要选择押金金额");
+
+		if (bookDate <= 0) {
+			JOptionPane.showMessageDialog(null, "请选择借阅天数");
 			return;
 		}
-		//	}
 
 		//数据库存选择下拉框对应的值
 		int newCashPledge = 0;
-		//-1 0为未选择或者未缴纳押金  1为 20元 2为 30元 3为 50元
-		if (cashPledge != -1 && cashPledge != 0) {
-			switch (cashPledge) {
+		//-1 0为未选择借阅天数  1为 3天 2为 5天 3为 10天
+		if (bookDate != -1 && bookDate != 0) {
+			switch (bookDate) {
 				case 1:
 					newCashPledge = 20;
 					break;
@@ -233,7 +226,7 @@ public class AddBorrowBookFrame extends JInternalFrame {
 		}
 
 		//添加实体
-		User user = new User(0, loginName, userName, passWord, null, null, newCashPledge, new Date(), cashPledgeStatus.toString(), 0);
+		User user = null;
 
 		//新增到数据库
 		Connection con = null;
@@ -273,7 +266,6 @@ public class AddBorrowBookFrame extends JInternalFrame {
 		this.loginName_Txt.setText("");
 		this.userName_Txt.setText("");
 		this.passWord_Txt.setText("");
-		this.s_cashPledgeStatus_Jcb.setSelectedIndex(0);
-		this.s_cashPledge_Jcb.setSelectedIndex(0);
+		this.s_bookDate_Jcb.setSelectedIndex(0);
 	}
 }
