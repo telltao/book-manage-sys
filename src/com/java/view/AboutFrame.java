@@ -43,27 +43,27 @@ public class AboutFrame extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public AboutFrame() {
-		getContentPane().setBackground(Color.PINK);
-		setBackground(Color.CYAN);
-		setIconifiable(true);
-		setClosable(true);
-		setTitle("关于系统");
-		setBounds(100, 100, 700, 450);
+        getContentPane().setBackground(SystemColor.textHighlight);
+        setBackground(Color.CYAN);
+        setIconifiable(true);
+        setClosable(true);
+        setTitle("关于系统");
+        setBounds(100, 100, 700, 450);
 //		this.setBounds((900 - 700) / 2,(900 - 450) / 2,700,450);
-		JTextArea txtrJavaccjavajavaJava = new JTextArea();
-		txtrJavaccjavajavaJava.setRows(5);
-		txtrJavaccjavajavaJava.setBackground(Color.PINK);
-		txtrJavaccjavajavaJava.setForeground(Color.RED);
-		//TODO 在此处将数据从数据库中查询出来
+        JTextArea txtrJavaccjavajavaJava = new JTextArea();
+        txtrJavaccjavajavaJava.setRows(5);
+        txtrJavaccjavajavaJava.setBackground(SystemColor.textHighlight);
+        txtrJavaccjavajavaJava.setForeground(Color.WHITE);
+        //TODO 在此处将数据从数据库中查询出来
 
-		About about = initAbout();
-		txtrJavaccjavajavaJava.setText("关于我们:" +
-				"\n作者：" + about.getAuthor() +
-				"\n说明：" + about.getContent() +
-				"\n联系方式：" + about.getEmail() + "");
-		txtrJavaccjavajavaJava.setFont(new Font("楷体", Font.PLAIN, 16));
-		GroupLayout groupLayout = new GroupLayout(getContentPane());
-		groupLayout.setHorizontalGroup(
+        About about = initAbout();
+        txtrJavaccjavajavaJava.setText("关于我们:" +
+                "\n作者：" + about.getAuthor() +
+                "\n说明：" + about.getContent() +
+                "\n联系方式：" + about.getEmail() + "");
+        txtrJavaccjavajavaJava.setFont(new Font("楷体", Font.PLAIN, 16));
+        GroupLayout groupLayout = new GroupLayout(getContentPane());
+        groupLayout.setHorizontalGroup(
 				groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup()
 								.addContainerGap(63, Short.MAX_VALUE)

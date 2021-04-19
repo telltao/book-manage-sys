@@ -12,20 +12,19 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
-import java.util.Date;
+import java.sql.Date;
 
 @SuppressWarnings("serial")
 public class AddBorrowBookFrame extends JInternalFrame {
-	private JTextField loginName_Txt;
-	private JTextField passWord_Txt;
+	private JTextField borrowName_Txt;
+	private JTextField borrowPhone_Txt;
 	JComboBox s_bookDate_Jcb = new JComboBox();
 
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 
 	private DbUtil dbUtil = new DbUtil();
 	private UserDao userDao = new UserDao();
-	private JTextField userName_Txt;
-	private JTextField textField;
+	private JTextField borrowBookName;
 
 	/**
 	 * Launch the application.
@@ -57,13 +56,13 @@ public class AddBorrowBookFrame extends JInternalFrame {
 //		this.setBounds((900 - 519) / 2,(900 - 543) / 2,519,543);
 		JLabel label = new JLabel("借阅人名称：");
 
-		loginName_Txt = new JTextField();
-		loginName_Txt.setColumns(10);
+		borrowName_Txt = new JTextField();
+		borrowName_Txt.setColumns(10);
 
 		JLabel label_1 = new JLabel("借阅人手机号：");
 
-		passWord_Txt = new JTextField();
-		passWord_Txt.setColumns(10);
+		borrowPhone_Txt = new JTextField();
+		borrowPhone_Txt.setColumns(10);
 
 		JButton button = new JButton("添加");
 		button.addActionListener(new ActionListener() {
@@ -89,13 +88,8 @@ public class AddBorrowBookFrame extends JInternalFrame {
 
 		s_bookDate_Jcb.setModel(new DefaultComboBoxModel(new String[]{"请选择...", "3天", "5天", "10天"}));
 
-		JLabel label_2 = new JLabel("姓名：");
-
-		userName_Txt = new JTextField();
-		userName_Txt.setColumns(10);
-
-		textField = new JTextField();
-		textField.setColumns(10);
+		borrowBookName = new JTextField();
+		borrowBookName.setColumns(10);
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 				groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -111,46 +105,36 @@ public class AddBorrowBookFrame extends JInternalFrame {
 								.addGap(125)
 								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 										.addGroup(groupLayout.createSequentialGroup()
-												.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-												.addGap(6)
-												.addComponent(userName_Txt, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
-										.addGroup(groupLayout.createSequentialGroup()
 												.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 														.addComponent(label_1_1)
 														.addComponent(label_1)
 														.addComponent(label_1_1_1))
 												.addPreferredGap(ComponentPlacement.RELATED)
 												.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-														.addComponent(textField, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-														.addComponent(passWord_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+														.addComponent(borrowBookName, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+														.addComponent(borrowPhone_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 														.addComponent(s_bookDate_Jcb, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)))
 										.addGroup(groupLayout.createSequentialGroup()
 												.addComponent(label)
 												.addPreferredGap(ComponentPlacement.RELATED)
-												.addComponent(loginName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+												.addComponent(borrowName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 								.addContainerGap(143, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 				groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-								.addGap(54)
-								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addGroup(groupLayout.createSequentialGroup()
-												.addGap(5)
-												.addComponent(label_2))
-										.addComponent(userName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGap(18)
+								.addGap(98)
 								.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 										.addComponent(label)
-										.addComponent(loginName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+										.addComponent(borrowName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 								.addGap(18)
 								.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 										.addComponent(label_1)
-										.addComponent(passWord_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+										.addComponent(borrowPhone_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 								.addGap(18)
 								.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 										.addComponent(label_1_1)
-										.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+										.addComponent(borrowBookName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 								.addGap(18)
 								.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 										.addComponent(s_bookDate_Jcb, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -159,7 +143,7 @@ public class AddBorrowBookFrame extends JInternalFrame {
 								.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 										.addComponent(button)
 										.addComponent(button_1))
-								.addContainerGap(133, Short.MAX_VALUE))
+								.addContainerGap(134, Short.MAX_VALUE))
 		);
 		getContentPane().setLayout(groupLayout);
 	}
@@ -176,27 +160,29 @@ public class AddBorrowBookFrame extends JInternalFrame {
 	 * @param evt
 	 */
 	private void bookAddActionPerformed(ActionEvent evt) {
-		//登录名
-		String loginName = this.loginName_Txt.getText();
-		//密码
-		String passWord = this.passWord_Txt.getText();
+		//借阅人名称
+		String borrowName = this.borrowName_Txt.getText();
+		//借阅人手机号
+		String borrowPhone = this.borrowPhone_Txt.getText();
+		//借阅图书名称
+		String borrowBookName = this.borrowBookName.getText();
 		//用户名
-		String userName = this.userName_Txt.getText();
-		//获取选择的借阅天数 -1 0为未选择借阅天数  1为 3天 2为 5天 3为 10天
+		//获取选择的借阅天数 -1,0:未选择借阅天数  1为 3天 2为 5天 3为 10天
 		Integer bookDate = this.s_bookDate_Jcb.getSelectedIndex();
 
 
 		//验证条件
-		if (StringUtil.isEmpty(loginName)) {
-			JOptionPane.showMessageDialog(null, "登录名为空");
+		if (StringUtil.isEmpty(borrowName)) {
+			JOptionPane.showMessageDialog(null, "请输入借阅人名称");
 			return;
 		}
-		if (StringUtil.isEmpty(userName)) {
-			JOptionPane.showMessageDialog(null, "用户名为空");
+
+		if (StringUtil.isEmpty(borrowPhone)) {
+			JOptionPane.showMessageDialog(null, "请输入借阅人手机号");
 			return;
 		}
-		if (StringUtil.isEmpty(passWord)) {
-			JOptionPane.showMessageDialog(null, "密码为空");
+		if (StringUtil.isEmpty(borrowBookName)) {
+			JOptionPane.showMessageDialog(null, "请输入借阅图书名称");
 			return;
 		}
 
@@ -205,22 +191,26 @@ public class AddBorrowBookFrame extends JInternalFrame {
 			return;
 		}
 
+		//选择借阅天数后,获取到当前时间,并+上借阅的天数 =归还时间
+		//当前时间
+		Date date = new Date(System.currentTimeMillis());
+
 		//数据库存选择下拉框对应的值
-		int newCashPledge = 0;
+		int selectDay = 0;
 		//-1 0为未选择借阅天数  1为 3天 2为 5天 3为 10天
 		if (bookDate != -1 && bookDate != 0) {
 			switch (bookDate) {
 				case 1:
-					newCashPledge = 20;
+					selectDay = 3;
 					break;
 				case 2:
-					newCashPledge = 30;
+					selectDay = 5;
 					break;
 				case 3:
-					newCashPledge = 50;
+					selectDay = 10;
 					break;
 				default:
-					newCashPledge = 0;
+					selectDay = 0;
 					break;
 			}
 		}
@@ -234,7 +224,7 @@ public class AddBorrowBookFrame extends JInternalFrame {
 			con = dbUtil.getCon();
 
 			//校验用户名是否已经存在
-			User userCheck = new User(loginName, null, "0");
+			User userCheck = null;
 			User returnUser = userDao.login(con, userCheck);
 			if (returnUser != null) {
 				JOptionPane.showMessageDialog(null, "该登录名已存在，请修改后重试");
@@ -263,9 +253,8 @@ public class AddBorrowBookFrame extends JInternalFrame {
 	 * 重置值
 	 */
 	private void resetValue() {
-		this.loginName_Txt.setText("");
-		this.userName_Txt.setText("");
-		this.passWord_Txt.setText("");
+		this.borrowName_Txt.setText("");
+		this.borrowPhone_Txt.setText("");
 		this.s_bookDate_Jcb.setSelectedIndex(0);
 	}
 }

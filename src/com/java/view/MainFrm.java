@@ -163,8 +163,6 @@ public class MainFrm extends JFrame {
 				}
 			}
 		});
-		menuItem.setIcon(new ImageIcon(MainFrm.class.getResource("/images/exit.png")));
-		menuBar.add(menuItem);
 
 
 		//JMenuItem
@@ -172,20 +170,22 @@ public class MainFrm extends JFrame {
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//
-				AboutFrame about=new AboutFrame();
+				AboutFrame about = new AboutFrame();
 				about.setVisible(true);//
 				table.add(about);//
 			}
 		});
 		mntmNewMenuItem.setIcon(new ImageIcon(MainFrm.class.getResource("/images/about.png")));
 		menuBar.add(mntmNewMenuItem);
+		menuItem.setIcon(new ImageIcon(MainFrm.class.getResource("/images/exit.png")));
+		menuBar.add(menuItem);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 
-		table=new JDesktopPane();
-		table.setBackground(Color.CYAN);
+		table = new JDesktopPane();
+		table.setBackground(SystemColor.textHighlight);
 		contentPane.add(table, BorderLayout.CENTER);
 
 		//
@@ -194,5 +194,4 @@ public class MainFrm extends JFrame {
 		//
 		this.setLocationRelativeTo(null);
 	}
-
 }
