@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 
 @SuppressWarnings("serial")
 public class MainFrm extends JFrame {
@@ -21,16 +22,23 @@ public class MainFrm extends JFrame {
 	private JPanel contentPane;
 
 	private JDesktopPane table=null;
-
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					MainFrm frame = new MainFrm();
 					frame.setVisible(true);
+					// 设置背景
+					JLabel lblBackground = new JLabel(); // 创建一个标签组件对象
+					URL resource = this.getClass().getResource("/images/mi.JPG"); // 获取背景图片路径
+					ImageIcon icon = new ImageIcon(resource); // 创建背景图片对象
+					lblBackground.setIcon(icon); // 设置标签组件要显示的图标
+					lblBackground.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight()); // 设置组件的显示位置及大小
+					frame.getContentPane().add(lblBackground); // 将组件添加到面板中
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -194,9 +202,21 @@ public class MainFrm extends JFrame {
 		setContentPane(contentPane);
 
 		table = new JDesktopPane();
-		table.setBackground(SystemColor.textHighlight);
+		//table.setBackground(Color.WHITE);
 		contentPane.add(table, BorderLayout.CENTER);
+		
+		/*JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(MainFrm.class.getResource("/images/mi.JPG")));
+		//lblNewLabel.setBounds(0, 0, 884, 696);
+		lblNewLabel.setBounds(100, 100, 900, 750);
+		lblNewLabel.setLayout(new GridLayout(0, 2, 10, 0));
 
-		this.setLocationRelativeTo(null);
+		table.add(lblNewLabel);
+		//lblNewLabel.setBounds(100, 100, 900, 750);
+		//this.getContentPane().add(lblNewLabel);
+
+		this.setLocationRelativeTo(null);*/
+
+
 	}
 }
