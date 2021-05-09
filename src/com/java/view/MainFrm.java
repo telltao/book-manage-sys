@@ -44,7 +44,7 @@ public class MainFrm extends JFrame {
 	public MainFrm() {
 		setTitle("图书管理系统主界面");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1000, 850);
+		setBounds(100, 100, 900, 750);
 
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
