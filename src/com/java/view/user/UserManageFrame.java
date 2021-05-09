@@ -106,7 +106,6 @@ public class UserManageFrame extends JInternalFrame {
 		JLabel label_3 = new JLabel("用户名:");
 
 		userName_Txt = new JTextField();
-		userName_Txt.setEditable(false);
 		userName_Txt.setColumns(10);
 
 		JLabel label_4 = new JLabel("手机号:");
@@ -161,10 +160,17 @@ public class UserManageFrame extends JInternalFrame {
 		id_Txt.setColumns(10);
 
 		JButton button_1_1 = new JButton("重置密码");
+		button_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				//重置密码
+				resetPassword();
+			}
+		});
 
 		JLabel label_4_1 = new JLabel("登录名:");
 
 		loginName_Txt = new JTextField();
+		loginName_Txt.setEditable(false);
 		loginName_Txt.setColumns(10);
 		GroupLayout gl_restartPhone = new GroupLayout(restartPhone);
 		gl_restartPhone.setHorizontalGroup(
@@ -521,7 +527,7 @@ public class UserManageFrame extends JInternalFrame {
 			User userCheck = new User(loginName, null, "0");
 			User returnUser = userDao.login(con, userCheck);
 			if (returnUser != null) {
-				JOptionPane.showMessageDialog(null, "该登录名已存在，请修改后重试");
+				JOptionPane.showMessageDialog(null, "该登录名已存在，请修改其他登录名后重试");
 				return;
 			}
 
@@ -716,6 +722,46 @@ public class UserManageFrame extends JInternalFrame {
 		this.s_status_Txt.addItem("请选择...");
 		this.s_status_Txt.addItem("启用");
 		this.s_status_Txt.addItem("禁用");
+
+	}
+
+
+	/**
+	 * 重置密码
+	 */
+	private void resetPassword() {
+		String resetPasswordId = this.id_Txt.getText();
+		if (StringUtil.isEmpty(resetPasswordId)) {
+			JOptionPane.showMessageDialog(null, "请选择用户之后再重置");
+			return;
+		}
+		//重置密码
+		int result = JOptionPane.showConfirmDialog(null, "确定要将密码重置为 0000 吗?");
+		if (result == 0) {
+			Connection con = null;
+			try {
+				con = dbUtil.getCon();
+				//修改密码
+				int resetPasswordStatus = userDao.resetPassword(con, resetPasswordId);
+				if (resetPasswordStatus == 1) {
+					JOptionPane.showMessageDialog(null, "重置成功!");
+					this.resetUpdateValue();
+					this.fillTable(new User());
+				} else {
+					JOptionPane.showMessageDialog(null, "重置失败,请重试!");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				JOptionPane.showMessageDialog(null, "重置失败,请重试!");
+			} finally {
+				try {
+					dbUtil.close(con);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
 
 	}
 }

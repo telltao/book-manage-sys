@@ -111,4 +111,14 @@ public class UserDao {
 		return pstmt.executeUpdate();
 	}
 
+
+	//用户重置密码为0000
+	public int resetPassword(Connection con, String id) throws Exception {
+
+		String sql = "update  t_user  set passWord = '0000' where id =? ";
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, id);
+		return pstmt.executeUpdate();
+	}
+
 }
