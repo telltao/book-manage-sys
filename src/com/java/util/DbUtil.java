@@ -21,7 +21,7 @@ public class DbUtil {
 	// 驱动名称
 	private String jdbcname = "com.mysql.cj.jdbc.Driver";
 
-	//数据库低于5.7版本的驱动名称
+	//数据库低于5.7版本的驱动名称 兼容使用
 	//private String jdbcname = "com.mysql.jdbc.Driver";
 
 	// 数据库连接方法
