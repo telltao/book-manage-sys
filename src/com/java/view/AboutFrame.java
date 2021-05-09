@@ -1,20 +1,16 @@
 package com.java.view;
 
 import com.java.dao.AboutDao;
-import com.java.dao.BookDao;
 import com.java.model.About;
 import com.java.model.Book;
 import com.java.util.DbUtil;
 
 import javax.swing.*;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.sql.Array;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Vector;
 
 @SuppressWarnings("serial")
 public class AboutFrame extends JInternalFrame {
