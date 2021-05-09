@@ -33,7 +33,7 @@ public class BookTypeDao {
 			sb.append(" and bookTypeName like '%" + bookType.getBookTypeName() + "%'");
 		}
 		//调用replaceFirst方法将and替换掉
-		PreparedStatement pstmt = con.prepareStatement(sb.toString().replaceFirst("and", "where"));
+		PreparedStatement pstmt = con.prepareStatement(sb.toString());
 		return pstmt.executeQuery();
 	}
 

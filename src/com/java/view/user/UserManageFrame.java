@@ -640,8 +640,6 @@ public class UserManageFrame extends JInternalFrame {
 		String status = "0";
 		if (selectedItem.equals("禁用")) {
 			status = "1";
-		} else {
-			status = "";
 		}
 		User user = new User(0, loginName, userName, null, null, status, 0, null, null, 0);
 
