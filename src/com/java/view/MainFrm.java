@@ -197,10 +197,6 @@ public class MainFrm extends JFrame {
 		table.setBackground(SystemColor.textHighlight);
 		contentPane.add(table, BorderLayout.CENTER);
 
-		//
-		//this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-
-		//
 		this.setLocationRelativeTo(null);
 	}
 }
