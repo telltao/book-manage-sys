@@ -1,4 +1,4 @@
-package com.java.view;
+package com.java.view.borrow;
 
 import com.java.dao.UserDao;
 import com.java.model.User;

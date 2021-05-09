@@ -1,8 +1,7 @@
-package com.java.view;
+package com.java.view.about;
 
 import com.java.dao.AboutDao;
 import com.java.model.About;
-import com.java.model.Book;
 import com.java.util.DbUtil;
 
 import javax.swing.*;

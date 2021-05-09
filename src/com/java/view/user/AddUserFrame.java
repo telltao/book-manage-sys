@@ -1,4 +1,4 @@
-package com.java.view;
+package com.java.view.user;
 
 import com.java.dao.UserDao;
 import com.java.model.User;
@@ -12,7 +12,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.util.Date;
 
 @SuppressWarnings("serial")

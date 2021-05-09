@@ -1,4 +1,4 @@
-package com.java.view;
+package com.java.view.book;
 
 import com.java.dao.BookDao;
 import com.java.dao.BookTypeDao;
@@ -6,6 +6,7 @@ import com.java.model.Book;
 import com.java.model.BookType;
 import com.java.util.DbUtil;
 import com.java.util.StringUtil;
+import com.java.view.booktype.BookTypeManagerFrame;
 
 import javax.swing.*;
 import javax.swing.GroupLayout.Alignment;

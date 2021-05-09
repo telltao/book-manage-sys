@@ -1,5 +1,14 @@
 package com.java.view;
 
+import com.java.view.about.AboutFrame;
+import com.java.view.booktype.AddBookTypeFrame;
+import com.java.view.booktype.BookTypeManagerFrame;
+import com.java.view.book.AddBookFrame;
+import com.java.view.book.BookManageFrame;
+import com.java.view.borrow.AddBorrowBookFrame;
+import com.java.view.user.AddUserFrame;
+import com.java.view.user.UserManageFrame;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;

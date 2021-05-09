@@ -1,10 +1,11 @@
-package com.java.view;
+package com.java.view.user;
 
 import com.java.dao.UserDao;
-import com.java.model.BookType;
 import com.java.model.User;
 import com.java.util.DbUtil;
 import com.java.util.StringUtil;
+import com.java.view.booktype.BookTypeManagerFrame;
+import com.java.view.book.AddBookFrame;
 
 import javax.swing.*;
 import javax.swing.GroupLayout.Alignment;

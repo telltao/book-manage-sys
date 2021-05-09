@@ -1,4 +1,4 @@
-package com.java.view;
+package com.java.view.booktype;
 
 import com.java.dao.BookTypeDao;
 import com.java.model.BookType;
