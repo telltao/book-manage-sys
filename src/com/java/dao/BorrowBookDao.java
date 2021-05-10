@@ -2,6 +2,7 @@ package com.java.dao;
 
 import com.java.model.Book;
 import com.java.model.BorrowBook;
+import com.java.model.User;
 import com.java.util.StringUtil;
 
 import java.sql.Connection;
@@ -36,17 +37,17 @@ public class BorrowBookDao {
 	//图书添加方法
 	public int addBorrowBook(Connection con, BorrowBook borrowBook) throws Exception {
 		String sql = "INSERT INTO t_borrow_book(userName, bookPhone, bookName, borrowDate," +
-				" dueDate, bookStatus, borrowStatus, penalty, status,remark) VALUES (?,?,?,?,?,?,'0','0',0,'0',?)";
+				" dueDate, bookStatus, borrowStatus, penalty, status,remark) VALUES (?,?,?,?,?,?,?,?,'0',?)";
 		PreparedStatement pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, borrowBook.getUserName());
 		pstmt.setString(2, borrowBook.getBookPhone());
 		pstmt.setString(3, borrowBook.getBookName());
 		pstmt.setDate(4, borrowBook.getBorrowDate());
-		pstmt.setDate(4, borrowBook.getDueDate());
-		pstmt.setString(5, borrowBook.getBookStatus());
-		pstmt.setString(6, borrowBook.getBorrowStatus());
-		pstmt.setString(7, borrowBook.getStatus());
-		pstmt.setString(7, borrowBook.getRemark());
+		pstmt.setDate(5, borrowBook.getDueDate());
+		pstmt.setString(6, borrowBook.getBookStatus());
+		pstmt.setString(7, borrowBook.getBorrowStatus());
+		pstmt.setFloat(8, borrowBook.getPenalty());
+		pstmt.setString(9, borrowBook.getRemark());
 		return pstmt.executeUpdate();
 	}
 
@@ -105,5 +106,65 @@ public class BorrowBookDao {
 		pstmt.setString(1, bookTypeId);
 		ResultSet rs = pstmt.executeQuery();
 		return rs.next();
+	}
+
+	/**
+	 * 根据用户名和手机号查询信息
+	 */
+
+	public int checkBookBorrowSize(Connection con, BorrowBook borrowBook) throws Exception {
+		//查询 状态：0正常 图书状态不是已还书
+		String sql = "select * from t_borrow_book where userName=? and bookPhone=?  and status = '0' and bookStatus !='2'";
+		// 获取PreparedStatement接口
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		// 设置未知量的值
+		pstmt.setString(1, borrowBook.getUserName());
+		pstmt.setString(2, borrowBook.getBookPhone());
+		// 返回ResultSet结果集
+		ResultSet rs = pstmt.executeQuery();
+
+		// rs.next()指向表中第一行数据 若第一行有效，则返回true，并继续指向第二行
+		if (rs.next()) {
+			//获取数据大小 也就是sql执行查询的数据大小 三条 结果为3
+			int size = rs.getFetchSize();
+			return size;
+		}
+		return 0;
+	}
+
+	/**
+	 * 根据用户名和手机号查询信息
+	 * 废弃
+	 */
+
+	public BorrowBook checkBookBorrow1(Connection con, BorrowBook borrowBook) throws Exception {
+		//查询 状态：0正常 图书状态不是已还书
+		String sql = "select * from t_borrow_book where userName=? and bookPhone=?  and status = '0' and bookStatus !='2'";
+		// 获取PreparedStatement接口
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		// 设置未知量的值
+		pstmt.setString(1, borrowBook.getUserName());
+		pstmt.setString(2, borrowBook.getBookPhone());
+		// 返回ResultSet结果集
+		ResultSet rs = pstmt.executeQuery();
+
+		BorrowBook borrowBook1 = null;
+
+		// rs.next()指向表中第一行数据 若第一行有效，则返回true，并继续指向第二行
+		if (rs.next()) {
+			// 对用户进行实例化,取其中的set方法;
+			borrowBook1 = new BorrowBook();
+			// 取第一行id这个属性的数据，将结果返回给User实体的信息
+			borrowBook1.setId(rs.getInt("id"));
+			// 取第一行UserName这个属性的数据，将结果返回给User实体的信息
+			borrowBook1.setUserName(rs.getString("userName"));
+			borrowBook1.setBookPhone(rs.getString("bookPhone"));
+			borrowBook1.setStatus(rs.getString("status"));
+			borrowBook1.setBookName(rs.getString("bookName"));
+			borrowBook1.setBookStatus(rs.getString("bookStatus"));
+			borrowBook1.setBorrowStatus(rs.getString("borrowStatus"));
+			borrowBook1.setPenalty(rs.getFloat("penalty"));
+		}
+		return borrowBook1;
 	}
 }

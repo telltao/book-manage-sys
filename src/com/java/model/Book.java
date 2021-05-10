@@ -10,6 +10,8 @@ public class Book {
 	private Integer bookTypeId;//图书类别Id
 	private String bookTypeName;//图书类别名称
 	private String bookDesc;//备注
+	private String status;//状态：0正常，1已删除
+
 
 	//默认的构造方法
 	public Book() {
@@ -89,15 +91,24 @@ public class Book {
 	public String getBookTypeName() {
 		return bookTypeName;
 	}
+
 	public void setBookTypeName(String bookTypeName) {
 		this.bookTypeName = bookTypeName;
 	}
+
 	public String getBookDesc() {
 		return bookDesc;
 	}
+
 	public void setBookDesc(String bookDesc) {
 		this.bookDesc = bookDesc;
 	}
 
+	public String getStatus() {
+		return status;
+	}
 
+	public void setStatus(String status) {
+		this.status = status;
+	}
 }

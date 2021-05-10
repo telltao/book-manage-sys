@@ -21,7 +21,7 @@ public class User {
 	private String phone;
 	// 密码
 	private String passWord;
-	//状态：0正常，1已删除
+	//状态：0 正常 1 禁用 2 已删除
 	private String status;
 	// 押金，默认每人押金为50元
 	private Integer cashPledge;

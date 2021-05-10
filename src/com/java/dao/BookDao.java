@@ -71,11 +71,38 @@ public class BookDao {
 	}
 
 	//判断指定图书类别下是否有图书
-	public boolean exitBookByBookTypeId(Connection con,String bookTypeId)throws Exception {
+	public boolean exitBookByBookTypeId(Connection con, String bookTypeId) throws Exception {
 		String sql = "select * from t_book where bookTypeId=? and status = '0'";
 		PreparedStatement pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, bookTypeId);
 		ResultSet rs = pstmt.executeQuery();
 		return rs.next();
+	}
+
+	//根据图书编号查询图书
+	public Book getBookByBookId(Connection con, String bookId) throws Exception {
+		//查询状态为正常的图书
+		Book resultBook = null;
+
+		String sql = "select * from t_book where id=? and status = '0'";
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, bookId);
+		ResultSet rs = pstmt.executeQuery();
+		// rs.next()指向表中第一行数据 若第一行有效，则返回true，并继续指向第二行
+		if (rs.next()) {
+			// 对用户进行实例化,取其中的set方法;
+			resultBook = new Book();
+			// 取第一行id这个属性的数据，将结果返回给User实体的信息
+			resultBook.setId(rs.getInt("id"));
+			resultBook.setBookName(rs.getString("bookName"));
+			resultBook.setAuthor(rs.getString("author"));
+			resultBook.setSex(rs.getString("sex"));
+			resultBook.setPrice(rs.getFloat("price"));
+			resultBook.setBookTypeId(rs.getInt("bookTypeId"));
+			resultBook.setBookTypeName(rs.getString("bookTypeName"));
+			resultBook.setBookDesc(rs.getString("bookDesc"));
+			resultBook.setStatus(rs.getString("status"));
+		}
+		return resultBook;
 	}
 }

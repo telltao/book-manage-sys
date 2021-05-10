@@ -187,9 +187,17 @@ public class LoginFrame extends JFrame {
 			if (currentUser != null) {
 				//JOptionPane.showMessageDialog(null, "登录成功！");
 				//销毁"登录成功！"的窗口
-				dispose();
-				//将系统主界面显示出来
-				new MainFrm().setVisible(true);;
+
+				String status = currentUser.getStatus();
+				if (status.equals("1")) {
+					JOptionPane.showMessageDialog(null, "该账号已被禁用,请联系管理员！");
+				} else {
+					dispose();
+					//将系统主界面显示出来
+					new MainFrm().setVisible(true);
+					;
+				}
+
 			}else{
 				JOptionPane.showMessageDialog(null, "用户名或密码错误！");
 			}
