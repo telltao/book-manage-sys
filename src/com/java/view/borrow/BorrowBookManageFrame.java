@@ -70,7 +70,7 @@ public class BorrowBookManageFrame extends JInternalFrame {
 		setClosable(true);
 		setTitle("借阅列表");
 //		setBounds(100, 100, 723, 760);
-		this.setBounds((900 - 723) / 2, (900 - 760) / 2, 723, 778);
+		this.setBounds((900 - 723) / 2, (900 - 760) / 2, 723, 739);
 		JScrollPane scrollPane = new JScrollPane();
 
 		JPanel panel = new JPanel();
@@ -101,8 +101,8 @@ public class BorrowBookManageFrame extends JInternalFrame {
 								.addGap(18)
 								.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 262, GroupLayout.PREFERRED_SIZE)
 								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addComponent(restartPhone, GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
-								.addContainerGap())
+								.addComponent(restartPhone, GroupLayout.PREFERRED_SIZE, 281, GroupLayout.PREFERRED_SIZE)
+								.addContainerGap(49, Short.MAX_VALUE))
 		);
 
 		JLabel label_3 = new JLabel("手机号:");
