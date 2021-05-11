@@ -46,6 +46,7 @@ public class LoginFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public LoginFrame() {
+		setResizable(false);
 
 		// 改变系统默认字体
 		Font font = new Font("Dialog", Font.PLAIN, 12);
@@ -58,8 +59,6 @@ public class LoginFrame extends JFrame {
 				UIManager.put(key, font);
 			}
 		}
-
-		setResizable(false);
 		setTitle("管理员登录");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 419);
@@ -69,7 +68,7 @@ public class LoginFrame extends JFrame {
 
 		JLabel label = new JLabel("欢迎访问图书管理系统");
 		label.setIcon(new ImageIcon(LoginFrame.class.getResource("/images/logo.png")));
-		label.setFont(new Font("宋体", Font.PLAIN, 24));
+		label.setFont(new Font("宋体", Font.BOLD, 24));
 
 		JLabel lblNewLabel = new JLabel("用户名：");
 		lblNewLabel.setIcon(new ImageIcon(LoginFrame.class.getResource("/images/userName.png")));

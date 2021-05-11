@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class DbUtil {
 
 	
-	// mysql数据库地址 并开启ssl认证
+	// mysql数据库地址 并开启ssl认证，默认端口3306
 	private String dbUrl = "jdbc:mysql://localhost:3306/db_test?useSSL=false&serverTimezone=CTT&useUnicode=true&characterEncoding=utf8";
 
 	// 用户名
@@ -24,11 +24,11 @@ public class DbUtil {
 	//数据库低于5.7版本的驱动名称 兼容使用qwe
 	//private String jdbcname = "com.mysql.jdbc.Driver";
 
-	// 数据库连接方法
+	// 数据库连接方法，抛出异常
 	public Connection getCon() throws Exception {
 		// 加载数据库驱动
 		Class.forName(jdbcname);
-		// 数据库驱动管理类
+		// 数据库驱动管理类，Driver通过静态代码块把自己注册到DriverManger中去，使得数据库获得连接
 		Connection con = DriverManager.getConnection(dbUrl, dbUserName, dbPassWord);
 		return con;
 	}
