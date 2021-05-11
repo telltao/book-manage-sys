@@ -56,9 +56,9 @@ public class BorrowBookDao {
 		//动态结合，用StringBuffer比较好
 		StringBuffer sb = new StringBuffer("select * from t_borrow_book  where status = '0'");
 		//sql语句查询
-		//查询图书名称
-		if (StringUtil.isNotEmpty(borrowBook.getBookName())) {
-			sb.append(" and bookName like '%" + borrowBook.getBookName() + "%'");
+		//查询用户名称
+		if (StringUtil.isNotEmpty(borrowBook.getUserName())) {
+			sb.append(" and userName like '%" + borrowBook.getUserName() + "%'");
 		}
 		//查询借阅人手机号
 		if (StringUtil.isNotEmpty(borrowBook.getBookPhone())) {
@@ -81,7 +81,17 @@ public class BorrowBookDao {
 
 	//图书修改方法
 	public int updateBook(Connection con, BorrowBook borrowBook) throws Exception {
-		String sql = "UPDATE t_borrow_book SET userName = ?, " +
+
+		String sql = "UPDATE t_borrow_book SET bookStatus = ?, borrowStatus = ?, penalty = ?, remark = ? WHERE id = ?";
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, borrowBook.getBookStatus());
+		pstmt.setString(2, borrowBook.getBorrowStatus());
+		pstmt.setInt(3, borrowBook.getPenalty());
+		pstmt.setString(4, borrowBook.getRemark());
+		pstmt.setInt(5, borrowBook.getId());
+		return pstmt.executeUpdate();
+
+		/*String sql = "UPDATE t_borrow_book SET userName = ?, " +
 				"bookPhone = ?, bookName = ?," +
 				" borrowDate = ?, dueDate = ?," +
 				" bookStatus = ?, borrowStatus = ?, penalty = ?," +
@@ -96,7 +106,10 @@ public class BorrowBookDao {
 		pstmt.setString(7, borrowBook.getBorrowStatus());
 		pstmt.setFloat(7, borrowBook.getPenalty());
 		pstmt.setInt(7, borrowBook.getId());
-		return pstmt.executeUpdate();
+
+				*/
+
+
 	}
 
 	//判断指定图书类别下是否有图书
@@ -163,7 +176,7 @@ public class BorrowBookDao {
 			borrowBook1.setBookName(rs.getString("bookName"));
 			borrowBook1.setBookStatus(rs.getString("bookStatus"));
 			borrowBook1.setBorrowStatus(rs.getString("borrowStatus"));
-			borrowBook1.setPenalty(rs.getFloat("penalty"));
+			borrowBook1.setPenalty(rs.getInt("penalty"));
 		}
 		return borrowBook1;
 	}
