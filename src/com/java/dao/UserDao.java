@@ -19,7 +19,7 @@ public class UserDao {
 	 */
 
 	public User login(Connection con, User user) throws Exception {
-		// 登录正确，返回用户的所有实体信息
+		// 登录正确，返回用户的所有实体信息 非删除状态 状态：0 正常 1 禁用 2 已删除
 		User resultUser = null;
 		//预处理
 		String sql = "select * from t_user where loginName=? and passWord=?  and status != '2'";
@@ -41,6 +41,8 @@ public class UserDao {
 			resultUser.setUserName(rs.getString("userName"));
 			// 取第一行PassWord这个属性的数据，将结果返回给User实体的信息
 			resultUser.setPassWord(rs.getString("passWord"));
+			// 取第一行PassWord这个属性的数据，将结果返回给User实体的信息
+			resultUser.setStatus(rs.getString("status"));
 		}
 		return resultUser;
 	}
@@ -104,15 +106,6 @@ public class UserDao {
 		return pstmt.executeUpdate();
 	}
 
-	//根据Id重置密码方法 将密码重置为 111111
-	public int updateUserPassword(Connection con, Integer id) throws Exception {
-		String sql = "update t_user set passWord = '111111'  where id=?";
-		PreparedStatement pstmt = con.prepareStatement(sql);
-		pstmt.setInt(1, id);
-		return pstmt.executeUpdate();
-	}
-
-
 	//用户重置密码为0000
 	public int resetPassword(Connection con, String id) throws Exception {
 
@@ -121,5 +114,46 @@ public class UserDao {
 		pstmt.setString(1, id);
 		return pstmt.executeUpdate();
 	}
+
+	/**
+	 * 借阅图书时,校验数据
+	 *
+	 * @param con
+	 * @param user
+	 * @return
+	 * @throws Exception
+	 */
+
+	public User checkBookBorrow(Connection con, User user) throws Exception {
+		// 登录正确，返回用户的所有实体信息
+		User resultUser = null;
+		String sql = "select * from t_user where userName=? and phone=?  and status != '2'";
+		// 获取PreparedStatement接口
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		// 设置未知量的值
+		pstmt.setString(1, user.getUserName());
+		pstmt.setString(2, user.getPhone());
+		// 返回ResultSet结果集
+		ResultSet rs = pstmt.executeQuery();
+
+		// rs.next()指向表中第一行数据 若第一行有效，则返回true，并继续指向第二行
+		if (rs.next()) {
+			// 对用户进行实例化,取其中的set方法;
+			resultUser = new User();
+			// 取第一行id这个属性的数据，将结果返回给User实体的信息
+			resultUser.setId(rs.getInt("id"));
+			// 取第一行UserName这个属性的数据，将结果返回给User实体的信息
+			resultUser.setLoginName(rs.getString("loginName"));
+			// 取第一行PassWord这个属性的数据，将结果返回给User实体的信息
+			resultUser.setUserName(rs.getString("userName"));
+			resultUser.setPhone(rs.getString("phone"));
+			resultUser.setStatus(rs.getString("status"));
+			resultUser.setCashPledge(rs.getInt("cashPledge"));
+			resultUser.setCashPledgeStauts(rs.getString("cashPledgeStauts"));
+			resultUser.setPenalty(rs.getInt("penalty"));
+		}
+		return resultUser;
+	}
+
 
 }

@@ -14,6 +14,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.net.URL;
 
 @SuppressWarnings("serial")
@@ -21,7 +23,8 @@ public class MainFrm extends JFrame {
 
 	private JPanel contentPane;
 
-	private JDesktopPane table=null;
+	private JDesktopPane table = null;
+
 	/**
 	 * Launch the application.
 	 */
@@ -31,13 +34,6 @@ public class MainFrm extends JFrame {
 				try {
 					MainFrm frame = new MainFrm();
 					frame.setVisible(true);
-					// 设置背景
-					JLabel lblBackground = new JLabel(); // 创建一个标签组件对象
-					URL resource = this.getClass().getResource("/images/mi.JPG"); // 获取背景图片路径
-					ImageIcon icon = new ImageIcon(resource); // 创建背景图片对象
-					lblBackground.setIcon(icon); // 设置标签组件要显示的图标
-					lblBackground.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight()); // 设置组件的显示位置及大小
-					frame.getContentPane().add(lblBackground); // 将组件添加到面板中
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -201,21 +197,30 @@ public class MainFrm extends JFrame {
 		setContentPane(contentPane);
 
 		table = new JDesktopPane();
-		//table.setBackground(Color.WHITE);
-		contentPane.add(table, BorderLayout.CENTER);
-		
-		/*JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(MainFrm.class.getResource("/images/mi.JPG")));
-		//lblNewLabel.setBounds(0, 0, 884, 696);
-		lblNewLabel.setBounds(100, 100, 900, 750);
-		lblNewLabel.setLayout(new GridLayout(0, 2, 10, 0));
-
-		table.add(lblNewLabel);
-		//lblNewLabel.setBounds(100, 100, 900, 750);
-		//this.getContentPane().add(lblNewLabel);
-
-		this.setLocationRelativeTo(null);*/
-
-
+		//在此处增加背景图片 参考: https://blog.csdn.net/zhengruli/article/details/78465498
+		getContentPane().add(table, BorderLayout.CENTER);
+		//创建一个标签组件，用于放置背景图片
+		JLabel backgroundLabel = new JLabel();
+		//需要自己导入一张背景图片到src目录下
+		URL resource = this.getClass().getResource("/images/mi.JPG");
+		ImageIcon icon = new ImageIcon(resource);
+		//压缩背景图片，使其适应窗口大小
+		// 此处注释掉是因为压缩影响性能导致页面卡顿,需要则放开或注释
+		icon.setImage(icon.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_AREA_AVERAGING));
+		backgroundLabel.setIcon(icon);
+		backgroundLabel.setBounds(0, 0, this.getWidth(), this.getHeight());
+		table.add(backgroundLabel, new Integer(Integer.MIN_VALUE));
+		//当改变窗口大小时，自动调整背景图片大小
+		getContentPane().addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentResized(ComponentEvent e) {
+				int width = e.getComponent().getWidth();
+				int heigth = e.getComponent().getHeight();
+				// 此处注释掉是因为压缩影响性能导致页面卡顿,需要则放开或注释
+				icon.setImage(icon.getImage().getScaledInstance(width, heigth, Image.SCALE_AREA_AVERAGING));
+				backgroundLabel.setBounds(0, 0, width, heigth);
+			}
+		});
+		contentPane.add(table);
 	}
 }
