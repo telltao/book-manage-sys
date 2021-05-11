@@ -6,6 +6,7 @@ import com.java.view.booktype.BookTypeManagerFrame;
 import com.java.view.book.AddBookFrame;
 import com.java.view.book.BookManageFrame;
 import com.java.view.borrow.AddBorrowBookFrame;
+import com.java.view.borrow.BorrowBookManageFrame;
 import com.java.view.user.AddUserFrame;
 import com.java.view.user.UserManageFrame;
 
@@ -155,9 +156,9 @@ public class MainFrm extends JFrame {
 		menuItem_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				UserManageFrame userManageFrame = new UserManageFrame();
-				userManageFrame.setVisible(true);
-				table.add(userManageFrame);
+				BorrowBookManageFrame borrowBookManageFrame = new BorrowBookManageFrame();
+				borrowBookManageFrame.setVisible(true);
+				table.add(borrowBookManageFrame);
 
 			}
 		});
