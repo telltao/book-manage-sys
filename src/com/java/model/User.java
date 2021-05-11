@@ -10,7 +10,7 @@ import java.util.Date;
  */
 public class User {
 
-	// 编号
+	// 定义编号
 	private Integer id;
 
 	// 登录名
@@ -32,11 +32,13 @@ public class User {
 	//累计罚款金额
 	private Integer penalty;
 
+	//从父类生成构造方法，否则直接new 有参会报错
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+	//使用字段生成构造方法
 	public User(String loginName, String passWord, String status) {
 		super();
 		this.loginName = loginName;
