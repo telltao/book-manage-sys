@@ -346,7 +346,9 @@ public class BookTypeManagerFrame extends JInternalFrame {
 	private void bookTypeSearchActionPerformed(ActionEvent evt) {
 		String s_bookTypeName=this.s_bookTypeName_Txt.getText();
 		BookType bookType=new BookType();
+		//文本框重命名为”图书类别名称”
 		bookType.setBookTypeName(s_bookTypeName);
+		//调用已经封装好的
 		this.fillTable(bookType);
 	}
 
@@ -364,6 +366,7 @@ public class BookTypeManagerFrame extends JInternalFrame {
 		try {
 			con=dbUtil.getCon();
 			ResultSet rs=bookTypeDao.list(con, bookType);
+			//遍历
 			while(rs.next()){
 				Vector v=new Vector();
 				v.add(rs.getString("id"));
