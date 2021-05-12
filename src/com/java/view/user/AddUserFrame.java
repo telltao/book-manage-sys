@@ -52,10 +52,8 @@ public class AddUserFrame extends JInternalFrame {
 		setClosable(true);
 		setIconifiable(true);
 		setTitle("用户注册");
-//		setBounds(100, 100, 519, 543);
 		setBounds(100, 100, 519, 543);
 
-//		this.setBounds((900 - 519) / 2,(900 - 543) / 2,519,543);
 		JLabel label = new JLabel("登录名：");
 
 		loginName_Txt = new JTextField();
@@ -225,16 +223,12 @@ public class AddUserFrame extends JInternalFrame {
 			JOptionPane.showMessageDialog(null, "密码为空");
 			return;
 		}
-		/*if (cashPledgeStatus == 0 || cashPledgeStatus == -1) {
-			JOptionPane.showMessageDialog(null, "请确认是否缴纳押金");
-			return;
-		} else {*/
+
 		//cashPledgeStatus：为1表示选择的是 1为已缴纳 则需要去验证是否选择押金下拉框 <=0 表示未选择押金
 		if (cashPledgeStatus == 1 && cashPledge <= 0) {
 			JOptionPane.showMessageDialog(null, "缴纳押金需要选择押金金额");
 			return;
 		}
-		//	}
 
 		//数据库存选择下拉框对应的值
 		int newCashPledge = 0;

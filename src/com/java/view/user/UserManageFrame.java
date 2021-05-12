@@ -377,10 +377,6 @@ public class UserManageFrame extends JInternalFrame {
 		scrollPane.setViewportView(userTable);
 		getContentPane().setLayout(groupLayout);
 
-
-		//设置JTextArea边框的代码
-//		s_status_Txt.setBorder(new LineBorder(new java.awt.Color(127,157,185),1,false));
-
 		//查询下拉框方法引用
 		this.fillBookType();
 		//表单的方法
