@@ -31,6 +31,7 @@ public class BookType {
         this.bookTypeDesc = bookTypeDesc;
     }
 
+    //生成构造方法使用三个字段名,alt+shift+s
     public BookType(int id, String bookTypeName, String bookTypeDesc, String status) {
         super();
         this.id = id;

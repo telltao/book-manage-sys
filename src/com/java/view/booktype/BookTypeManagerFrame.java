@@ -89,38 +89,38 @@ public class BookTypeManagerFrame extends JInternalFrame {
 
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
-				groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addGroup(groupLayout.createSequentialGroup()
-								.addContainerGap(132, Short.MAX_VALUE)
-								.addComponent(label)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(s_bookTypeName_Txt, GroupLayout.PREFERRED_SIZE, 145, GroupLayout.PREFERRED_SIZE)
-								.addGap(36)
-								.addComponent(button)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(button_3, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-								.addGap(123))
-						.addGroup(groupLayout.createSequentialGroup()
-								.addGap(68)
-								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-										.addComponent(scrollPane, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE)
-										.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE))
-								.addGap(49))
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap(134, Short.MAX_VALUE)
+					.addComponent(label)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(s_bookTypeName_Txt, GroupLayout.PREFERRED_SIZE, 145, GroupLayout.PREFERRED_SIZE)
+					.addGap(36)
+					.addComponent(button)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(button_3, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+					.addGap(123))
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addGap(68)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(panel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
+						.addComponent(scrollPane, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE))
+					.addGap(49))
 		);
 		groupLayout.setVerticalGroup(
-				groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-								.addGap(43)
-								.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-										.addComponent(label)
-										.addComponent(s_bookTypeName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(button)
-										.addComponent(button_3))
-								.addGap(18)
-								.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 147, GroupLayout.PREFERRED_SIZE)
-								.addGap(12)
-								.addComponent(panel, GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
-								.addGap(8))
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(43)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(label)
+						.addComponent(s_bookTypeName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(button)
+						.addComponent(button_3))
+					.addGap(18)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 147, GroupLayout.PREFERRED_SIZE)
+					.addGap(12)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(54, Short.MAX_VALUE))
 		);
 
 		JLabel label_1 = new JLabel("编号:");
@@ -151,7 +151,7 @@ public class BookTypeManagerFrame extends JInternalFrame {
 		JButton button_2 = new JButton("删除");
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				bookTypeDeleteActionEvent(e);
+				bookTypeDeleteActionEvent(e);//create之后直接跳转到图书类别删除功能
 			}
 		});
 		button_2.setIcon(new ImageIcon(BookTypeManagerFrame.class.getResource("/images/delete.png")));
@@ -243,12 +243,14 @@ public class BookTypeManagerFrame extends JInternalFrame {
 	private void bookTypeDeleteActionEvent(ActionEvent evt) {
 		//获取界面信息
 		String id=id_Txt.getText();
-		//判断id是否为空，若为空，则不能删除
+		//判断id是否为空，若为空，则不能删除,即确认用户要选中数据,否则无法删除
 		if(StringUtil.isEmpty(id)){
 			JOptionPane.showMessageDialog(null, "请选择要删除的记录!");
 			return;
 		}
+		//以防用户误点,用以提示
 		int n=JOptionPane.showConfirmDialog(null, "确定要删除该记录吗?");
+		//n=0表示用户已经选中
 		if(n==0){
 			Connection con=null;
 			try {
@@ -268,6 +270,7 @@ public class BookTypeManagerFrame extends JInternalFrame {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
+				//出现异常弹出提示"删除失败"
 				JOptionPane.showMessageDialog(null, "删除失败!");
 			}finally{
 				try {
@@ -305,9 +308,9 @@ public class BookTypeManagerFrame extends JInternalFrame {
 			int modifyNum = bookTypeDao.update_Book(con, bookType);
 			if (modifyNum == 1) {
 				JOptionPane.showMessageDialog(null, "修改成功!");
-				//重置表单
+				//重置表单,调用下方写好的程序
 				this.resetUpdateValue();
-				//填充表单
+				//填充表单,重新new一个实例
 				this.fillTable(new BookType());
 			}else{
 				JOptionPane.showMessageDialog(null, "修改失败!");
@@ -331,7 +334,7 @@ public class BookTypeManagerFrame extends JInternalFrame {
 	private void bookTypeTableMousePressed(MouseEvent evt) {
 		//获取选中的行，返回行号
 		int row=bookTypeTable.getSelectedRow();
-		//获取第row行，第1列的值
+		//获取第row行，第1列的值设置到里面,转换为String
 		id_Txt.setText((String)bookTypeTable.getValueAt(row, 0));
 		//获取第row行，第2列的值
 		bookTypeName_Txt.setText((String)bookTypeTable.getValueAt(row, 1));
@@ -385,7 +388,7 @@ public class BookTypeManagerFrame extends JInternalFrame {
 		}
 	}
 
-	//重置表单
+	//修改成功后会重置表单
 	private void resetUpdateValue() {
 		this.id_Txt.setText("");
 		this.bookTypeName_Txt.setText("");
