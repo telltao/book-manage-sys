@@ -13,7 +13,7 @@ public class BorrowBook {
 	private Date dueDate;//还书日期
 	private String bookStatus;//图书状态：0借阅中，1已丢失 2已还书
 	private String borrowStatus;//还书状态： 0正常，1污损 2缺页
-	private Float penalty;//罚金
+	private int penalty;//罚金
 	private String status;//状态：0正常，1已删除
 	private String remark;//备注
 
@@ -26,7 +26,7 @@ public class BorrowBook {
 
 	public BorrowBook(int id, String userName, String bookPhone, String bookName,
 					  Date borrowDate, Date dueDate, String bookStatus, String borrowStatus,
-					  Float penalty, String status, String remark) {
+					  int penalty, String status, String remark) {
 		this.id = id;
 		this.userName = userName;
 		this.bookPhone = bookPhone;
@@ -104,11 +104,11 @@ public class BorrowBook {
 		this.borrowStatus = borrowStatus;
 	}
 
-	public Float getPenalty() {
+	public int getPenalty() {
 		return penalty;
 	}
 
-	public void setPenalty(Float penalty) {
+	public void setPenalty(int penalty) {
 		this.penalty = penalty;
 	}
 

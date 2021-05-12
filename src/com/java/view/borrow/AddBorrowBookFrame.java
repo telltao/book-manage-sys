@@ -297,7 +297,7 @@ public class AddBorrowBookFrame extends JInternalFrame {
 			borrowBook.setDueDate(dueDate);
 			borrowBook.setBookStatus("1");
 			borrowBook.setBorrowStatus("0");
-			borrowBook.setPenalty(0F);
+			borrowBook.setPenalty(0);
 			borrowBook.setStatus("0");
 			borrowBook.setRemark(this.remarkTest.getText());
 			int result = borrowBookDao.addBorrowBook(con, borrowBook);

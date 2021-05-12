@@ -179,7 +179,7 @@ public class MainFrm extends JFrame {
 
 
 		//JMenuItem
-		JMenuItem mntmNewMenuItem = new JMenuItem("关于我们");
+		JMenuItem mntmNewMenuItem = new JMenuItem("关于系统");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//

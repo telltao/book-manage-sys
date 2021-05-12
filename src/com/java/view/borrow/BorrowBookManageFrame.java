@@ -70,7 +70,7 @@ public class BorrowBookManageFrame extends JInternalFrame {
 		setClosable(true);
 		setTitle("借阅列表");
 //		setBounds(100, 100, 723, 760);
-		this.setBounds((900 - 723) / 2, (900 - 760) / 2, 723, 778);
+		this.setBounds((900 - 723) / 2, (900 - 760) / 2, 723, 739);
 		JScrollPane scrollPane = new JScrollPane();
 
 		JPanel panel = new JPanel();
@@ -101,18 +101,20 @@ public class BorrowBookManageFrame extends JInternalFrame {
 								.addGap(18)
 								.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 262, GroupLayout.PREFERRED_SIZE)
 								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addComponent(restartPhone, GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
-								.addContainerGap())
+								.addComponent(restartPhone, GroupLayout.PREFERRED_SIZE, 281, GroupLayout.PREFERRED_SIZE)
+								.addContainerGap(49, Short.MAX_VALUE))
 		);
 
 		JLabel label_3 = new JLabel("手机号:");
 
 		phone_Txt = new JTextField();
+		phone_Txt.setEditable(false);
 		phone_Txt.setColumns(10);
 
 		JLabel label_4 = new JLabel("图书名称:");
 
 		bookName_Txt = new JTextField();
+		bookName_Txt.setEditable(false);
 		bookName_Txt.setColumns(10);
 
 		JLabel label_6 = new JLabel("借阅时间:");
@@ -164,15 +166,13 @@ public class BorrowBookManageFrame extends JInternalFrame {
 		userName_Txt.setColumns(10);
 
 		borrowDate = new JTextField();
+		borrowDate.setEditable(false);
 		borrowDate.setColumns(10);
-
-		JLabel label_8_2 = new JLabel("状态:");
-
-		JComboBox status = new JComboBox();
 
 		JLabel label_6_2 = new JLabel("归还时间:");
 
 		dueDate = new JTextField();
+		dueDate.setEditable(false);
 		dueDate.setColumns(10);
 
 		JLabel label_3_1_2 = new JLabel("备注:");
@@ -192,14 +192,9 @@ public class BorrowBookManageFrame extends JInternalFrame {
 								.addGap(78)
 								.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
 										.addGroup(gl_restartPhone.createSequentialGroup()
-												.addComponent(label_8_2, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE)
-												.addPreferredGap(ComponentPlacement.RELATED)
-												.addComponent(status, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE)
-												.addPreferredGap(ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
 												.addComponent(label_3_1_2, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
-												.addGap(6)
-												.addComponent(remark, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-												.addGap(71))
+												.addPreferredGap(ComponentPlacement.RELATED)
+												.addComponent(remark, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE))
 										.addGroup(gl_restartPhone.createSequentialGroup()
 												.addGroup(gl_restartPhone.createParallelGroup(Alignment.TRAILING)
 														.addGroup(gl_restartPhone.createSequentialGroup()
@@ -247,8 +242,8 @@ public class BorrowBookManageFrame extends JInternalFrame {
 																		.addGroup(gl_restartPhone.createSequentialGroup()
 																				.addPreferredGap(ComponentPlacement.RELATED)
 																				.addComponent(label_3_1_1, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
-																				.addPreferredGap(ComponentPlacement.RELATED, 143, GroupLayout.PREFERRED_SIZE)))))
-												.addGap(87))))
+																				.addPreferredGap(ComponentPlacement.RELATED, 143, GroupLayout.PREFERRED_SIZE)))))))
+								.addGap(87))
 		);
 		gl_restartPhone.setVerticalGroup(
 				gl_restartPhone.createParallelGroup(Alignment.TRAILING)
@@ -286,19 +281,18 @@ public class BorrowBookManageFrame extends JInternalFrame {
 										.addComponent(label_3_1)
 										.addComponent(penalty, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 										.addComponent(label_3_1_1))
-								.addGap(30)
 								.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
-										.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
-												.addComponent(label_8_2)
-												.addComponent(status, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 										.addGroup(gl_restartPhone.createSequentialGroup()
-												.addGap(5)
-												.addComponent(label_3_1_2))
-										.addComponent(remark, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
-										.addComponent(button_1)
-										.addComponent(button_2))
-								.addContainerGap())
+												.addGap(56)
+												.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
+														.addComponent(button_1)
+														.addComponent(button_2)))
+										.addGroup(gl_restartPhone.createSequentialGroup()
+												.addGap(18)
+												.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
+														.addComponent(label_3_1_2)
+														.addComponent(remark, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+								.addGap(49))
 		);
 		restartPhone.setLayout(gl_restartPhone);
 
@@ -410,16 +404,26 @@ public class BorrowBookManageFrame extends JInternalFrame {
 	}
 
 	/**
-	 * 用户删除事件方法
+	 * 借阅用户删除事件方法
 	 *
 	 * @param evt
 	 */
 	private void userDeleteActionPerformed(ActionEvent evt) {
-		/*//获取界面信息
+		//获取界面信息
 		String id = id_Txt.getText();
 		//判断id是否为空，若为空，则不能删除
 		if (StringUtil.isEmpty(id)) {
 			JOptionPane.showMessageDialog(null, "请选择要删除的记录!");
+			return;
+		}
+
+		//如果图书状态为借阅中,不允许删除
+		//图书状态： 获取选中的索引下标 -1 为未选中 值0为请选择  值1为 借阅中，值2为 已丢失 值3为已还书
+		//数据库存的状态: 图书状态：0借阅中，1已丢失 2已还书入库的时候,要将值-1
+		Integer cashPledgeStatus = bookStatus.getSelectedIndex();
+		//如果状态为 借阅中或已丢失,不允许删除 丢失需要去用户列表扣除押金
+		if (cashPledgeStatus == 1 || cashPledgeStatus == 2) {
+			JOptionPane.showMessageDialog(null, "借阅中或已丢失,不允许删除");
 			return;
 		}
 		int n = JOptionPane.showConfirmDialog(null, "确定要删除该记录吗?");
@@ -427,7 +431,7 @@ public class BorrowBookManageFrame extends JInternalFrame {
 			Connection con = null;
 			try {
 				con = dbUtil.getCon();
-				int deleteNum = borrowBookDao.deleteUser(con, id);
+				int deleteNum = borrowBookDao.deleteBorrowBook(con, id);
 				if (deleteNum == 1) {
 					JOptionPane.showMessageDialog(null, "删除成功!");
 					this.resetUpdateValue();
@@ -437,7 +441,7 @@ public class BorrowBookManageFrame extends JInternalFrame {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-				JOptionPane.showMessageDialog(null, "删除失败!");
+				JOptionPane.showMessageDialog(null, "系统异常,删除失败!");
 			} finally {
 				try {
 					dbUtil.close(con);
@@ -445,7 +449,7 @@ public class BorrowBookManageFrame extends JInternalFrame {
 					e.printStackTrace();
 				}
 			}
-		}*/
+		}
 	}
 
 	/**
@@ -456,16 +460,18 @@ public class BorrowBookManageFrame extends JInternalFrame {
 	private void userUpdateActionPerformed(ActionEvent evt) {
 		//获取界面信息
 		String id = this.id_Txt.getText();
-		String loginName = this.userName_Txt.getText();
-		String userName = this.phone_Txt.getText();
-//		String passWord = this.passWord_Txt.getText();
-		String phone = this.bookName_Txt.getText();
-		//是否缴纳押金    获取选中的索引下标 -1 为未选中 0为 请选择 1为已缴纳 2为未缴纳
-		Integer cashPledgeStatus = this.bookStatus.getSelectedIndex();
-		//获取缴纳押金的钱选中的下标 -1 0为未选择或者未缴纳押金  1为 20元 2为 30元 3为 50元
-		Integer cashPledge = this.borrowStatus.getSelectedIndex();
+		String userName = this.userName_Txt.getText();
+		String phone = this.phone_Txt.getText();
+		String bookName = this.bookName_Txt.getText();
+		String borrowDate = this.borrowDate.getText();
+		String dueDate = this.dueDate.getText();
+		//图书状态： 获取选中的索引下标 -1 为未选中 值0为请选择  值1为 借阅中，值2为 已丢失 值3为已还书
+		//数据库存的状态: 图书状态：0借阅中，1已丢失 2已还书入库的时候,要将值-1
+		Integer bookStatus = this.bookStatus.getSelectedIndex();
+		//还书状态
+		Integer borrowStatus = this.borrowStatus.getSelectedIndex();
 
-		//罚款金额
+		//罚金
 		String penalty = this.penalty.getText();
 
 		//判断id是否为空，若为空，则不能修改
@@ -473,24 +479,19 @@ public class BorrowBookManageFrame extends JInternalFrame {
 			JOptionPane.showMessageDialog(null, "请选择要修改的记录!");
 			return;
 		}
-		//判断其他信息是否为空
-		if (StringUtil.isEmpty(loginName)) {
-			JOptionPane.showMessageDialog(null, "登录名不能为空！");
-			return;
-		}
+/*
+
 		//判断其他信息是否为空
 		if (StringUtil.isEmpty(userName)) {
 			JOptionPane.showMessageDialog(null, "用户名不能为空！");
 			return;
 		}
-		/*if (StringUtil.isEmpty(passWord)) {
-			JOptionPane.showMessageDialog(null, "用户密码不能为空！");
-			return;
-		}*/
+
 		if (StringUtil.isEmpty(phone)) {
 			JOptionPane.showMessageDialog(null, "手机号码不能为空！");
 			return;
 		}
+*/
 
 		if (StringUtil.isNotEmpty(penalty)) {
 			//自己写的工具类提供 加个感叹号就是否
@@ -501,61 +502,76 @@ public class BorrowBookManageFrame extends JInternalFrame {
 			}
 		}
 
-		//cashPledgeStatus：为1表示选择的是 1为已缴纳 则需要去验证是否选择押金下拉框 <=0 表示未选择押金
-		if (cashPledgeStatus == 1 && cashPledge <= 0) {
-			JOptionPane.showMessageDialog(null, "缴纳押金需要选择押金金额");
-			return;
-		}
 
-		//数据库存选择下拉框对应的值
-		int newCashPledge = 0;
-		//获取缴纳押金的钱选中的下标 -1 1为未选择或者未缴纳押金  2为 20元 3为 30元 4为 50元 此处转换存数据库
-		if (cashPledge != -1 && cashPledge != 0) {
-			switch (cashPledge) {
-				case 1:
-					newCashPledge = 20;
-					break;
-				case 2:
-					newCashPledge = 30;
-					break;
-				case 3:
-					newCashPledge = 50;
-					break;
-				default:
-					newCashPledge = 0;
-					break;
-			}
-		}
-
-		//TODO 新建实体 进行查询
 
 		//进行添加操作，数据库连接
 		Connection con = null;
 		try {
 			con = dbUtil.getCon();
+		/*
+			//添加实体
+			User user = new User();
+			user.setUserName(userName);
+			user.setPhone(phone);
 
-			//校验用户名是否已经存在 根据登录名查询状态为启用的
-			/*User userCheck = new User(loginName, null, "0");
-			User returnUser = userDao.login(con, userCheck);
-			if (returnUser != null) {
-				JOptionPane.showMessageDialog(null, "该登录名已存在，请修改其他登录名后重试");
+			修改只可修改图书的状态,不可以修改用户名,手机号啥的,所以在此处禁用了无法编辑
+			//校验用户名是否已经存在
+			User checkoutUser = userDao.checkBookBorrow(con, user);
+			if (checkoutUser == null) {
+				JOptionPane.showMessageDialog(null, "借阅人名称或借阅人手机号有误,请确认");
+				return;
+			}
+			//验证账号状态
+			String status = checkoutUser.getStatus();
+			//账号已禁用,无法借阅
+			if (status.equals("1")) {
+				JOptionPane.showMessageDialog(null, "该账号已被禁用,请联系管理员");
 				return;
 			}
 
-			int addNum = userDao.updateUser(con, user);
+			//校验押金
+			String cashPledgeStauts = checkoutUser.getCashPledgeStauts();
+			// 这里加个 ! 表示 状态为没有交押金
+			if (cashPledgeStauts == null || !cashPledgeStauts.equals("1")) {
+				//弹窗 告诉哪个用户未交押金
+				JOptionPane.showMessageDialog(null, userName + "未交押金,请先去缴纳押金");
+				return;
+			} else if (cashPledgeStauts.equals("1")) {
+				//已交押金,校验押余额是否大于10元
+				if (checkoutUser.getCashPledge() < 10) {
+					JOptionPane.showMessageDialog(null, userName + "押金余额不足,必须大于10元人民币");
+					return;
+				}
+			}*/
+
+			BorrowBook borrowBook = new BorrowBook();
+			borrowBook.setId(Integer.valueOf(id));
+			//borrowBook.setUserName(userName);
+			//borrowBook.setBookPhone(phone);
+			//图书状态： 获取选中的索引下标 -1 为未选中 值0为请选择  值1为 借阅中，值2为 已丢失 值3为已还书
+			//数据库存的状态: 图书状态：0借阅中，1已丢失 2已还书入库的时候,要将值-1
+			borrowBook.setBookStatus(String.valueOf((bookStatus - 1)));
+			//还书状态 0正常，1污损 2缺页 -1 为未选中 值0为请选择  值1为 正常，值2为 污损 值3为缺页
+			//数据库存的状态: 图书状态：0借阅中，1已丢失 2已还书入库的时候,要将值-1
+			borrowBook.setBorrowStatus(String.valueOf((borrowStatus - 1)));
+			//将字符串转换为浮动类型数据
+			borrowBook.setPenalty(Integer.valueOf(penalty));
+			borrowBook.setRemark(remark.getText());
+
+			int addNum = borrowBookDao.updateBook(con, borrowBook);
 			if (addNum == 1) {
-				JOptionPane.showMessageDialog(null, "用户修改成功！");
+				JOptionPane.showMessageDialog(null, "借阅信息修改成功！");
 				//清空表单
 				resetValue();
 				//填充表单
-				this.fillTable(new User());
+				this.fillTable(new BorrowBook());
 			} else {
-				JOptionPane.showMessageDialog(null, "用户修改失败！");
+				JOptionPane.showMessageDialog(null, "借阅信息修改失败！");
 				return;
-			}*/
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "用户修改失败！");
+			JOptionPane.showMessageDialog(null, "借阅信息修改失败！");
 		} finally {
 			try {
 				dbUtil.close(con);
@@ -570,6 +586,7 @@ public class BorrowBookManageFrame extends JInternalFrame {
 	 */
 	private void resetValue() {
 		this.s_userName_Txt.setText("");
+		this.s_phone_Txt.setText("");
 		//重置时，重新查询
 		this.fillTable(new BorrowBook());
 	}
@@ -578,9 +595,8 @@ public class BorrowBookManageFrame extends JInternalFrame {
 	 * 重置修改的表单
 	 */
 	private void resetUpdateValue() {
-		this.phone_Txt.setText("");
-		this.bookName_Txt.setText("");
-
+		//将id清空则无法再次修改
+		this.id_Txt.setText("");
 		//重置时，重新查询
 		this.fillTable(new BorrowBook());
 	}
@@ -599,25 +615,28 @@ public class BorrowBookManageFrame extends JInternalFrame {
 		//获取第row行，第4列的值
 		this.bookName_Txt.setText((String) userTable.getValueAt(row, 3));
 		//在此处给修改处的下拉框赋值
-		String select_status = (String) userTable.getValueAt(row, 4);
+		this.borrowDate.setText((String) userTable.getValueAt(row, 4));
+		this.dueDate.setText((String) userTable.getValueAt(row, 5));
 
 
-		//押金状态  0未交押金 1已交押金 2已退押金
+		//图书状态：0借阅中，1已丢失 2已还书
 		String cashPledgeStatus = userTable.getValueAt(row, 6).toString();
-		if ("已交押金".equals(cashPledgeStatus)) {
+		if ("借阅中".equals(cashPledgeStatus)) {
 			this.bookStatus.setSelectedIndex(1);
-		} else if ("已退押金".equals(cashPledgeStatus)) {
+		} else if ("已丢失".equals(cashPledgeStatus)) {
 			this.bookStatus.setSelectedIndex(2);
+		} else if ("已还书".equals(cashPledgeStatus)) {
+			this.bookStatus.setSelectedIndex(3);
 		} else {
 			this.bookStatus.setSelectedIndex(0);
 		}
-		//押金金额
-		String cashPledge = userTable.getValueAt(row, 7).toString();
-		if ("20".equals(cashPledge)) {
+		//还书状态： 0正常，1污损 2缺页
+		String borrowStatus = userTable.getValueAt(row, 7).toString();
+		if ("正常".equals(borrowStatus)) {
 			this.borrowStatus.setSelectedIndex(1);
-		} else if ("30".equals(cashPledge)) {
+		} else if ("污损".equals(borrowStatus)) {
 			this.borrowStatus.setSelectedIndex(2);
-		} else if ("50".equals(cashPledge)) {
+		} else if ("缺页".equals(borrowStatus)) {
 			this.borrowStatus.setSelectedIndex(3);
 		} else {
 			this.borrowStatus.setSelectedIndex(0);
