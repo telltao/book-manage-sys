@@ -29,9 +29,9 @@ public class BookDao {
 		return pstmt.executeUpdate();
 	}
 
-	//图书查询方法
+	//图书查询方法，封装book实体
 	public ResultSet list(Connection con,Book book) throws Exception{
-		//动态结合，用StringBuffer比较好
+		//动态结合，用StringBuffer比较好，即数据拼接，book表的外键=bookType表的主键
 		StringBuffer sb = new StringBuffer("select * from t_book b,t_bookType bt where b.bookTypeId=bt.id and b.status = '0'");
 		//sql语句查询
 		if (StringUtil.isNotEmpty(book.getBookName())) {
@@ -40,6 +40,7 @@ public class BookDao {
 		if (StringUtil.isNotEmpty(book.getAuthor())) {
 			sb.append(" and b.author like '%" + book.getAuthor() + "%'");
 		}
+		//这样判断用户才是已经选择了数据
 		if (book.getBookTypeId() != null && book.getBookTypeId() != -1) {
 			sb.append(" and b.bookTypeId =" + book.getBookTypeId());
 		}
@@ -50,9 +51,10 @@ public class BookDao {
 
 	//图书删除方法
 	//V2 改为逻辑删除
-	public int deleteBook(Connection con, String id) throws Exception {
+	public int deleteBook(Connection con, String id) throws Exception {//传入Id
 		String sql = "update  t_book  set status = '1' where id=?";
 		PreparedStatement pstmt = con.prepareStatement(sql);
+		//设置第一个参数为id
 		pstmt.setString(1, id);
 		return pstmt.executeUpdate();
 	}

@@ -256,6 +256,7 @@ public class BookTypeManagerFrame extends JInternalFrame {
 			try {
 				con=dbUtil.getCon();
 				boolean flag=bookDao.exitBookByBookTypeId(con, id);
+				//存在
 				if(flag){
 					JOptionPane.showMessageDialog(null, "当前图书类别下有图书，不能删除此类别!");
 					return;

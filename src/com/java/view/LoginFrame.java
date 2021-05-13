@@ -66,14 +66,14 @@ public class LoginFrame extends JFrame {
 		setContentPane(contentPane);
 
 		JLabel label = new JLabel("欢迎访问图书管理系统");
-		label.setIcon(new ImageIcon(LoginFrame.class.getResource("/images/logo.png")));
+		label.setIcon(new ImageIcon(LoginFrame.class.getResource("/images/book4.jpg")));
 		label.setFont(new Font("宋体", Font.BOLD, 24));
 
 		JLabel lblNewLabel = new JLabel("用户名：");
-		lblNewLabel.setIcon(new ImageIcon(LoginFrame.class.getResource("/images/userName.png")));
+		lblNewLabel.setIcon(new ImageIcon(LoginFrame.class.getResource("/images/user1.png")));
 
-		JLabel label_1 = new JLabel("密  码：");
-		label_1.setIcon(new ImageIcon(LoginFrame.class.getResource("/images/password.png")));
+		JLabel label_1 = new JLabel("密    码：");
+		label_1.setIcon(new ImageIcon(LoginFrame.class.getResource("/images/password1.jpg")));
 
 		userName_txt = new JTextField();
 		userName_txt.setColumns(10);
@@ -87,7 +87,7 @@ public class LoginFrame extends JFrame {
 				loginActionPerformed(e);
 			}
 		});
-		button.setIcon(new ImageIcon(LoginFrame.class.getResource("/images/login.png")));
+		button.setIcon(new ImageIcon(LoginFrame.class.getResource("/images/login1.png")));
 
 		JButton button_1 = new JButton("重置");
 		button_1.addActionListener(new ActionListener() {
@@ -96,7 +96,7 @@ public class LoginFrame extends JFrame {
 				resetValueActionPerformed(e);
 			}
 		});
-		button_1.setIcon(new ImageIcon(LoginFrame.class.getResource("/images/reset.png")));
+		button_1.setIcon(new ImageIcon(LoginFrame.class.getResource("/images/reset 1.png")));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 				gl_contentPane.createParallelGroup(Alignment.LEADING)

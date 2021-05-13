@@ -81,25 +81,25 @@ public class BookManageFrame extends JInternalFrame {
 		panel_1.setBorder(new TitledBorder(null, "表单操作", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
-				groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addGroup(groupLayout.createSequentialGroup()
-								.addGap(37)
-								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(panel_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-										.addComponent(panel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
-										.addComponent(scrollPane, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE))
-								.addGap(28))
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(37)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(panel_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
+						.addComponent(panel, GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
+						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE))
+					.addGap(28))
 		);
 		groupLayout.setVerticalGroup(
-				groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-								.addGap(31)
-								.addComponent(panel, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE)
-								.addGap(18)
-								.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 321, GroupLayout.PREFERRED_SIZE)
-								.addGap(27))
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(31)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
+					.addGap(47)
+					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 321, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(30, Short.MAX_VALUE))
 		);
 
 		JLabel label_3 = new JLabel("编号:");
@@ -257,6 +257,7 @@ public class BookManageFrame extends JInternalFrame {
 		JButton button = new JButton("查询");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//create一个方法，直接创建到下面
 				bookSearchActionPerformed(e);
 			}
 		});
@@ -503,7 +504,7 @@ public class BookManageFrame extends JInternalFrame {
 		this.author_Txt.setText((String)bookTable.getValueAt(row, 2));
 		//获取性别
 		String sex=(String)bookTable.getValueAt(row, 3);
-		//人工判断
+		//人工判断，为了安全这样写
 		if("男".equals(sex)){
 			this.man_Jrb.setSelected(true);
 		}else if("女".equals(sex)){
@@ -535,10 +536,13 @@ public class BookManageFrame extends JInternalFrame {
 		//从界面获取信息
 		String bookName=this.s_bookName_Txt.getText();
 		String author=this.s_author_Txt.getText();
+		//获取已经选中的项目中的数据
 		BookType bookType=(BookType) this.s_bookType_Jcb.getSelectedItem();
 		int bookTypeId=bookType.getId();
 
+		//将获取的数据进行封装
 		Book book=new Book(bookName,author,bookTypeId);
+		//调用，上传book
 		this.fillTable(book);
 	}
 
@@ -552,6 +556,7 @@ public class BookManageFrame extends JInternalFrame {
 		try{
 			con=dbUtil.getCon();
 			ResultSet rs=bookTypeDao.list(con, new BookType());
+			//此处为搜索的下拉框
 			if("search".equals(type)){
 				BookType bookType=new BookType();
 				bookType.setBookTypeName("请选择...");
@@ -602,6 +607,7 @@ public class BookManageFrame extends JInternalFrame {
 				v.add(rs.getFloat("price"));
 				v.add(rs.getString("bookDesc"));
 				v.add(rs.getString("bookTypeName"));
+				//添加到dtm当中
 				dtm.addRow(v);
 			}
 		} catch (Exception e) {
