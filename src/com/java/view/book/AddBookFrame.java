@@ -105,7 +105,7 @@ public class AddBookFrame extends JInternalFrame {
 		JButton button_1 = new JButton("重置");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//??????????
+				//重置事件
 				resetValueActionPerformed(e);
 			}
 		});
@@ -203,28 +203,29 @@ public class AddBookFrame extends JInternalFrame {
 		//????JTextArea???????
 		bookDesc_Txt.setBorder(new LineBorder(new java.awt.Color(127,157,185),1,false));
 
-		//?????????????????????????
+		//调用
 		fillBookType();
 	}
 
 
-	//??????????
+	//重置事件处理
 	private void resetValueActionPerformed(ActionEvent e) {
+		//调用resetValue
 		this.resetValue();
 	}
 
 	/**
-	 * ?????????
+	 * 图书添加事件处理
 	 * @param evt
 	 */
 	private void bookAddActionPerformed(ActionEvent evt) {
-		//??????????????
+		//添加的时候获取字段
 		String bookName=this.bookName_Txt.getText();
 		String author=this.author_Txt.getText();
 		String price=this.price_Txt.getText();
 		String bookDesc=this.bookDesc_Txt.getText();
 
-		//?ж???????
+		//进行判断
 		if(StringUtil.isEmpty(bookName)){
 			JOptionPane.showMessageDialog(null, "图书名为空");
 			return;
@@ -238,8 +239,9 @@ public class AddBookFrame extends JInternalFrame {
 			return;
 		}
 
-		//?????????
+		//获取性别数据
 		String sex = "";
+		//方法isSelected
 		if (man_Jrb.isSelected()) {
 			sex = "男";
 		} else if (woman_Jrb.isSelected()) {
@@ -251,10 +253,10 @@ public class AddBookFrame extends JInternalFrame {
 		int bookTypeId = bookType.getId();
 		String bookTypeName = bookType.getBookTypeName();
 
-		//???з??
+		// Float.parseFloat(price)将String类型强转型成Float
 		Book book = new Book(bookName, author, sex, Float.parseFloat(price), bookTypeId, bookTypeName, bookDesc);
 
-		//?????????????????????
+		//数据库连接
 		Connection con = null;
 		try {
 			con = dbUtil.getCon();
@@ -283,16 +285,18 @@ public class AddBookFrame extends JInternalFrame {
 		this.bookName_Txt.setText("");
 		this.author_Txt.setText("");
 		this.price_Txt.setText("");
+		//重置时默认男的选中
 		this.man_Jrb.setSelected(true);
 		this.bookDesc_Txt.setText("");
+		//判断如果图书类型为0，会报错，但是此种情况不会出现
 		if(this.bookType_Jcb.getItemCount()>0){
-			//?????????е????
+			//设置选中的项为第一项
 			this.bookType_Jcb.setSelectedIndex(0);
 		}
 	}
 
 	/**
-	 * ?????????????????
+	 * 初始化图书类别下拉框
 	 */
 	@SuppressWarnings("unchecked")
 	private void fillBookType(){
@@ -304,6 +308,7 @@ public class AddBookFrame extends JInternalFrame {
 				BookType bookType=new BookType();
 				bookType.setId(rs.getInt("id"));
 				bookType.setBookTypeName(rs.getString("bookTypeName"));
+				//bookType_Jcb的方法叫添加项“addItem”
 				this.bookType_Jcb.addItem(bookType);
 			}
 		}catch (Exception e) {

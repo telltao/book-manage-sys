@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 
 /**
  * 图书Dao类
- * @author Huke
+ * @author 
  *
  */
 public class BookDao {
@@ -18,6 +18,7 @@ public class BookDao {
 	public int addBook(Connection con,Book book) throws Exception{
 		String sql = "INSERT INTO t_book(id, bookName, author, sex, price, bookTypeId, bookTypeName, bookDesc, status, createTime)  values(null,?,?,?,?,?,?,?,'0',sysdate())";
 		PreparedStatement pstmt = con.prepareStatement(sql);
+		//设置问号的数值
 		pstmt.setString(1, book.getBookName());
 		pstmt.setString(2, book.getAuthor());
 		pstmt.setString(3, book.getSex());

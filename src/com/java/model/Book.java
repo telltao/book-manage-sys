@@ -17,13 +17,13 @@ public class Book {
 	public Book() {
 		super();
 		// TODO Auto-generated constructor stub
-	}
+	}		
 
 	//图书添加的构造方法
 	public Book(String bookName, String author, String sex, Float price, Integer bookTypeId, String bookTypeName, String bookDesc) {
 		super();
 		this.bookName = bookName;
-		this.author = author;
+		this.author = author;	
 		this.sex = sex;
 		this.price = price;
 		this.bookTypeId = bookTypeId;
@@ -51,7 +51,7 @@ public class Book {
 		this.bookTypeId = bookTypeId;
 	}
 
-
+    //alt+shift+s,生成构造方法	
 	public int getId() {
 		return id;
 	}

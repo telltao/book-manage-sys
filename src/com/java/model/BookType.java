@@ -60,10 +60,11 @@ public class BookType {
         this.bookTypeDesc = bookTypeDesc;
     }
 
-    @Override
-    public String toString() {
-        return bookTypeName;
-    }
+    //打印直接输出“bookTypeName”，默认的不太好
+    //@Override
+    //public String toString() {
+        //return bookTypeName;
+    //}
 
     public String getStatus() {
         return status;
