@@ -1,9 +1,5 @@
 package com.java.dao;
 
-import com.java.model.About;
-import com.java.model.Book;
-import com.java.util.StringUtil;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

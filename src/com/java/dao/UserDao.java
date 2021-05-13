@@ -155,5 +155,17 @@ public class UserDao {
 		return resultUser;
 	}
 
+	//增加该用户的罚金 思路: 给累计罚款金额增加钱 给押金减少钱 第一个参数是押金 第二个是罚款金额
+	// 参数: 修改后的押金余额,累计罚款金额 条件是用户名,手机号
+	public int updatePenalty(Connection con, User user) throws Exception {
+
+		String sql = "update t_user set cashPledge =?,penalty =? where userName = ? and phone = ?";
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, user.getCashPledge());
+		pstmt.setInt(2, user.getPenalty());
+		pstmt.setString(3, user.getUserName());
+		pstmt.setString(4, user.getPhone());
+		return pstmt.executeUpdate();
+	}
 
 }

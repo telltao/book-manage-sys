@@ -1,8 +1,6 @@
 package com.java.dao;
 
-import com.java.model.Book;
 import com.java.model.BorrowBook;
-import com.java.model.User;
 import com.java.util.StringUtil;
 
 import java.sql.Connection;
@@ -16,23 +14,6 @@ import java.sql.ResultSet;
  */
 public class BorrowBookDao {
 
-
-	/**
-	 * CREATE TABLE `t_borrow_book` (
-	 * `id` int NOT NULL AUTO_INCREMENT COMMENT 'id 主键',
-	 * `userId` varchar(500) NOT NULL COMMENT '借阅用户id',
-	 * `userName` varchar(50) NOT NULL COMMENT '借阅用户名称',
-	 * `bookPhone` varchar(11) DEFAULT NULL COMMENT '借阅图书手机号',
-	 * `bookName` varchar(50) DEFAULT NULL COMMENT '借阅图书名称',
-	 * `borrowDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '借阅日期',
-	 * `dueDate` datetime DEFAULT NULL COMMENT '还书日期',
-	 * `bookStatus` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '0' COMMENT '图书状态：0借阅中，1已丢失 2已还书',
-	 * `borrowStatus` varchar(20) DEFAULT '0' COMMENT '还书状态： 0正常，1污损 2缺页',
-	 * `penalty` decimal(10,2) DEFAULT '0.00' COMMENT '罚金',
-	 * `status` varchar(2) DEFAULT NULL COMMENT '状态：0正常，1已删除',
-	 * PRIMARY KEY (`id`)
-	 * ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
-	 */
 
 	//图书添加方法
 	public int addBorrowBook(Connection con, BorrowBook borrowBook) throws Exception {
@@ -90,26 +71,6 @@ public class BorrowBookDao {
 		pstmt.setString(4, borrowBook.getRemark());
 		pstmt.setInt(5, borrowBook.getId());
 		return pstmt.executeUpdate();
-
-		/*String sql = "UPDATE t_borrow_book SET userName = ?, " +
-				"bookPhone = ?, bookName = ?," +
-				" borrowDate = ?, dueDate = ?," +
-				" bookStatus = ?, borrowStatus = ?, penalty = ?," +
-				" status =? WHERE id = ?";
-		PreparedStatement pstmt = con.prepareStatement(sql);
-		pstmt.setString(1, borrowBook.getUserName());
-		pstmt.setString(2, borrowBook.getBookPhone());
-		pstmt.setString(3, borrowBook.getBookName());
-		pstmt.setDate(4, borrowBook.getBorrowDate());
-		pstmt.setDate(5, borrowBook.getDueDate());
-		pstmt.setString(6, borrowBook.getBookStatus());
-		pstmt.setString(7, borrowBook.getBorrowStatus());
-		pstmt.setFloat(7, borrowBook.getPenalty());
-		pstmt.setInt(7, borrowBook.getId());
-
-				*/
-
-
 	}
 
 	//判断指定图书类别下是否有图书
@@ -146,18 +107,16 @@ public class BorrowBookDao {
 	}
 
 	/**
-	 * 根据用户名和手机号查询信息
-	 * 废弃
+	 * 根据id 查询信息
 	 */
 
-	public BorrowBook checkBookBorrow1(Connection con, BorrowBook borrowBook) throws Exception {
+	public BorrowBook findBookBorrow(Connection con, Integer id) throws Exception {
 		//查询 状态：0正常 图书状态不是已还书
-		String sql = "select * from t_borrow_book where userName=? and bookPhone=?  and status = '0' and bookStatus !='2'";
+		String sql = "select * from t_borrow_book where id = ?  and status = '0'";
 		// 获取PreparedStatement接口
 		PreparedStatement pstmt = con.prepareStatement(sql);
 		// 设置未知量的值
-		pstmt.setString(1, borrowBook.getUserName());
-		pstmt.setString(2, borrowBook.getBookPhone());
+		pstmt.setInt(1, id);
 		// 返回ResultSet结果集
 		ResultSet rs = pstmt.executeQuery();
 
@@ -172,8 +131,8 @@ public class BorrowBookDao {
 			// 取第一行UserName这个属性的数据，将结果返回给User实体的信息
 			borrowBook1.setUserName(rs.getString("userName"));
 			borrowBook1.setBookPhone(rs.getString("bookPhone"));
-			borrowBook1.setStatus(rs.getString("status"));
 			borrowBook1.setBookName(rs.getString("bookName"));
+			borrowBook1.setStatus(rs.getString("status"));
 			borrowBook1.setBookStatus(rs.getString("bookStatus"));
 			borrowBook1.setBorrowStatus(rs.getString("borrowStatus"));
 			borrowBook1.setPenalty(rs.getInt("penalty"));

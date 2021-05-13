@@ -393,10 +393,6 @@ public class BorrowBookManageFrame extends JInternalFrame {
 		scrollPane.setViewportView(userTable);
 		getContentPane().setLayout(groupLayout);
 
-
-		//设置JTextArea边框的代码
-//		s_status_Txt.setBorder(new LineBorder(new java.awt.Color(127,157,185),1,false));
-
 		//查询下拉框方法引用
 		this.fillBookType();
 		//表单的方法
@@ -479,19 +475,6 @@ public class BorrowBookManageFrame extends JInternalFrame {
 			JOptionPane.showMessageDialog(null, "请选择要修改的记录!");
 			return;
 		}
-/*
-
-		//判断其他信息是否为空
-		if (StringUtil.isEmpty(userName)) {
-			JOptionPane.showMessageDialog(null, "用户名不能为空！");
-			return;
-		}
-
-		if (StringUtil.isEmpty(phone)) {
-			JOptionPane.showMessageDialog(null, "手机号码不能为空！");
-			return;
-		}
-*/
 
 		if (StringUtil.isNotEmpty(penalty)) {
 			//自己写的工具类提供 加个感叹号就是否
@@ -502,52 +485,15 @@ public class BorrowBookManageFrame extends JInternalFrame {
 			}
 		}
 
-
-
 		//进行添加操作，数据库连接
 		Connection con = null;
 		try {
 			con = dbUtil.getCon();
-		/*
-			//添加实体
-			User user = new User();
-			user.setUserName(userName);
-			user.setPhone(phone);
-
-			修改只可修改图书的状态,不可以修改用户名,手机号啥的,所以在此处禁用了无法编辑
-			//校验用户名是否已经存在
-			User checkoutUser = userDao.checkBookBorrow(con, user);
-			if (checkoutUser == null) {
-				JOptionPane.showMessageDialog(null, "借阅人名称或借阅人手机号有误,请确认");
-				return;
-			}
-			//验证账号状态
-			String status = checkoutUser.getStatus();
-			//账号已禁用,无法借阅
-			if (status.equals("1")) {
-				JOptionPane.showMessageDialog(null, "该账号已被禁用,请联系管理员");
-				return;
-			}
-
-			//校验押金
-			String cashPledgeStauts = checkoutUser.getCashPledgeStauts();
-			// 这里加个 ! 表示 状态为没有交押金
-			if (cashPledgeStauts == null || !cashPledgeStauts.equals("1")) {
-				//弹窗 告诉哪个用户未交押金
-				JOptionPane.showMessageDialog(null, userName + "未交押金,请先去缴纳押金");
-				return;
-			} else if (cashPledgeStauts.equals("1")) {
-				//已交押金,校验押余额是否大于10元
-				if (checkoutUser.getCashPledge() < 10) {
-					JOptionPane.showMessageDialog(null, userName + "押金余额不足,必须大于10元人民币");
-					return;
-				}
-			}*/
+			//该用户的罚金,需要去用户表中去扣除罚金
+			Integer penaltyVal = Integer.valueOf(penalty);
 
 			BorrowBook borrowBook = new BorrowBook();
 			borrowBook.setId(Integer.valueOf(id));
-			//borrowBook.setUserName(userName);
-			//borrowBook.setBookPhone(phone);
 			//图书状态： 获取选中的索引下标 -1 为未选中 值0为请选择  值1为 借阅中，值2为 已丢失 值3为已还书
 			//数据库存的状态: 图书状态：0借阅中，1已丢失 2已还书入库的时候,要将值-1
 			borrowBook.setBookStatus(String.valueOf((bookStatus - 1)));
@@ -555,9 +501,36 @@ public class BorrowBookManageFrame extends JInternalFrame {
 			//数据库存的状态: 图书状态：0借阅中，1已丢失 2已还书入库的时候,要将值-1
 			borrowBook.setBorrowStatus(String.valueOf((borrowStatus - 1)));
 			//将字符串转换为浮动类型数据
-			borrowBook.setPenalty(Integer.valueOf(penalty));
+			borrowBook.setPenalty(penaltyVal);
 			borrowBook.setRemark(remark.getText());
+			// 罚金 >0 表示需要更改用户表的罚款金额和押金 和金额和之前数据不一样时,需要去更改押金
+			BorrowBook bookBorrows = borrowBookDao.findBookBorrow(con, Integer.valueOf(id));
+			if (bookBorrows == null) {
+				JOptionPane.showMessageDialog(null, "获取信息失败,请重新查询后再修改!");
+				return;
+			}
 
+			//如果页面罚金大于0 并且 页面输入的罚金和数据库罚金不一致时,表示修改了罚金,需要去数据库扣除罚金
+			if (penaltyVal > 0 && bookBorrows.getPenalty() != penaltyVal) {
+
+				//先查出来这个人相关的信息
+				User user = new User();
+				user.setUserName(userName);
+				user.setPhone(phone);
+
+				User user1 = userDao.checkBookBorrow(con, user);
+
+				//重新计算押金 当前押金 = 数据库查询出来的押金 - 页面罚款金额
+				user.setCashPledge(user1.getCashPledge() - penaltyVal);
+				//重新计算 累计罚款金额 累计罚款金额 = 数据库查询出来的累计罚款金额 + 页面罚款金额
+				user.setPenalty(user1.getPenalty() + penaltyVal);
+				int updatePenalty = userDao.updatePenalty(con, user);
+				// 小于1 表示一条也没改
+				if (updatePenalty < 1) {
+					JOptionPane.showMessageDialog(null, "修改用户押金失败了,请重试！");
+					return;
+				}
+			}
 			int addNum = borrowBookDao.updateBook(con, borrowBook);
 			if (addNum == 1) {
 				JOptionPane.showMessageDialog(null, "借阅信息修改成功！");
