@@ -65,7 +65,7 @@ public class AddBookTypeFrame extends JInternalFrame {
 				bookTypeAddActionPerformed(e);
 			}
 		});
-		button.setIcon(new ImageIcon(AddBookTypeFrame.class.getResource("/images/add.png")));
+		button.setIcon(new ImageIcon(AddBookTypeFrame.class.getResource("/images/1添加.png")));
 
 		JButton button_1 = new JButton("重置");
 		button_1.addActionListener(new ActionListener() {
@@ -74,7 +74,7 @@ public class AddBookTypeFrame extends JInternalFrame {
 				resetValueActionPerformed(e);
 			}
 		});
-		button_1.setIcon(new ImageIcon(AddBookTypeFrame.class.getResource("/images/reset.png")));
+		button_1.setIcon(new ImageIcon(AddBookTypeFrame.class.getResource("/images/重置.png")));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 				groupLayout.createParallelGroup(Alignment.LEADING)

@@ -66,14 +66,14 @@ public class LoginFrame extends JFrame {
 		setContentPane(contentPane);
 
 		JLabel label = new JLabel("欢迎访问图书管理系统");
-		label.setIcon(new ImageIcon(LoginFrame.class.getResource("/images/book4.jpg")));
+		label.setIcon(new ImageIcon(LoginFrame.class.getResource("/images/book6.jpg")));
 		label.setFont(new Font("宋体", Font.BOLD, 24));
 
 		JLabel lblNewLabel = new JLabel("用户名：");
 		lblNewLabel.setIcon(new ImageIcon(LoginFrame.class.getResource("/images/user1.png")));
 
-		JLabel label_1 = new JLabel("密    码：");
-		label_1.setIcon(new ImageIcon(LoginFrame.class.getResource("/images/password1.jpg")));
+		JLabel label_1 = new JLabel("密  码：");
+		label_1.setIcon(new ImageIcon(LoginFrame.class.getResource("/images/password1.png")));
 
 		userName_txt = new JTextField();
 		userName_txt.setColumns(10);
@@ -87,7 +87,7 @@ public class LoginFrame extends JFrame {
 				loginActionPerformed(e);
 			}
 		});
-		button.setIcon(new ImageIcon(LoginFrame.class.getResource("/images/login1.png")));
+		button.setIcon(new ImageIcon(LoginFrame.class.getResource("/images/登录设置.png")));
 
 		JButton button_1 = new JButton("重置");
 		button_1.addActionListener(new ActionListener() {
@@ -96,55 +96,57 @@ public class LoginFrame extends JFrame {
 				resetValueActionPerformed(e);
 			}
 		});
-		button_1.setIcon(new ImageIcon(LoginFrame.class.getResource("/images/reset 1.png")));
+		button_1.setIcon(new ImageIcon(LoginFrame.class.getResource("/images/重置.png")));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-				gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-								.addContainerGap(129, Short.MAX_VALUE)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addGroup(gl_contentPane.createSequentialGroup()
-												.addGap(47)
-												.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-														.addGroup(gl_contentPane.createSequentialGroup()
-																.addComponent(lblNewLabel)
-																.addGap(6)
-																.addComponent(userName_txt, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE))
-														.addGroup(gl_contentPane.createSequentialGroup()
-																.addComponent(label_1)
-																.addPreferredGap(ComponentPlacement.RELATED)
-																.addComponent(passWord_txt, GroupLayout.PREFERRED_SIZE, 106, GroupLayout.PREFERRED_SIZE))
-														.addGroup(gl_contentPane.createSequentialGroup()
-																.addComponent(button)
-																.addGap(85)
-																.addComponent(button_1)))
-												.addPreferredGap(ComponentPlacement.RELATED, 60, GroupLayout.PREFERRED_SIZE))
-										.addComponent(label, Alignment.TRAILING))
-								.addGap(103))
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap(108, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(47)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(button)
+									.addGap(85)
+									.addComponent(button_1))
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+									.addGroup(gl_contentPane.createSequentialGroup()
+										.addComponent(lblNewLabel)
+										.addGap(6)
+										.addComponent(userName_txt))
+									.addGroup(gl_contentPane.createSequentialGroup()
+										.addComponent(label_1)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(passWord_txt, GroupLayout.PREFERRED_SIZE, 106, GroupLayout.PREFERRED_SIZE))))
+							.addPreferredGap(ComponentPlacement.RELATED, 39, GroupLayout.PREFERRED_SIZE))
+						.addComponent(label, Alignment.TRAILING))
+					.addGap(103))
 		);
 		gl_contentPane.setVerticalGroup(
-				gl_contentPane.createParallelGroup(Alignment.LEADING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(43)
+					.addComponent(label)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-								.addGap(43)
-								.addComponent(label)
-								.addGap(44)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addGroup(gl_contentPane.createSequentialGroup()
-												.addGap(6)
-												.addComponent(lblNewLabel))
-										.addComponent(userName_txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addGroup(gl_contentPane.createSequentialGroup()
-												.addGap(41)
-												.addComponent(label_1))
-										.addGroup(gl_contentPane.createSequentialGroup()
-												.addGap(38)
-												.addComponent(passWord_txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-								.addGap(56)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-										.addComponent(button)
-										.addComponent(button_1))
-								.addContainerGap(62, Short.MAX_VALUE))
+							.addGap(50)
+							.addComponent(lblNewLabel))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(44)
+							.addComponent(userName_txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(41)
+							.addComponent(label_1))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(38)
+							.addComponent(passWord_txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+					.addGap(56)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(button)
+						.addComponent(button_1))
+					.addContainerGap(68, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
 

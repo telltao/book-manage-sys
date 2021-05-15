@@ -48,13 +48,13 @@ public class MainFrm extends JFrame {
 	public MainFrm() {
 		setTitle("图书管理系统主界面");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 900, 750);
+		setBounds(100, 100, 900, 704);
 
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 
 		JMenu menu = new JMenu("图书类别管理");
-		menu.setIcon(new ImageIcon(MainFrm.class.getResource("/images/bookTypeManager.png")));
+		menu.setIcon(new ImageIcon(MainFrm.class.getResource("/images/bookTypemanager1.png")));
 		menuBar.add(menu);
 
 		JMenuItem menuItem_1 = new JMenuItem("图书类别添加");
@@ -65,10 +65,10 @@ public class MainFrm extends JFrame {
 				table.add(bookType_add_InterFrm);
 			}
 		});
-		menuItem_1.setIcon(new ImageIcon(MainFrm.class.getResource("/images/add.png")));
+		menuItem_1.setIcon(new ImageIcon(MainFrm.class.getResource("/images/adduser2.png")));
 		menu.add(menuItem_1);
 
-		JMenuItem menuItem_2 = new JMenuItem("图书类别维护");
+		JMenuItem menuItem_2 = new JMenuItem("图书类别操作");
 		menuItem_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -77,11 +77,11 @@ public class MainFrm extends JFrame {
 				table.add(bookType_Manager_InterFrm);//??BookType_Manager_InterFrm????????????
 			}
 		});
-		menuItem_2.setIcon(new ImageIcon(MainFrm.class.getResource("/images/edit.png")));
+		menuItem_2.setIcon(new ImageIcon(MainFrm.class.getResource("/images/caozuo.png")));
 		menu.add(menuItem_2);
 
 		JMenu menu_1 = new JMenu("图书管理");
-		menu_1.setIcon(new ImageIcon(MainFrm.class.getResource("/images/bookManager.png")));
+		menu_1.setIcon(new ImageIcon(MainFrm.class.getResource("/images/图书.jpg")));
 		menuBar.add(menu_1);
 
 		JMenuItem menuItem_3 = new JMenuItem("图书添加");
@@ -93,7 +93,7 @@ public class MainFrm extends JFrame {
 				table.add(book_Add_InterFrm);//??Book_Add_InterFrm????????????
 			}
 		});
-		menuItem_3.setIcon(new ImageIcon(MainFrm.class.getResource("/images/add.png")));
+		menuItem_3.setIcon(new ImageIcon(MainFrm.class.getResource("/images/add5.png")));
 		menu_1.add(menuItem_3);
 
 
@@ -110,7 +110,7 @@ public class MainFrm extends JFrame {
 		menu_1.add(menuItem_4);
 
 		JMenu menu2 = new JMenu("用户管理");
-		menu2.setIcon(new ImageIcon(MainFrm.class.getResource("/images/bookTypeManager.png")));
+		menu2.setIcon(new ImageIcon(MainFrm.class.getResource("/images/user11.png")));
 		menuBar.add(menu2);
 
 		JMenuItem menuItem_5 = new JMenuItem("添加用户");
@@ -134,11 +134,11 @@ public class MainFrm extends JFrame {
 
 			}
 		});
-		menuItem_6.setIcon(new ImageIcon(MainFrm.class.getResource("/images/edit.png")));
+		menuItem_6.setIcon(new ImageIcon(MainFrm.class.getResource("/images/操作2.png")));
 		menu2.add(menuItem_6);
 
 		JMenu menu4 = new JMenu("借阅管理");
-		menu4.setIcon(new ImageIcon(MainFrm.class.getResource("/images/bookTypeManager.png")));
+		menu4.setIcon(new ImageIcon(MainFrm.class.getResource("/images/借阅.png")));
 		menuBar.add(menu4);
 
 		JMenuItem menuItem_7 = new JMenuItem("借阅图书");
@@ -149,7 +149,7 @@ public class MainFrm extends JFrame {
 				table.add(addUserFrame);
 			}
 		});
-		menuItem_7.setIcon(new ImageIcon(MainFrm.class.getResource("/images/add.png")));
+		menuItem_7.setIcon(new ImageIcon(MainFrm.class.getResource("/images/借阅图书.png")));
 		menu4.add(menuItem_7);
 
 		JMenuItem menuItem_8 = new JMenuItem("借阅列表");
@@ -162,7 +162,7 @@ public class MainFrm extends JFrame {
 
 			}
 		});
-		menuItem_8.setIcon(new ImageIcon(MainFrm.class.getResource("/images/edit.png")));
+		menuItem_8.setIcon(new ImageIcon(MainFrm.class.getResource("/images/caozuo3.png")));
 		menu4.add(menuItem_8);
 
 
@@ -179,7 +179,7 @@ public class MainFrm extends JFrame {
 
 
 		//JMenuItem
-		JMenuItem mntmNewMenuItem = new JMenuItem("关于系统");
+		JMenuItem mntmNewMenuItem = new JMenuItem("关于我们");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//
@@ -188,9 +188,9 @@ public class MainFrm extends JFrame {
 				table.add(about);//
 			}
 		});
-		mntmNewMenuItem.setIcon(new ImageIcon(MainFrm.class.getResource("/images/about.png")));
+		mntmNewMenuItem.setIcon(new ImageIcon(MainFrm.class.getResource("/images/关于我们.png")));
 		menuBar.add(mntmNewMenuItem);
-		menuItem.setIcon(new ImageIcon(MainFrm.class.getResource("/images/exit.png")));
+		menuItem.setIcon(new ImageIcon(MainFrm.class.getResource("/images/退出.png")));
 		menuBar.add(menuItem);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -203,13 +203,13 @@ public class MainFrm extends JFrame {
 		//创建一个标签组件，用于放置背景图片
 		JLabel backgroundLabel = new JLabel();
 		//需要自己导入一张背景图片到src目录下
-		URL resource = this.getClass().getResource("/images/mi.JPG");
-		ImageIcon icon = new ImageIcon(resource);
+		URL resource = this.getClass().getResource("/images/background1.JPG");
+		 final ImageIcon icon = new ImageIcon(resource);
 		//压缩背景图片，使其适应窗口大小
 		// 此处注释掉是因为压缩影响性能导致页面卡顿,需要则放开或注释
-		icon.setImage(icon.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_AREA_AVERAGING));
-		backgroundLabel.setIcon(icon);
-		backgroundLabel.setBounds(0, 0, this.getWidth(), this.getHeight());
+		//icon.setImage(icon.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_AREA_AVERAGING));
+		backgroundLabel.setIcon(new ImageIcon(MainFrm.class.getResource("/images/background1.JPG")));
+		backgroundLabel.setBounds(0, 0, 876, 750);
 		table.add(backgroundLabel, new Integer(Integer.MIN_VALUE));
 		//当改变窗口大小时，自动调整背景图片大小
 		getContentPane().addComponentListener(new ComponentAdapter() {
@@ -218,7 +218,7 @@ public class MainFrm extends JFrame {
 				int width = e.getComponent().getWidth();
 				int heigth = e.getComponent().getHeight();
 				// 此处注释掉是因为压缩影响性能导致页面卡顿,需要则放开或注释
-				icon.setImage(icon.getImage().getScaledInstance(width, heigth, Image.SCALE_AREA_AVERAGING));
+				//icon.setImage(icon.getImage().getScaledInstance(width, heigth, Image.SCALE_AREA_AVERAGING));
 				backgroundLabel.setBounds(0, 0, width, heigth);
 			}
 		});
