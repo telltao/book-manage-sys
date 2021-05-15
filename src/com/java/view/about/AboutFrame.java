@@ -1,18 +1,15 @@
 package com.java.view.about;
 
-import java.awt.Color;
-import java.awt.EventQueue;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.JInternalFrame;
-
 import com.java.dao.AboutDao;
 import com.java.model.About;
 import com.java.util.DbUtil;
+
+import javax.swing.*;
+import javax.swing.GroupLayout.Alignment;
+import java.awt.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 @SuppressWarnings("serial")
 public class AboutFrame extends JInternalFrame {
@@ -41,24 +38,40 @@ public class AboutFrame extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public AboutFrame() {
+		getContentPane().setBackground(SystemColor.textHighlight);
+		setBackground(Color.CYAN);
+		setIconifiable(true);
 		setClosable(true);
-        getContentPane().setBackground(Color.WHITE);
-        setBackground(Color.CYAN);
-        setIconifiable(true);
-        setTitle("关于系统");
-        setBounds(100, 100, 700, 450);
-        //TODO 在此处将数据从数据库中查询出来
+		setTitle("关于系统");
+		setBounds(100, 100, 700, 450);
+//		this.setBounds((900 - 700) / 2,(900 - 450) / 2,700,450);
+		JTextArea txtrJavaccjavajavaJava = new JTextArea();
+		txtrJavaccjavajavaJava.setRows(5);
+		txtrJavaccjavajavaJava.setBackground(SystemColor.textHighlight);
+		txtrJavaccjavajavaJava.setForeground(Color.WHITE);
+		//TODO 在此处将数据从数据库中查询出来
 
-        About about = initAbout();
-        GroupLayout groupLayout = new GroupLayout(getContentPane());
-        groupLayout.setHorizontalGroup(
-        	groupLayout.createParallelGroup(Alignment.LEADING)
-        		.addGap(0, 688, Short.MAX_VALUE)
-        );
-        groupLayout.setVerticalGroup(
-        	groupLayout.createParallelGroup(Alignment.LEADING)
-        		.addGap(0, 421, Short.MAX_VALUE)
-        );
+		About about = initAbout();
+		txtrJavaccjavajavaJava.setText("关于我们:" +
+				"\n作者：" + about.getAuthor() +
+				"\n说明：" + about.getContent() +
+				"\n联系方式：" + about.getEmail() + "");
+		txtrJavaccjavajavaJava.setFont(new Font("楷体", Font.PLAIN, 16));
+		GroupLayout groupLayout = new GroupLayout(getContentPane());
+		groupLayout.setHorizontalGroup(
+				groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addGroup(groupLayout.createSequentialGroup()
+								.addContainerGap(63, Short.MAX_VALUE)
+								.addComponent(txtrJavaccjavajavaJava, GroupLayout.PREFERRED_SIZE, 563, GroupLayout.PREFERRED_SIZE)
+								.addGap(50))
+		);
+		groupLayout.setVerticalGroup(
+				groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+								.addGap(50)
+								.addComponent(txtrJavaccjavajavaJava, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE)
+								.addContainerGap(143, Short.MAX_VALUE))
+		);
 		getContentPane().setLayout(groupLayout);
 
 	}
