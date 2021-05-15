@@ -1,15 +1,18 @@
 package com.java.view.about;
 
-import com.java.dao.AboutDao;
-import com.java.model.About;
-import com.java.util.DbUtil;
-
-import javax.swing.*;
-import javax.swing.GroupLayout.Alignment;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.EventQueue;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JInternalFrame;
+
+import com.java.dao.AboutDao;
+import com.java.model.About;
+import com.java.util.DbUtil;
 
 @SuppressWarnings("serial")
 public class AboutFrame extends JInternalFrame {

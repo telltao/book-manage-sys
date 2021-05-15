@@ -1,19 +1,6 @@
 package com.java.view.booktype;
 
-import com.java.dao.BookDao;
-import com.java.dao.BookTypeDao;
-import com.java.model.BookType;
-import com.java.util.DbUtil;
-import com.java.util.StringUtil;
-import com.java.view.book.AddBookFrame;
-
-import javax.swing.*;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.border.LineBorder;
-import javax.swing.border.TitledBorder;
-import javax.swing.table.DefaultTableModel;
-import java.awt.*;
+import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -22,6 +9,30 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
+
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableModel;
+
+import com.java.dao.BookDao;
+import com.java.dao.BookTypeDao;
+import com.java.model.BookType;
+import com.java.util.DbUtil;
+import com.java.util.StringUtil;
+import com.java.view.book.AddBookFrame;
 
 
 @SuppressWarnings("serial")

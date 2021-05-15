@@ -1,6 +1,5 @@
 package com.java.model;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 /**

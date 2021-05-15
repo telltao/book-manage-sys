@@ -81,4 +81,8 @@ public class BookType {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
+    
+    public String toString() {
+    	return this.bookTypeName;
+    }
 }

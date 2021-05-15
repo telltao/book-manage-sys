@@ -1,19 +1,30 @@
 package com.java.view;
 
-import com.java.dao.UserDao;
-import com.java.model.User;
-import com.java.util.DbUtil;
-import com.java.util.StringUtil;
-
-import javax.swing.*;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.border.EmptyBorder;
-import java.awt.*;
+import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.SQLException;
+
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
+
+import com.java.dao.UserDao;
+import com.java.model.User;
+import com.java.util.DbUtil;
+import com.java.util.StringUtil;
 
 @SuppressWarnings("serial")
 public class LoginFrame extends JFrame {

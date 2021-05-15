@@ -1,21 +1,33 @@
 package com.java.view.book;
 
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
+
+import javax.swing.ButtonGroup;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.border.LineBorder;
+
 import com.java.dao.BookDao;
 import com.java.dao.BookTypeDao;
 import com.java.model.Book;
 import com.java.model.BookType;
 import com.java.util.DbUtil;
 import com.java.util.StringUtil;
-
-import javax.swing.*;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.border.LineBorder;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.ResultSet;
 
 @SuppressWarnings("serial")
 public class AddBookFrame extends JInternalFrame {
@@ -309,8 +321,12 @@ public class AddBookFrame extends JInternalFrame {
 				bookType.setId(rs.getInt("id"));
 				bookType.setBookTypeName(rs.getString("bookTypeName"));
 				//bookType_Jcb的方法叫添加项“addItem”
+				//this.bookType_Jcb.addItem(rs.getString("bookTypeName"));
 				this.bookType_Jcb.addItem(bookType);
+
 			}
+//			bookType_Jcb.setModel(new DefaultComboBoxModel(new String[]{"请选择...", "3天", "5天", "10天"}));
+
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally{

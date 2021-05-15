@@ -1,11 +1,11 @@
 package com.java.dao;
 
-import com.java.model.User;
-import com.java.util.StringUtil;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
+import com.java.model.User;
+import com.java.util.StringUtil;
 
 public class UserDao {
 

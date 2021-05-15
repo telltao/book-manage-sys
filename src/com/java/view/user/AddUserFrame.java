@@ -1,18 +1,28 @@
 package com.java.view.user;
 
-import com.java.dao.UserDao;
-import com.java.model.User;
-import com.java.util.DbUtil;
-import com.java.util.StringUtil;
-
-import javax.swing.*;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.*;
+import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.util.Date;
+
+import javax.swing.ButtonGroup;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle.ComponentPlacement;
+
+import com.java.dao.UserDao;
+import com.java.model.User;
+import com.java.util.DbUtil;
+import com.java.util.StringUtil;
 
 @SuppressWarnings("serial")
 public class AddUserFrame extends JInternalFrame {

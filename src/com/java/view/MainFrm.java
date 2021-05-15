@@ -1,23 +1,33 @@
 package com.java.view;
 
-import com.java.view.about.AboutFrame;
-import com.java.view.booktype.AddBookTypeFrame;
-import com.java.view.booktype.BookTypeManagerFrame;
-import com.java.view.book.AddBookFrame;
-import com.java.view.book.BookManageFrame;
-import com.java.view.borrow.AddBorrowBookFrame;
-import com.java.view.borrow.BorrowBookManageFrame;
-import com.java.view.user.AddUserFrame;
-import com.java.view.user.UserManageFrame;
-
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.net.URL;
+
+import javax.swing.ImageIcon;
+import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import com.java.view.about.AboutFrame;
+import com.java.view.book.AddBookFrame;
+import com.java.view.book.BookManageFrame;
+import com.java.view.booktype.AddBookTypeFrame;
+import com.java.view.booktype.BookTypeManagerFrame;
+import com.java.view.borrow.AddBorrowBookFrame;
+import com.java.view.borrow.BorrowBookManageFrame;
+import com.java.view.user.AddUserFrame;
+import com.java.view.user.UserManageFrame;
 
 @SuppressWarnings("serial")
 public class MainFrm extends JFrame {
@@ -201,7 +211,7 @@ public class MainFrm extends JFrame {
 		//在此处增加背景图片 参考: https://blog.csdn.net/zhengruli/article/details/78465498
 		getContentPane().add(table, BorderLayout.CENTER);
 		//创建一个标签组件，用于放置背景图片
-		JLabel backgroundLabel = new JLabel();
+		final JLabel backgroundLabel = new JLabel();
 		//需要自己导入一张背景图片到src目录下
 		URL resource = this.getClass().getResource("/images/background1.JPG");
 		 final ImageIcon icon = new ImageIcon(resource);
