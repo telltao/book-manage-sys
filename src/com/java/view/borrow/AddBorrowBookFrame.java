@@ -289,7 +289,7 @@ public class AddBorrowBookFrame extends JInternalFrame {
 			borrowBook.setBorrowDate(borrowDate);
 			borrowBook.setBookName(book.getBookName());
 			borrowBook.setDueDate(dueDate);
-			borrowBook.setBookStatus("1");
+			borrowBook.setBookStatus("0");
 			borrowBook.setBorrowStatus("0");
 			borrowBook.setPenalty(0);
 			borrowBook.setStatus("0");
@@ -321,5 +321,6 @@ public class AddBorrowBookFrame extends JInternalFrame {
 		this.borrowPhone_Txt.setText("");
 		this.s_bookDate_Jcb.setSelectedIndex(0);
 		this.remarkTest.setText("");
+		this.borrowBookId.setText("");
 	}
 }

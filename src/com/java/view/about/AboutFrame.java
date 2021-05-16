@@ -52,7 +52,10 @@ public class AboutFrame extends JInternalFrame {
 		//TODO 在此处将数据从数据库中查询出来
 
 		About about = initAbout();
-		txtrJavaccjavajavaJava.setText("关于我们:\r\n作者：\r\n说明：\r\n联系方式：");
+		txtrJavaccjavajavaJava.setText("关于我们:" +
+				"\n作者：" + about.getAuthor() +
+				"\n说明：" + about.getContent() +
+				"\n联系方式：" + about.getEmail() + "");
 		txtrJavaccjavajavaJava.setFont(new Font("楷体", Font.PLAIN, 16));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(

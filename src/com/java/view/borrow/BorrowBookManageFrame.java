@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
@@ -655,9 +656,14 @@ public class BorrowBookManageFrame extends JInternalFrame {
 				v.add(rs.getString("userName"));
 				//手机号码
 				v.add(rs.getString("bookPhone"));
+
 				v.add(rs.getString("bookName"));
-				v.add(rs.getString("borrowDate"));
-				v.add(rs.getString("dueDate"));
+				//将日期进行转换
+				Date borrowDate = rs.getDate("borrowDate");
+				v.add(StringUtil.dataFormat(borrowDate));
+				//将日期进行转换
+				Date dueDate = rs.getDate("dueDate");
+				v.add(StringUtil.dataFormat(dueDate));
 				//图书状态
 				if (rs.getString("bookStatus").equals("0")) {
 					v.add("借阅中");
