@@ -98,12 +98,13 @@ public class BorrowBookDao {
 		ResultSet rs = pstmt.executeQuery();
 
 		// rs.next()指向表中第一行数据 若第一行有效，则返回true，并继续指向第二行
-		if (rs.next()) {
-			//获取数据大小 也就是sql执行查询的数据大小 三条 结果为3
-			int size = rs.getFetchSize();
-			return size;
+		int count = 0;
+
+		while (rs.next()) {
+			//循环多少次就是有多少条数据,然后给 count赋值+1就行
+			count = count + 1;
 		}
-		return 0;
+		return count;
 	}
 
 	/**

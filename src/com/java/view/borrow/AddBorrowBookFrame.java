@@ -281,7 +281,7 @@ public class AddBorrowBookFrame extends JInternalFrame {
 			//限制借阅次数
 			int size = borrowBookDao.checkBookBorrowSize(con, borrowBook);
 			//如果数量大于3 则不让借书
-			if (size > 3) {
+			if (size >= 3) {
 				JOptionPane.showMessageDialog(null, userName + "借阅图书过多,请先归还图书");
 				return;
 			}
