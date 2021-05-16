@@ -79,7 +79,7 @@ public class AddBorrowBookFrame extends JInternalFrame {
 				bookAddActionPerformed(e);
 			}
 		});
-		button.setIcon(new ImageIcon(AddBorrowBookFrame.class.getResource("/images/add.png")));
+		button.setIcon(new ImageIcon(AddBorrowBookFrame.class.getResource("/images/1添加.png")));
 
 		JButton button_1 = new JButton("重置");
 		button_1.addActionListener(new ActionListener() {
@@ -88,7 +88,7 @@ public class AddBorrowBookFrame extends JInternalFrame {
 				resetValueActionPerformed(e);
 			}
 		});
-		button_1.setIcon(new ImageIcon(AddBorrowBookFrame.class.getResource("/images/reset.png")));
+		button_1.setIcon(new ImageIcon(AddBorrowBookFrame.class.getResource("/images/重置.png")));
 
 		JLabel label_1_1 = new JLabel("借阅图书编号：");
 
@@ -227,7 +227,7 @@ public class AddBorrowBookFrame extends JInternalFrame {
 			}
 		}
 		//还书时间 //选择借阅天数后,获取到当前时间,并+上借阅的天数 =归还时间
-		//计算公式 24 * 12 * 60 * 60 这是一天的毫秒
+		//计算公式 1000*60*60*24  这是一天的毫秒
 		// 1分钟=60秒 1秒 = 1000毫秒  1000*60*60*24:一天的毫秒数
 		long dueDateTimeMillis = timeMillis + (selectDay * 1000 * 60 * 60 * 24);
 		Date dueDate = new Date(dueDateTimeMillis);

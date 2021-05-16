@@ -33,6 +33,8 @@ import com.java.model.BookType;
 import com.java.util.DbUtil;
 import com.java.util.StringUtil;
 import com.java.view.book.AddBookFrame;
+import javax.swing.border.EtchedBorder;
+import java.awt.Color;
 
 
 @SuppressWarnings("serial")
@@ -85,10 +87,10 @@ public class BookTypeManagerFrame extends JInternalFrame {
 				bookTypeSearchActionPerformed(e);
 			}
 		});
-		button.setIcon(new ImageIcon(BookTypeManagerFrame.class.getResource("/images/search.png")));
+		button.setIcon(new ImageIcon(BookTypeManagerFrame.class.getResource("/images/查询-default.png")));
 
 		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(null, "表单操作", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "\u56FE\u4E66\u7C7B\u522B\u64CD\u4F5C", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 
 		JButton button_3 = new JButton("重置");
 		button_3.addActionListener(new ActionListener() {
@@ -96,27 +98,28 @@ public class BookTypeManagerFrame extends JInternalFrame {
 				resetValue();
 			}
 		});
-		button_3.setIcon(new ImageIcon(AddBookFrame.class.getResource("/images/reset.png")));
+		button_3.setIcon(new ImageIcon(BookTypeManagerFrame.class.getResource("/images/重置.png")));
 
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
+			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(134, Short.MAX_VALUE)
-					.addComponent(label)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(s_bookTypeName_Txt, GroupLayout.PREFERRED_SIZE, 145, GroupLayout.PREFERRED_SIZE)
-					.addGap(36)
-					.addComponent(button)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(button_3, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-					.addGap(123))
-				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 					.addGap(68)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
-						.addComponent(scrollPane, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE))
-					.addGap(49))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(label)
+							.addGap(18)
+							.addComponent(s_bookTypeName_Txt, GroupLayout.PREFERRED_SIZE, 145, GroupLayout.PREFERRED_SIZE)
+							.addGap(40)
+							.addComponent(button)
+							.addGap(26)
+							.addComponent(button_3, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(panel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
+								.addComponent(scrollPane, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE))
+							.addGap(49))))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -156,7 +159,7 @@ public class BookTypeManagerFrame extends JInternalFrame {
 				bookTypeUpdateActionEvent(e);
 			}
 		});
-		button_1.setIcon(new ImageIcon(BookTypeManagerFrame.class.getResource("/images/modify.png")));
+		button_1.setIcon(new ImageIcon(BookTypeManagerFrame.class.getResource("/images/4修改.png")));
 
 		//图书类别删除功能
 		JButton button_2 = new JButton("删除");
@@ -165,52 +168,52 @@ public class BookTypeManagerFrame extends JInternalFrame {
 				bookTypeDeleteActionEvent(e);//create之后直接跳转到图书类别删除功能
 			}
 		});
-		button_2.setIcon(new ImageIcon(BookTypeManagerFrame.class.getResource("/images/delete.png")));
+		button_2.setIcon(new ImageIcon(BookTypeManagerFrame.class.getResource("/images/删 除 .png")));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
-				gl_panel.createParallelGroup(Alignment.LEADING)
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_panel.createSequentialGroup()
-								.addContainerGap()
-								.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-										.addGroup(gl_panel.createSequentialGroup()
-												.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-														.addGroup(gl_panel.createSequentialGroup()
-																.addComponent(label_1)
-																.addGap(18)
-																.addComponent(id_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-																.addGap(35)
-																.addComponent(label_2)
-																.addGap(18)
-																.addComponent(bookTypeName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-														.addGroup(gl_panel.createSequentialGroup()
-																.addComponent(label_3)
-																.addGap(18)
-																.addComponent(bookTypeDesc_Txt, GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)))
-												.addContainerGap())
-										.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
-												.addComponent(button_1)
-												.addGap(74)
-												.addComponent(button_2)
-												.addGap(166))))
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panel.createSequentialGroup()
+									.addComponent(label_1)
+									.addGap(18)
+									.addComponent(id_Txt, GroupLayout.PREFERRED_SIZE, 122, GroupLayout.PREFERRED_SIZE)
+									.addGap(26)
+									.addComponent(label_2)
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addComponent(bookTypeName_Txt, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_panel.createSequentialGroup()
+									.addComponent(label_3)
+									.addGap(18)
+									.addComponent(bookTypeDesc_Txt, GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE)))
+							.addContainerGap())
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(button_1)
+							.addGap(74)
+							.addComponent(button_2)
+							.addGap(166))))
 		);
 		gl_panel.setVerticalGroup(
-				gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-								.addContainerGap()
-								.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-										.addComponent(label_1)
-										.addComponent(id_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(label_2)
-										.addComponent(bookTypeName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-										.addComponent(label_3)
-										.addComponent(bookTypeDesc_Txt, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE))
-								.addGap(18)
-								.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-										.addComponent(button_1)
-										.addComponent(button_2))
-								.addContainerGap(44, Short.MAX_VALUE))
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(label_1)
+						.addComponent(id_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(bookTypeName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_2))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(label_3)
+						.addComponent(bookTypeDesc_Txt, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(button_1)
+						.addComponent(button_2))
+					.addContainerGap(25, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
 

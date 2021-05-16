@@ -36,6 +36,7 @@ import com.java.util.DbUtil;
 import com.java.util.StringUtil;
 import com.java.view.book.AddBookFrame;
 import com.java.view.booktype.BookTypeManagerFrame;
+import javax.swing.border.EtchedBorder;
 
 @SuppressWarnings("serial")
 public class BorrowBookManageFrame extends JInternalFrame {
@@ -90,32 +91,28 @@ public class BorrowBookManageFrame extends JInternalFrame {
 		panel.setBorder(new TitledBorder(null, "搜索条件", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 
 		JPanel restartPhone = new JPanel();
-		restartPhone.setBorder(new TitledBorder(null, "表单操作", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		restartPhone.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "\u501F\u9605\u5217\u8868\u64CD\u4F5C", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
-				groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addGroup(groupLayout.createSequentialGroup()
-								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-										.addGroup(groupLayout.createSequentialGroup()
-												.addContainerGap()
-												.addComponent(restartPhone, GroupLayout.PREFERRED_SIZE, 652, GroupLayout.PREFERRED_SIZE))
-										.addGroup(groupLayout.createSequentialGroup()
-												.addGap(37)
-												.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-														.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
-														.addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-								.addGap(28))
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap(31, Short.MAX_VALUE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+						.addComponent(panel, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
+						.addComponent(scrollPane)
+						.addComponent(restartPhone, GroupLayout.PREFERRED_SIZE, 652, Short.MAX_VALUE))
+					.addGap(28))
 		);
 		groupLayout.setVerticalGroup(
-				groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-								.addGap(31)
-								.addComponent(panel, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE)
-								.addGap(18)
-								.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 262, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addComponent(restartPhone, GroupLayout.PREFERRED_SIZE, 281, GroupLayout.PREFERRED_SIZE)
-								.addContainerGap(49, Short.MAX_VALUE))
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(31)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 238, GroupLayout.PREFERRED_SIZE)
+					.addGap(13)
+					.addComponent(restartPhone, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(37, Short.MAX_VALUE))
 		);
 
 		JLabel label_3 = new JLabel("手机号:");
@@ -139,7 +136,7 @@ public class BorrowBookManageFrame extends JInternalFrame {
 				userUpdateActionPerformed(evt);
 			}
 		});
-		button_1.setIcon(new ImageIcon(BorrowBookManageFrame.class.getResource("/images/modify.png")));
+		button_1.setIcon(new ImageIcon(BorrowBookManageFrame.class.getResource("/images/4修改.png")));
 
 		//用户删除事件
 		JButton button_2 = new JButton("删除");
@@ -148,7 +145,7 @@ public class BorrowBookManageFrame extends JInternalFrame {
 				userDeleteActionPerformed(evt);
 			}
 		});
-		button_2.setIcon(new ImageIcon(BorrowBookManageFrame.class.getResource("/images/delete.png")));
+		button_2.setIcon(new ImageIcon(BorrowBookManageFrame.class.getResource("/images/删 除 .png")));
 
 		JLabel label_6_1 = new JLabel("图书状态：");
 
@@ -194,118 +191,105 @@ public class BorrowBookManageFrame extends JInternalFrame {
 		remark.setColumns(10);
 		GroupLayout gl_restartPhone = new GroupLayout(restartPhone);
 		gl_restartPhone.setHorizontalGroup(
-				gl_restartPhone.createParallelGroup(Alignment.LEADING)
+			gl_restartPhone.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_restartPhone.createSequentialGroup()
+					.addGap(206)
+					.addComponent(button_1)
+					.addGap(110)
+					.addComponent(button_2)
+					.addContainerGap(170, Short.MAX_VALUE))
+				.addGroup(gl_restartPhone.createSequentialGroup()
+					.addGap(78)
+					.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
+						.addComponent(label_6_1)
+						.addComponent(label_6)
+						.addComponent(label_3_1, GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+						.addComponent(label_3)
+						.addComponent(label_3_2, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_3_1_2, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_restartPhone.createSequentialGroup()
-								.addGap(198)
-								.addComponent(button_1)
-								.addGap(122)
-								.addComponent(button_2)
-								.addContainerGap(204, Short.MAX_VALUE))
-						.addGroup(gl_restartPhone.createSequentialGroup()
-								.addGap(78)
-								.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
+							.addGroup(gl_restartPhone.createParallelGroup(Alignment.TRAILING, false)
+								.addComponent(phone_Txt, Alignment.LEADING)
+								.addComponent(penalty)
+								.addGroup(gl_restartPhone.createSequentialGroup()
+									.addGroup(gl_restartPhone.createParallelGroup(Alignment.TRAILING)
+										.addComponent(borrowDate, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+										.addComponent(bookStatus, 0, 163, Short.MAX_VALUE))
+									.addPreferredGap(ComponentPlacement.RELATED))
+								.addComponent(id_Txt, Alignment.LEADING))
+							.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_restartPhone.createSequentialGroup()
+									.addGap(39)
+									.addGroup(gl_restartPhone.createParallelGroup(Alignment.TRAILING)
 										.addGroup(gl_restartPhone.createSequentialGroup()
-												.addComponent(label_3_1_2, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
-												.addPreferredGap(ComponentPlacement.RELATED)
-												.addComponent(remark, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE))
+											.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
+												.addComponent(label_4_1, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+												.addGroup(gl_restartPhone.createParallelGroup(Alignment.TRAILING)
+													.addComponent(label_6_2, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE)
+													.addComponent(label_4)))
+											.addGap(22))
 										.addGroup(gl_restartPhone.createSequentialGroup()
-												.addGroup(gl_restartPhone.createParallelGroup(Alignment.TRAILING)
-														.addGroup(gl_restartPhone.createSequentialGroup()
-																.addPreferredGap(ComponentPlacement.RELATED, 29, GroupLayout.PREFERRED_SIZE)
-																.addComponent(label_3_2, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-																.addGap(18)
-																.addComponent(id_Txt, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
-														.addGroup(gl_restartPhone.createSequentialGroup()
-																.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
-																		.addComponent(label_6_1)
-																		.addGroup(gl_restartPhone.createParallelGroup(Alignment.TRAILING)
-																				.addComponent(label_3)
-																				.addComponent(label_6))
-																		.addComponent(label_3_1, GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))
-																.addPreferredGap(ComponentPlacement.RELATED)
-																.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
-																		.addComponent(borrowDate, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-																		.addGroup(gl_restartPhone.createParallelGroup(Alignment.TRAILING, false)
-																				.addComponent(bookStatus, Alignment.LEADING, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-																				.addComponent(phone_Txt, Alignment.LEADING)
-																				.addComponent(penalty, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-																.addPreferredGap(ComponentPlacement.RELATED)))
-												.addGroup(gl_restartPhone.createParallelGroup(Alignment.TRAILING)
-														.addGroup(gl_restartPhone.createSequentialGroup()
-																.addPreferredGap(ComponentPlacement.RELATED)
-																.addComponent(label_6_2, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE)
-																.addGap(15)
-																.addComponent(dueDate, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
-														.addGroup(gl_restartPhone.createParallelGroup(Alignment.TRAILING)
-																.addGroup(gl_restartPhone.createSequentialGroup()
-																		.addPreferredGap(ComponentPlacement.RELATED)
-																		.addComponent(label_4_1, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-																		.addGap(31)
-																		.addComponent(userName_Txt, GroupLayout.PREFERRED_SIZE, 158, GroupLayout.PREFERRED_SIZE))
-																.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
-																		.addGroup(gl_restartPhone.createSequentialGroup()
-																				.addGap(39)
-																				.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
-																						.addComponent(label_4)
-																						.addComponent(label_8_1, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE))
-																				.addPreferredGap(ComponentPlacement.RELATED)
-																				.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
-																						.addComponent(borrowStatus, 0, 155, Short.MAX_VALUE)
-																						.addComponent(bookName_Txt, GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)))
-																		.addGroup(gl_restartPhone.createSequentialGroup()
-																				.addPreferredGap(ComponentPlacement.RELATED)
-																				.addComponent(label_3_1_1, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
-																				.addPreferredGap(ComponentPlacement.RELATED, 143, GroupLayout.PREFERRED_SIZE)))))))
-								.addGap(87))
+											.addComponent(label_8_1)
+											.addGap(18)))
+									.addGroup(gl_restartPhone.createParallelGroup(Alignment.TRAILING, false)
+										.addComponent(borrowStatus, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(bookName_Txt)
+										.addComponent(userName_Txt, GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+										.addComponent(dueDate)))
+								.addGroup(gl_restartPhone.createSequentialGroup()
+									.addGap(18)
+									.addComponent(label_3_1_1, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE))))
+						.addComponent(remark, 443, 443, 443))
+					.addGap(87))
 		);
 		gl_restartPhone.setVerticalGroup(
-				gl_restartPhone.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_restartPhone.createSequentialGroup()
-								.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
-										.addGroup(gl_restartPhone.createSequentialGroup()
-												.addGap(5)
-												.addComponent(label_3_2))
-										.addComponent(id_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addGroup(gl_restartPhone.createSequentialGroup()
-												.addGap(5)
-												.addComponent(label_4_1))
-										.addComponent(userName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
-										.addComponent(phone_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(label_4)
-										.addComponent(bookName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(label_3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-								.addGap(18)
-								.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
-										.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
-												.addComponent(label_6)
-												.addComponent(borrowDate, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-										.addGroup(gl_restartPhone.createSequentialGroup()
-												.addGap(5)
-												.addComponent(label_6_2))
-										.addComponent(dueDate, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
-										.addComponent(label_8_1)
-										.addComponent(borrowStatus, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(bookStatus, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(label_6_1))
-								.addGap(18)
-								.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
-										.addComponent(label_3_1)
-										.addComponent(penalty, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(label_3_1_1))
-								.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
-										.addGroup(gl_restartPhone.createSequentialGroup()
-												.addGap(56)
-												.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
-														.addComponent(button_1)
-														.addComponent(button_2)))
-										.addGroup(gl_restartPhone.createSequentialGroup()
-												.addGap(18)
-												.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
-														.addComponent(label_3_1_2)
-														.addComponent(remark, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
-								.addGap(49))
+			gl_restartPhone.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_restartPhone.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
+						.addComponent(userName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(id_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_3_2)
+						.addComponent(label_4_1))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
+						.addComponent(label_3, GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+						.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
+							.addComponent(bookName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(label_4))
+						.addComponent(phone_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
+							.addComponent(dueDate, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(label_6_2))
+						.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
+							.addComponent(label_6)
+							.addComponent(borrowDate, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
+							.addComponent(bookStatus, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(label_6_1))
+						.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
+							.addComponent(borrowStatus, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(label_8_1)))
+					.addGap(18)
+					.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
+						.addComponent(label_3_1)
+						.addComponent(penalty, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_3_1_1))
+					.addGap(18)
+					.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
+						.addComponent(label_3_1_2)
+						.addComponent(remark, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
+						.addComponent(button_2)
+						.addComponent(button_1))
+					.addContainerGap())
 		);
 		restartPhone.setLayout(gl_restartPhone);
 
@@ -321,7 +305,7 @@ public class BorrowBookManageFrame extends JInternalFrame {
 				userSearchActionPerformed(e);
 			}
 		});
-		button.setIcon(new ImageIcon(BookTypeManagerFrame.class.getResource("/images/search.png")));
+		button.setIcon(new ImageIcon(BorrowBookManageFrame.class.getResource("/images/查询-default.png")));
 
 
 		JButton button_3 = new JButton("重置");
@@ -330,7 +314,7 @@ public class BorrowBookManageFrame extends JInternalFrame {
 				resetValue();
 			}
 		});
-		button_3.setIcon(new ImageIcon(AddBookFrame.class.getResource("/images/reset.png")));
+		button_3.setIcon(new ImageIcon(BorrowBookManageFrame.class.getResource("/images/重置.png")));
 
 		JLabel label_1 = new JLabel("借阅人手机号:");
 		//查询页的用户名
@@ -339,34 +323,34 @@ public class BorrowBookManageFrame extends JInternalFrame {
 
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
-				gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-								.addGap(26)
-								.addComponent(label)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(s_userName_Txt, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
-								.addGap(40)
-								.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addComponent(s_phone_Txt, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-								.addComponent(button)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(button_3)
-								.addGap(30))
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(26)
+					.addComponent(label)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(s_userName_Txt, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
+					.addGap(40)
+					.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(s_phone_Txt, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(button)
+					.addGap(18)
+					.addComponent(button_3)
+					.addContainerGap(30, Short.MAX_VALUE))
 		);
 		gl_panel.setVerticalGroup(
-				gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-								.addContainerGap()
-								.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-										.addComponent(label)
-										.addComponent(s_userName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(s_phone_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(label_1)
-										.addComponent(button_3)
-										.addComponent(button))
-								.addGap(21))
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(label)
+						.addComponent(s_userName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(s_phone_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(button)
+						.addComponent(label_1)
+						.addComponent(button_3))
+					.addGap(21))
 		);
 		panel.setLayout(gl_panel);
 

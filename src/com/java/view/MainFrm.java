@@ -107,7 +107,7 @@ public class MainFrm extends JFrame {
 		menu_1.add(menuItem_3);
 
 
-		JMenuItem menuItem_4 = new JMenuItem("图书维护");
+		JMenuItem menuItem_4 = new JMenuItem("图书操作");
 		menuItem_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -218,7 +218,7 @@ public class MainFrm extends JFrame {
 		//压缩背景图片，使其适应窗口大小
 		// 此处注释掉是因为压缩影响性能导致页面卡顿,需要则放开或注释
 		//icon.setImage(icon.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_AREA_AVERAGING));
-		backgroundLabel.setIcon(new ImageIcon(MainFrm.class.getResource("/images/background1.JPG")));
+		backgroundLabel.setIcon(icon);
 		backgroundLabel.setBounds(0, 0, 876, 750);
 		table.add(backgroundLabel, new Integer(Integer.MIN_VALUE));
 		//当改变窗口大小时，自动调整背景图片大小

@@ -21,6 +21,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
+import javax.swing.border.EtchedBorder;
 
 @SuppressWarnings("serial")
 public class UserManageFrame extends JInternalFrame {
@@ -75,17 +76,17 @@ public class UserManageFrame extends JInternalFrame {
 		panel.setBorder(new TitledBorder(null, "搜索条件", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 
 		JPanel restartPhone = new JPanel();
-		restartPhone.setBorder(new TitledBorder(null, "表单操作", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		restartPhone.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "\u7528\u6237\u5217\u8868\u64CD\u4F5C", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(groupLayout.createSequentialGroup()
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 					.addGap(18)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(restartPhone, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE)
-						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE)
-						.addComponent(panel, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(14))
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+						.addComponent(restartPhone, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
+						.addComponent(panel, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
+						.addComponent(scrollPane, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 671, Short.MAX_VALUE))
+					.addContainerGap(22, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -122,7 +123,7 @@ public class UserManageFrame extends JInternalFrame {
 				userUpdateActionPerformed(evt);
 			}
 		});
-		button_1.setIcon(new ImageIcon(UserManageFrame.class.getResource("/images/modify.png")));
+		button_1.setIcon(new ImageIcon(UserManageFrame.class.getResource("/images/4修改.png")));
 
 		//用户删除事件
 		JButton button_2 = new JButton("删除");
@@ -131,7 +132,7 @@ public class UserManageFrame extends JInternalFrame {
 				userDeleteActionPerformed(evt);
 			}
 		});
-		button_2.setIcon(new ImageIcon(UserManageFrame.class.getResource("/images/delete.png")));
+		button_2.setIcon(new ImageIcon(UserManageFrame.class.getResource("/images/删 除 .png")));
 
 		JLabel label_6_1 = new JLabel("押金状态：");
 
@@ -180,7 +181,7 @@ public class UserManageFrame extends JInternalFrame {
 						.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
 							.addComponent(label_6_1)
 							.addComponent(label_6)
-							.addComponent(label_3_1, GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+							.addComponent(label_3_1, GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
 							.addComponent(label_3)))
 					.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_restartPhone.createSequentialGroup()
@@ -189,36 +190,33 @@ public class UserManageFrame extends JInternalFrame {
 								.addComponent(penalty, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
 								.addComponent(s_cashPledgeStatus_Jcb, 0, 130, Short.MAX_VALUE)
 								.addComponent(button_1_1, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)))
-						.addComponent(id_Txt, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-						.addComponent(userName_Txt, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
+						.addComponent(userName_Txt, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+						.addComponent(id_Txt, GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))
 					.addGap(18)
 					.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_restartPhone.createSequentialGroup()
-							.addGroup(gl_restartPhone.createParallelGroup(Alignment.TRAILING)
-								.addGroup(Alignment.LEADING, gl_restartPhone.createSequentialGroup()
-									.addGap(43)
-									.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
-										.addComponent(label_4)
-										.addComponent(label_4_1, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-										.addComponent(label_8)
-										.addComponent(label_8_1, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE))
-									.addGap(41)
-									.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
-										.addComponent(s_cashPledge_Jcb, 0, 137, Short.MAX_VALUE)
-										.addComponent(phone_Txt, GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-										.addComponent(loginName_Txt, GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-										.addComponent(s_status_Txt_Update, 0, 141, Short.MAX_VALUE)))
-								.addGroup(Alignment.LEADING, gl_restartPhone.createSequentialGroup()
-									.addGap(48)
-									.addComponent(button_2)))
-							.addContainerGap(74, GroupLayout.PREFERRED_SIZE))
+							.addGap(43)
+							.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
+								.addComponent(label_4)
+								.addComponent(label_4_1, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+								.addComponent(label_8)
+								.addComponent(label_8_1, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
+								.addComponent(loginName_Txt, GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+								.addComponent(s_status_Txt_Update, Alignment.TRAILING, 0, 155, Short.MAX_VALUE)
+								.addComponent(s_cashPledge_Jcb, 0, 136, Short.MAX_VALUE)
+								.addComponent(phone_Txt, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE))
+							.addContainerGap(64, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_restartPhone.createSequentialGroup()
 							.addComponent(label_3_1_1, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
 							.addContainerGap())))
 				.addGroup(gl_restartPhone.createSequentialGroup()
-					.addGap(201)
+					.addGap(241)
 					.addComponent(button_1)
-					.addContainerGap(393, Short.MAX_VALUE))
+					.addGap(64)
+					.addComponent(button_2)
+					.addContainerGap(208, Short.MAX_VALUE))
 		);
 		gl_restartPhone.setVerticalGroup(
 			gl_restartPhone.createParallelGroup(Alignment.TRAILING)
@@ -229,45 +227,48 @@ public class UserManageFrame extends JInternalFrame {
 							.addComponent(id_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addComponent(label_3_2))
 						.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
-							.addComponent(loginName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addComponent(label_4_1)))
+							.addComponent(label_4_1)
+							.addComponent(loginName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 					.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_restartPhone.createSequentialGroup()
 							.addGap(12)
-							.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
-								.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-								.addComponent(phone_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_restartPhone.createSequentialGroup()
 							.addGap(18)
 							.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
 								.addComponent(label_4)
-								.addComponent(userName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+								.addComponent(userName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(gl_restartPhone.createSequentialGroup()
+							.addGap(18)
+							.addComponent(phone_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_restartPhone.createSequentialGroup()
 							.addGap(13)
 							.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
 								.addComponent(label_6)
-								.addComponent(button_1_1, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-								.addComponent(s_status_Txt_Update, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(button_1_1, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(gl_restartPhone.createSequentialGroup()
 							.addGap(18)
-							.addComponent(label_8)))
+							.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
+								.addComponent(label_8)
+								.addComponent(s_status_Txt_Update, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
 					.addGap(18)
 					.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
 						.addComponent(s_cashPledgeStatus_Jcb, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(label_6_1)
-						.addComponent(s_cashPledge_Jcb, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_8_1))
+						.addComponent(label_8_1)
+						.addComponent(s_cashPledge_Jcb, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
 						.addComponent(label_3_1)
 						.addComponent(penalty, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(label_3_1_1))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_restartPhone.createParallelGroup(Alignment.BASELINE)
-						.addComponent(button_1)
-						.addComponent(button_2))
-					.addGap(55))
+					.addGap(18)
+					.addGroup(gl_restartPhone.createParallelGroup(Alignment.LEADING)
+						.addComponent(button_2)
+						.addComponent(button_1))
+					.addGap(47))
 		);
 		restartPhone.setLayout(gl_restartPhone);
 
@@ -286,7 +287,7 @@ public class UserManageFrame extends JInternalFrame {
 				userSearchActionPerformed(e);
 			}
 		});
-		button.setIcon(new ImageIcon(BookTypeManagerFrame.class.getResource("/images/search.png")));
+		button.setIcon(new ImageIcon(UserManageFrame.class.getResource("/images/查询-default.png")));
 
 
 		JButton button_3 = new JButton("重置");
@@ -295,7 +296,7 @@ public class UserManageFrame extends JInternalFrame {
 				resetValue();
 			}
 		});
-		button_3.setIcon(new ImageIcon(AddBookFrame.class.getResource("/images/reset.png")));
+		button_3.setIcon(new ImageIcon(UserManageFrame.class.getResource("/images/重置.png")));
 
 		JLabel label_1 = new JLabel("用户名:");
 		//查询页的用户名
@@ -304,42 +305,43 @@ public class UserManageFrame extends JInternalFrame {
 
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
-				gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-								.addContainerGap()
-								.addComponent(label)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(s_loginName_Txt, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-								.addGap(6)
-								.addComponent(s_userName_Txt, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(label_2)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(s_status_Txt, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-								.addGap(18)
-								.addComponent(button)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(button_3)
-								.addContainerGap())
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(label)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(s_loginName_Txt, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(s_userName_Txt, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(label_2)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(s_status_Txt, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(button)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(button_3)
+					.addGap(44))
 		);
 		gl_panel.setVerticalGroup(
-				gl_panel.createParallelGroup(Alignment.LEADING)
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+							.addComponent(label)
+							.addComponent(label_2)
+							.addComponent(s_status_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(button)
+							.addComponent(button_3)
+							.addComponent(s_loginName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(s_userName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panel.createSequentialGroup()
-								.addContainerGap()
-								.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-										.addGroup(gl_panel.createSequentialGroup()
-												.addGap(5)
-												.addComponent(label_1))
-										.addComponent(s_userName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-												.addComponent(label)
-												.addComponent(s_loginName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addComponent(button_3)
-												.addComponent(button)
-												.addComponent(label_2)
-												.addComponent(s_status_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+							.addGap(5)
+							.addComponent(label_1)))
+					.addGap(1))
 		);
 		panel.setLayout(gl_panel);
 
@@ -352,27 +354,25 @@ public class UserManageFrame extends JInternalFrame {
 			}
 		});
 		userTable.setModel(new DefaultTableModel(
-				new Object[][]{
-				},
-				new String[]{
-						"编号", "登录名", "用户名", "手机号", "状态", "创建时间", "押金状态", "押金金额(元)", "罚款金额"
-				}
+			new Object[][] {
+			},
+			new String[] {
+				"\u7F16\u53F7", "\u767B\u5F55\u540D", "\u7528\u6237\u540D", "\u624B\u673A\u53F7", "\u72B6\u6001", "\u521B\u5EFA\u65F6\u95F4", "\u62BC\u91D1\u72B6\u6001", "\u62BC\u91D1\u91D1\u989D(\u5143)", "\u7F5A\u6B3E\u91D1\u989D"
+			}
 		) {
-			boolean[] columnEditables = new boolean[]{
-					false, false, false, false, false, false, false, false, false, false
+			boolean[] columnEditables = new boolean[] {
+				false, false, false, false, false, false, false, false, false
 			};
-
 			public boolean isCellEditable(int row, int column) {
 				return columnEditables[column];
 			}
-
 		});
 		userTable.getColumnModel().getColumn(0).setPreferredWidth(30);
 		userTable.getColumnModel().getColumn(1).setPreferredWidth(60);
 		userTable.getColumnModel().getColumn(2).setPreferredWidth(120);
 		userTable.getColumnModel().getColumn(3).setPreferredWidth(93);
 		userTable.getColumnModel().getColumn(4).setPreferredWidth(60);
-		userTable.getColumnModel().getColumn(5).setPreferredWidth(120);
+		userTable.getColumnModel().getColumn(5).setPreferredWidth(90);
 		userTable.getColumnModel().getColumn(6).setPreferredWidth(60);
 		userTable.getColumnModel().getColumn(7).setPreferredWidth(50);
 		userTable.getColumnModel().getColumn(8).setPreferredWidth(50);

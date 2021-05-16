@@ -81,7 +81,7 @@ public class AddUserFrame extends JInternalFrame {
 				bookAddActionPerformed(e);
 			}
 		});
-		button.setIcon(new ImageIcon(AddUserFrame.class.getResource("/images/add.png")));
+		button.setIcon(new ImageIcon(AddUserFrame.class.getResource("/images/1添加.png")));
 
 		JButton button_1 = new JButton("重置");
 		button_1.addActionListener(new ActionListener() {
@@ -90,7 +90,7 @@ public class AddUserFrame extends JInternalFrame {
 				resetValueActionPerformed(e);
 			}
 		});
-		button_1.setIcon(new ImageIcon(AddUserFrame.class.getResource("/images/reset.png")));
+		button_1.setIcon(new ImageIcon(AddUserFrame.class.getResource("/images/重置.png")));
 
 		JLabel label_1_1 = new JLabel("押金状态：");
 
@@ -135,20 +135,20 @@ public class AddUserFrame extends JInternalFrame {
 									.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 										.addComponent(label_1_1_1)
 										.addComponent(label_1_1))))
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 								.addComponent(s_cashPledgeStatus_Jcb, 0, 149, Short.MAX_VALUE)
-								.addGroup(Alignment.TRAILING, groupLayout.createParallelGroup(Alignment.TRAILING, false)
+								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
 									.addComponent(userName_Txt, Alignment.LEADING)
 									.addComponent(loginName_Txt, Alignment.LEADING)
 									.addComponent(phoneField)
 									.addComponent(passWord_Txt, GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
-								.addComponent(s_cashPledge_Jcb, Alignment.TRAILING, 0, 149, Short.MAX_VALUE)))
+								.addComponent(s_cashPledge_Jcb, 0, 149, Short.MAX_VALUE)))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addContainerGap()
 							.addComponent(button)
 							.addGap(18)
 							.addComponent(button_1)
-							.addGap(32)))
+							.addGap(11)))
 					.addGap(163))
 		);
 		groupLayout.setVerticalGroup(
@@ -183,8 +183,8 @@ public class AddUserFrame extends JInternalFrame {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap(307, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(button)
-						.addComponent(button_1))
+						.addComponent(button_1)
+						.addComponent(button))
 					.addGap(182))
 		);
 		getContentPane().setLayout(groupLayout);

@@ -112,7 +112,7 @@ public class AddBookFrame extends JInternalFrame {
 				bookAddActionPerformed(e);
 			}
 		});
-		button.setIcon(new ImageIcon(AddBookFrame.class.getResource("/images/add.png")));
+		button.setIcon(new ImageIcon(AddBookFrame.class.getResource("/images/1添加.png")));
 
 		JButton button_1 = new JButton("重置");
 		button_1.addActionListener(new ActionListener() {
@@ -121,7 +121,7 @@ public class AddBookFrame extends JInternalFrame {
 				resetValueActionPerformed(e);
 			}
 		});
-		button_1.setIcon(new ImageIcon(AddBookFrame.class.getResource("/images/reset.png")));
+		button_1.setIcon(new ImageIcon(AddBookFrame.class.getResource("/images/重置.png")));
 		
 		/*JButton btnNewButton = new JButton("关闭");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -150,34 +150,32 @@ public class AddBookFrame extends JInternalFrame {
 										.addComponent(label))
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(bookName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 										.addGroup(groupLayout.createSequentialGroup()
 											.addComponent(man_Jrb)
 											.addPreferredGap(ComponentPlacement.UNRELATED)
-											.addComponent(woman_Jrb)))))
-							.addGap(37)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+											.addComponent(woman_Jrb))
+										.addComponent(bookName_Txt, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE))))
+							.addGap(29)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(label_1)
 									.addGap(18)
-									.addComponent(author_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+									.addComponent(author_Txt))
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(label_3)
 									.addGap(18)
-									.addComponent(price_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
-							.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(label_5)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-											.addGroup(groupLayout.createSequentialGroup()
-													.addComponent(button)
-													.addGap(18)
-//									.addComponent(btnNewButton)
-//									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-													.addComponent(button_1)
-													.addGap(67))
-											.addComponent(bookDesc_Txt, GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE))))
-						.addGap(18))
+									.addComponent(price_Txt, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE))))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(label_5)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(bookDesc_Txt, GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)))
+					.addGap(18))
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+					.addContainerGap(170, Short.MAX_VALUE)
+					.addComponent(button)
+					.addGap(77)
+					.addComponent(button_1)
+					.addGap(106))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -186,29 +184,28 @@ public class AddBookFrame extends JInternalFrame {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(label)
 						.addComponent(bookName_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_1)
-						.addComponent(author_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(author_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_1))
 					.addGap(33)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(label_2)
 						.addComponent(man_Jrb)
 						.addComponent(woman_Jrb)
-						.addComponent(label_3)
-						.addComponent(price_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(price_Txt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_3))
 					.addGap(33)
-						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(label_4)
-								.addComponent(bookType_Jcb, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGap(34)
-						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(label_5)
-								.addComponent(bookDesc_Txt, GroupLayout.PREFERRED_SIZE, 167, GroupLayout.PREFERRED_SIZE))
-						.addPreferredGap(ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(button)
-								.addComponent(button_1))
-//						.addComponent(btnNewButton)
-						.addGap(47))
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(label_4)
+						.addComponent(bookType_Jcb, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(34)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(label_5)
+						.addComponent(bookDesc_Txt, GroupLayout.PREFERRED_SIZE, 167, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(button_1)
+						.addComponent(button))
+					.addGap(80))
 		);
 		getContentPane().setLayout(groupLayout);
 

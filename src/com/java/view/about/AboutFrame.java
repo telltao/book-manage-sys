@@ -38,7 +38,7 @@ public class AboutFrame extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public AboutFrame() {
-		getContentPane().setBackground(SystemColor.textHighlight);
+		getContentPane().setBackground(Color.PINK);
 		setBackground(Color.CYAN);
 		setIconifiable(true);
 		setClosable(true);
@@ -47,15 +47,12 @@ public class AboutFrame extends JInternalFrame {
 //		this.setBounds((900 - 700) / 2,(900 - 450) / 2,700,450);
 		JTextArea txtrJavaccjavajavaJava = new JTextArea();
 		txtrJavaccjavajavaJava.setRows(5);
-		txtrJavaccjavajavaJava.setBackground(SystemColor.textHighlight);
-		txtrJavaccjavajavaJava.setForeground(Color.WHITE);
+		txtrJavaccjavajavaJava.setBackground(Color.PINK);
+		txtrJavaccjavajavaJava.setForeground(Color.BLACK);
 		//TODO 在此处将数据从数据库中查询出来
 
 		About about = initAbout();
-		txtrJavaccjavajavaJava.setText("关于我们:" +
-				"\n作者：" + about.getAuthor() +
-				"\n说明：" + about.getContent() +
-				"\n联系方式：" + about.getEmail() + "");
+		txtrJavaccjavajavaJava.setText("关于我们:\r\n作者：\r\n说明：\r\n联系方式：");
 		txtrJavaccjavajavaJava.setFont(new Font("楷体", Font.PLAIN, 16));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
