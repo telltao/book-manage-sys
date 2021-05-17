@@ -10,6 +10,7 @@ import java.awt.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 @SuppressWarnings("serial")
 public class AboutFrame extends JInternalFrame {
@@ -57,20 +58,28 @@ public class AboutFrame extends JInternalFrame {
 				"\n说明：" + about.getContent() +
 				"\n联系方式：" + about.getEmail() + "");
 		txtrJavaccjavajavaJava.setFont(new Font("楷体", Font.PLAIN, 16));
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(AboutFrame.class.getResource("/images/小狐狸.png")));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
-				groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addGroup(groupLayout.createSequentialGroup()
-								.addContainerGap(63, Short.MAX_VALUE)
-								.addComponent(txtrJavaccjavajavaJava, GroupLayout.PREFERRED_SIZE, 563, GroupLayout.PREFERRED_SIZE)
-								.addGap(50))
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(75)
+					.addComponent(txtrJavaccjavajavaJava, GroupLayout.PREFERRED_SIZE, 567, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(46, Short.MAX_VALUE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap(382, Short.MAX_VALUE)
+					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 306, GroupLayout.PREFERRED_SIZE))
 		);
 		groupLayout.setVerticalGroup(
-				groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
-								.addGap(50)
-								.addComponent(txtrJavaccjavajavaJava, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE)
-								.addContainerGap(143, Short.MAX_VALUE))
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(50)
+					.addComponent(txtrJavaccjavajavaJava, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(lblNewLabel)
+					.addContainerGap())
 		);
 		getContentPane().setLayout(groupLayout);
 
